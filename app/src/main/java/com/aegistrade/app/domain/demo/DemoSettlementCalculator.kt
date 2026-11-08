@@ -18,7 +18,6 @@ data class DemoSettlementInput(
 )
 
 enum class DemoSettlementError {
-    INVALID_BALANCE,
     INVALID_ENTRY_PRICE,
     INVALID_EXIT_PRICE,
     INVALID_QUANTITY
@@ -40,17 +39,12 @@ sealed interface DemoSettlementResult {
  * Рассчитывает результат закрытия линейной демо-позиции.
  *
  * Комиссии, проскальзывание, плечо и ликвидация не учитываются.
- * Баланс после закрытия может быть отрицательным.
+ * Баланс до и после закрытия может быть отрицательным.
+ * Допустимость открытия новой позиции проверяется отдельно.
  */
 object DemoSettlementCalculator {
 
     fun calculate(input: DemoSettlementInput): DemoSettlementResult {
-        if (input.balanceBeforeClose < BigDecimal.ZERO) {
-            return DemoSettlementResult.InvalidInput(
-                DemoSettlementError.INVALID_BALANCE
-            )
-        }
-
         if (input.entryPrice <= BigDecimal.ZERO) {
             return DemoSettlementResult.InvalidInput(
                 DemoSettlementError.INVALID_ENTRY_PRICE

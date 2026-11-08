@@ -117,17 +117,29 @@ class DemoSettlementCalculatorTest {
     }
 
     @Test
-    fun negativeBalanceBeforeCloseIsRejected() {
-        val result = DemoSettlementCalculator.calculate(
-            input().copy(balanceBeforeClose = decimal("-1"))
+    fun positionCanBeSettledWithNegativeBalance() {
+        val result = calculate(
+            input().copy(
+                balanceBeforeClose = decimal("-15"),
+                exitPrice = decimal("110")
+            )
         )
 
-        assertEquals(
-            DemoSettlementResult.InvalidInput(
-                DemoSettlementError.INVALID_BALANCE
-            ),
-            result
+        assertDecimalEquals("20", result.profitAndLoss)
+        assertDecimalEquals("5", result.balanceAfterClose)
+    }
+
+    @Test
+    fun lossCanIncreaseNegativeBalanceDebt() {
+        val result = calculate(
+            input().copy(
+                balanceBeforeClose = decimal("-15"),
+                exitPrice = decimal("90")
+            )
         )
+
+        assertDecimalEquals("-20", result.profitAndLoss)
+        assertDecimalEquals("-35", result.balanceAfterClose)
     }
 
     @Test
