@@ -29,12 +29,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.aegistrade.app.domain.input.DecimalInputParser
 import com.aegistrade.app.domain.risk.PositionSide
 import com.aegistrade.app.domain.risk.RiskCalculator
 import com.aegistrade.app.domain.risk.RiskInput
 import com.aegistrade.app.domain.risk.RiskInputError
 import com.aegistrade.app.domain.risk.RiskResult
-import java.math.BigDecimal
 
 class MainActivity : ComponentActivity() {
 
@@ -170,11 +170,11 @@ private fun RiskScreen() {
         Button(
             modifier = Modifier.fillMaxWidth(),
             onClick = {
-                val parsedBalance = parseDecimal(balance)
-                val parsedEntry = parseDecimal(entryPrice)
-                val parsedStop = parseDecimal(stopPrice)
-                val parsedQuantity = parseDecimal(quantity)
-                val parsedLimit = parseDecimal(maxRiskPercent)
+                val parsedBalance = DecimalInputParser.parse(balance)
+                val parsedEntry = DecimalInputParser.parse(entryPrice)
+                val parsedStop = DecimalInputParser.parse(stopPrice)
+                val parsedQuantity = DecimalInputParser.parse(quantity)
+                val parsedLimit = DecimalInputParser.parse(maxRiskPercent)
 
                 if (
                     parsedBalance == null ||
@@ -311,22 +311,6 @@ private fun DirectionButton(
             Text(text)
         }
     }
-}
-
-/**
- * Принимает только обычную десятичную запись без знака,
- * пробелов и экспоненты. Допускаются точка или запятая.
- *
- * Примеры: 10, 10.5, 10,5.
- */
-private fun parseDecimal(value: String): BigDecimal? {
-    val normalized = value.replace(',', '.')
-
-    if (!normalized.matches(Regex("""[0-9]{1,18}(\.[0-9]{1,8})?"""))) {
-        return null
-    }
-
-    return normalized.toBigDecimalOrNull()
 }
 
 private fun inputErrorMessage(error: RiskInputError): String {
