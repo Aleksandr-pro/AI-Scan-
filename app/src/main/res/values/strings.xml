@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AEGIS Trade</string>
+    <string name="welcome_title">AEGIS Trade</string>
+    <string name="welcome_subtitle">Торговля начинается с контроля риска</string>
+    <string name="demo_status">Демо-режим — в разработке</string>
+    <string name="disclaimer">Приложение пока не подключено к биржам и не совершает сделки.</string>
+</resources>

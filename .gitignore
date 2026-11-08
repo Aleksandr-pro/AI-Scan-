@@ -1,0 +1,23 @@
+# Gradle
+.gradle/
+**/build/
+
+# Local Android SDK configuration
+local.properties
+
+# Android Studio
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Signing files — never commit private keys
+*.jks
+*.keystore
+
+# Local secrets
+.env
+.env.*
+!.env.example
