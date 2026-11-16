@@ -8,5 +8,25 @@
       "down": "flattened_sand",
       "side": "flattened_sand"
     }
+  },
+  "snow": {
+    "ambient_occlusion_exponent": 1.0,
+    "isotropic": true,
+    "sound": "snow",
+    "textures": {
+      "up": "realistic_snow_top",
+      "side": "snow",
+      "down": "snow"
+    }
+  },
+  "snow_layer": {
+    "ambient_occlusion_exponent": 1.0,
+    "isotropic": true,
+    "sound": "snow",
+    "textures": {
+      "up": "realistic_snow_top",
+      "side": "snow",
+      "down": "snow"
+    }
   }
 }
