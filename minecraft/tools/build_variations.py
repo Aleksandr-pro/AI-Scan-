@@ -177,6 +177,14 @@ for i, factor in enumerate((1.0, 0.97, 1.03, 0.985)):
     shaded = copper_ore.point(lambda value: min(255, round(value * factor)))
     Image.composite(shaded, copper_ore, brick_mask).save(blocks / f'copper_ore_variant_{i}.png', optimize=True)
 
+# Gravel variants keep the source's stone arrangement and shared borders.
+gravel = Image.open(blocks / 'gravel.png').convert('RGB')
+if gravel.size != brick.size:
+    raise ValueError('Gravel source texture must be 512x512')
+for i, factor in enumerate((1.0, 0.97, 1.03, 0.985)):
+    shaded = gravel.point(lambda value: min(255, round(value * factor)))
+    Image.composite(shaded, gravel, brick_mask).save(blocks / f'gravel_variant_{i}.png', optimize=True)
+
 # Preserve all 17 vanilla grass-top entries (biome/state indices) while assigning
 # the same position-selected set at each index. Weights are explicit.
 tops = [{'path': f'textures/blocks/grass_top_variant_{i}', 'weight': 1} for i in range(4)]
@@ -187,6 +195,8 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
                'grass_side': {'textures': [{'overlay_color': '#df6827', 'variations': sides}]},
                'short_grass': {'textures': {'variations': plants}},
+               'gravel': {'textures': {'variations': [
+                   {'path': f'textures/blocks/gravel_variant_{i}', 'weight': 1} for i in range(4)]}},
                'copper_ore': {'textures': {'variations': [
                    {'path': f'textures/blocks/copper_ore_variant_{i}', 'weight': 1} for i in range(4)]}},
                'iron_ore': {'textures': {'variations': [
