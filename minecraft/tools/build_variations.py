@@ -212,6 +212,14 @@ for material in ('snow', 'realistic_snow_top'):
         shaded = snow.point(lambda value: min(255, round(value * factor)))
         Image.composite(shaded, snow, brick_mask).save(blocks / f'{material}_variant_{i}.png', optimize=True)
 
+# Amethyst block retains crystal detail and a shared edge across variants.
+amethyst = Image.open(blocks / 'amethyst_block.png').convert('RGB')
+if amethyst.size != brick.size:
+    raise ValueError('Amethyst block source texture must be 512x512')
+for i, factor in enumerate((1.0, 0.97, 1.03, 0.985)):
+    shaded = amethyst.point(lambda value: min(255, round(value * factor)))
+    Image.composite(shaded, amethyst, brick_mask).save(blocks / f'amethyst_block_variant_{i}.png', optimize=True)
+
 # Preserve all 17 vanilla grass-top entries (biome/state indices) while assigning
 # the same position-selected set at each index. Weights are explicit.
 tops = [{'path': f'textures/blocks/grass_top_variant_{i}', 'weight': 1} for i in range(4)]
@@ -222,6 +230,8 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
                'grass_side': {'textures': [{'overlay_color': '#df6827', 'variations': sides}]},
                'short_grass': {'textures': {'variations': plants}},
+               'amethyst_block': {'textures': {'variations': [
+                   {'path': f'textures/blocks/amethyst_block_variant_{i}', 'weight': 1} for i in range(4)]}},
                'snow': {'textures': {'variations': [
                    {'path': f'textures/blocks/snow_variant_{i}', 'weight': 1} for i in range(4)]}},
                'realistic_snow_top': {'textures': {'variations': [
