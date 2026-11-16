@@ -439,6 +439,10 @@
           {
             "path": "textures/blocks/short_grass_variant_3",
             "weight": 1
+          },
+          {
+            "path": "textures/blocks/short_grass_variant_4",
+            "weight": 1
           }
         ]
       }

@@ -37,17 +37,15 @@ for i in range(16):
             pix[x, y] = tuple(round(d[k]*(1-blend) + g*blend) for k in range(3)) + (round(blend*255),)
     image.save(blocks / f'grass_side_variant_{i:02}.tga')
 
-# Short grass uses an alpha-isolated, neutral-toned photograph. Keep the
-# standard crossed-plane geometry and biome tint. Mirror and subtly shade it
-# without changing height, rather than growing blocks or changing world data.
-grass_source = Image.open(blocks / 'short_grass_source.png').convert('RGBA')
-if grass_source.size != (size, size):
-    raise ValueError('Short grass source texture must be 256x256')
-for variant, factor in enumerate((1.0, 0.95, 1.05, 0.98)):
-    img = grass_source.transpose(Image.Transpose.FLIP_LEFT_RIGHT) if variant % 2 else grass_source.copy()
-    r, g, b, alpha = img.split()
-    gray = r.point(lambda value: min(255, round(value * factor)))
-    Image.merge('RGBA', (gray, gray, gray, alpha)).save(blocks / f'short_grass_variant_{variant}.png', optimize=True)
+# Short grass variants are preprocessed, full-colour user-provided textures.
+# Keep their alpha and detail intact rather than synthesizing or desaturating
+# them. The standard crossed-plane model and engine biome tint still apply.
+for variant in range(5):
+    img = Image.open(blocks / f'short_grass_variant_{variant}.png')
+    if img.size != (size, size) or img.mode != 'RGBA':
+        raise ValueError('Short grass variants must be 256x256 RGBA')
+    if variant == 0:
+        img.save(blocks / 'tallgrass.png', optimize=True)
 
 # Path top uses the supplied ground photograph; the side uses the supplied
 # grassy-earth photograph, blended into the existing dirt at the bottom.
@@ -218,7 +216,7 @@ for material in ('snow', 'realistic_snow_top'):
 # the same position-selected set at each index. Weights are explicit.
 tops = [{'path': f'textures/blocks/grass_top_variant_{i}', 'weight': 1} for i in range(4)]
 sides = [{'path': f'textures/blocks/grass_side_variant_{i:02}', 'weight': 1} for i in range(16)]
-plants = [{'path': f'textures/blocks/short_grass_variant_{i}', 'weight': 1} for i in range(4)]
+plants = [{'path': f'textures/blocks/short_grass_variant_{i}', 'weight': 1} for i in range(5)]
 terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'padding': 8, 'num_mip_levels': 4,
            'texture_data': {
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
