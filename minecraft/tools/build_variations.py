@@ -135,6 +135,14 @@ for i, factor in enumerate((1.0, 0.97, 1.03, 0.985)):
     shaded = acacia.point(lambda value: min(255, round(value * factor)))
     Image.composite(shaded, acacia, brick_mask).save(blocks / f'planks_acacia_variant_{i}.png', optimize=True)
 
+# Mangrove variants keep the same horizontal grain and shared border.
+mangrove = Image.open(blocks / 'mangrove_planks.png').convert('RGB')
+if mangrove.size != brick.size:
+    raise ValueError('Mangrove plank and brick source textures must both be 512x512')
+for i, factor in enumerate((1.0, 0.97, 1.03, 0.985)):
+    shaded = mangrove.point(lambda value: min(255, round(value * factor)))
+    Image.composite(shaded, mangrove, brick_mask).save(blocks / f'mangrove_planks_variant_{i}.png', optimize=True)
+
 # Preserve all 17 vanilla grass-top entries (biome/state indices) while assigning
 # the same position-selected set at each index. Weights are explicit.
 tops = [{'path': f'textures/blocks/grass_top_variant_{i}', 'weight': 1} for i in range(4)]
@@ -145,6 +153,8 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
                'grass_side': {'textures': [{'overlay_color': '#df6827', 'variations': sides}]},
                'short_grass': {'textures': {'variations': plants}},
+               'mangrove_planks': {'textures': {'variations': [
+                   {'path': f'textures/blocks/mangrove_planks_variant_{i}', 'weight': 1} for i in range(4)]}},
                'acacia_planks': {'textures': {'variations': [
                    {'path': f'textures/blocks/planks_acacia_variant_{i}', 'weight': 1} for i in range(4)]}},
                'jungle_planks': {'textures': {'variations': [
