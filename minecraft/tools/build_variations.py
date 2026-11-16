@@ -54,6 +54,19 @@ for variant in range(4):
         draw.polygon([(x-width, bottom), (tipx, tipy), (x+width, bottom)], fill=(shade, shade, shade, 255))
     img.save(blocks / f'short_grass_variant_{variant}.png', optimize=True)
 
+# Path top uses the supplied ground photograph; the side uses the supplied
+# grassy-earth photograph, blended into the existing dirt at the bottom.
+path_top = Image.open(blocks / 'grass_path_top.png').convert('RGB')
+path_side = Image.open(blocks / 'grass_path_side_source.png').convert('RGB')
+for i in range(4):
+    path_top.rotate(90 * i).save(blocks / f'grass_path_top_variant_{i}.png', optimize=True)
+    shifted = ImageChops.offset(path_side, i * size // 4, 0)
+    mask = Image.new('L', (size, size))
+    mask.putdata([round(255 * max(0, min(1, (y - 130) / 65))) for y in range(size) for x in range(size)])
+    Image.composite(dirt, shifted, mask).save(blocks / f'grass_path_side_variant_{i}.png', optimize=True)
+# The fallback filename also works when variations are not supported.
+Image.open(blocks / 'grass_path_side_variant_0.png').save(blocks / 'grass_path_side.png', optimize=True)
+
 # Preserve all 17 vanilla grass-top entries (biome/state indices) while assigning
 # the same position-selected set at each index. Weights are explicit.
 tops = [{'path': f'textures/blocks/grass_top_variant_{i}', 'weight': 1} for i in range(4)]
@@ -64,6 +77,10 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
                'grass_side': {'textures': [{'overlay_color': '#df6827', 'variations': sides}]},
                'short_grass': {'textures': {'variations': plants}},
+               'grass_path_top': {'textures': [{'variations': [
+                   {'path': f'textures/blocks/grass_path_top_variant_{i}', 'weight': 1} for i in range(4)]}]},
+               'grass_path_side': {'textures': [{'variations': [
+                   {'path': f'textures/blocks/grass_path_side_variant_{i}', 'weight': 1} for i in range(4)]}]},
            }}
 (root / 'textures/terrain_texture.json').write_text(json.dumps(terrain, indent=2) + '\n', encoding='utf-8')
 with zipfile.ZipFile('minecraft/realistic-dirt.mcpack', 'w', zipfile.ZIP_DEFLATED) as archive:
