@@ -103,6 +103,14 @@ for i, factor in enumerate((1.0, 0.97, 1.03, 0.985)):
     shaded = planks.point(lambda value: min(255, round(value * factor)))
     Image.composite(shaded, planks, brick_mask).save(blocks / f'planks_oak_variant_{i}.png', optimize=True)
 
+# Spruce uses the same edge-safe approach; don't rotate the plank courses.
+spruce = Image.open(blocks / 'planks_spruce.png').convert('RGB')
+if spruce.size != brick.size:
+    raise ValueError('Spruce plank and brick source textures must both be 512x512')
+for i, factor in enumerate((1.0, 0.97, 1.03, 0.985)):
+    shaded = spruce.point(lambda value: min(255, round(value * factor)))
+    Image.composite(shaded, spruce, brick_mask).save(blocks / f'planks_spruce_variant_{i}.png', optimize=True)
+
 # Preserve all 17 vanilla grass-top entries (biome/state indices) while assigning
 # the same position-selected set at each index. Weights are explicit.
 tops = [{'path': f'textures/blocks/grass_top_variant_{i}', 'weight': 1} for i in range(4)]
@@ -113,6 +121,8 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
                'grass_side': {'textures': [{'overlay_color': '#df6827', 'variations': sides}]},
                'short_grass': {'textures': {'variations': plants}},
+               'spruce_planks': {'textures': {'variations': [
+                   {'path': f'textures/blocks/planks_spruce_variant_{i}', 'weight': 1} for i in range(4)]}},
                'oak_planks': {'textures': {'variations': [
                    {'path': f'textures/blocks/planks_oak_variant_{i}', 'weight': 1} for i in range(4)]}},
                'brick': {'textures': {'variations': [
