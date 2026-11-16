@@ -185,6 +185,14 @@ for i, factor in enumerate((1.0, 0.97, 1.03, 0.985)):
     shaded = gravel.point(lambda value: min(255, round(value * factor)))
     Image.composite(shaded, gravel, brick_mask).save(blocks / f'gravel_variant_{i}.png', optimize=True)
 
+# Soul sand retains the reference's face pattern and common tile borders.
+soul_sand = Image.open(blocks / 'soul_sand.png').convert('RGB')
+if soul_sand.size != brick.size:
+    raise ValueError('Soul sand source texture must be 512x512')
+for i, factor in enumerate((1.0, 0.97, 1.03, 0.985)):
+    shaded = soul_sand.point(lambda value: min(255, round(value * factor)))
+    Image.composite(shaded, soul_sand, brick_mask).save(blocks / f'soul_sand_variant_{i}.png', optimize=True)
+
 # Preserve all 17 vanilla grass-top entries (biome/state indices) while assigning
 # the same position-selected set at each index. Weights are explicit.
 tops = [{'path': f'textures/blocks/grass_top_variant_{i}', 'weight': 1} for i in range(4)]
@@ -195,6 +203,8 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
                'grass_side': {'textures': [{'overlay_color': '#df6827', 'variations': sides}]},
                'short_grass': {'textures': {'variations': plants}},
+               'soul_sand': {'textures': {'variations': [
+                   {'path': f'textures/blocks/soul_sand_variant_{i}', 'weight': 1} for i in range(4)]}},
                'gravel': {'textures': {'variations': [
                    {'path': f'textures/blocks/gravel_variant_{i}', 'weight': 1} for i in range(4)]}},
                'copper_ore': {'textures': {'variations': [
