@@ -1,0 +1,12 @@
+{
+  "sand": {
+    "ambient_occlusion_exponent": 0.55,
+    "isotropic": true,
+    "sound": "sand",
+    "textures": {
+      "up": "realistic_sand_top",
+      "down": "flattened_sand",
+      "side": "flattened_sand"
+    }
+  }
+}
