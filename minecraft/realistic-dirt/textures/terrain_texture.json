@@ -447,6 +447,15 @@
         ]
       }
     },
+    "redstone_block": {
+      "textures": "textures/blocks/redstone_block"
+    },
+    "diamond_block": {
+      "textures": "textures/blocks/diamond_block"
+    },
+    "wool_colored_white": {
+      "textures": "textures/blocks/wool_colored_white"
+    },
     "obsidian": {
       "textures": "textures/blocks/obsidian"
     },
