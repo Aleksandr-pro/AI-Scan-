@@ -169,6 +169,14 @@ for i, factor in enumerate((1.0, 0.97, 1.03, 0.985)):
     shaded = iron_ore.point(lambda value: min(255, round(value * factor)))
     Image.composite(shaded, iron_ore, brick_mask).save(blocks / f'iron_ore_variant_{i}.png', optimize=True)
 
+# Copper ore: keep shared borders while varying the interior tone slightly.
+copper_ore = Image.open(blocks / 'copper_ore.png').convert('RGB')
+if copper_ore.size != brick.size:
+    raise ValueError('Copper ore source texture must be 512x512')
+for i, factor in enumerate((1.0, 0.97, 1.03, 0.985)):
+    shaded = copper_ore.point(lambda value: min(255, round(value * factor)))
+    Image.composite(shaded, copper_ore, brick_mask).save(blocks / f'copper_ore_variant_{i}.png', optimize=True)
+
 # Preserve all 17 vanilla grass-top entries (biome/state indices) while assigning
 # the same position-selected set at each index. Weights are explicit.
 tops = [{'path': f'textures/blocks/grass_top_variant_{i}', 'weight': 1} for i in range(4)]
@@ -179,6 +187,8 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
                'grass_side': {'textures': [{'overlay_color': '#df6827', 'variations': sides}]},
                'short_grass': {'textures': {'variations': plants}},
+               'copper_ore': {'textures': {'variations': [
+                   {'path': f'textures/blocks/copper_ore_variant_{i}', 'weight': 1} for i in range(4)]}},
                'iron_ore': {'textures': {'variations': [
                    {'path': f'textures/blocks/iron_ore_variant_{i}', 'weight': 1} for i in range(4)]}},
                'diamond_ore': {'textures': {'variations': [
