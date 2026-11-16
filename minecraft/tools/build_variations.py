@@ -67,6 +67,12 @@ for i in range(4):
 # The fallback filename also works when variations are not supported.
 Image.open(blocks / 'grass_path_side_variant_0.png').save(blocks / 'grass_path_side.png', optimize=True)
 
+# Four rotations of the supplied gray concrete photograph. The unmodified
+# concrete_gray.png is also used by older indexed concrete atlas entries.
+concrete = Image.open(blocks / 'concrete_gray.png').convert('RGB')
+for i in range(4):
+    concrete.rotate(90 * i).save(blocks / f'concrete_gray_variant_{i}.png', optimize=True)
+
 # Preserve all 17 vanilla grass-top entries (biome/state indices) while assigning
 # the same position-selected set at each index. Weights are explicit.
 tops = [{'path': f'textures/blocks/grass_top_variant_{i}', 'weight': 1} for i in range(4)]
@@ -77,6 +83,8 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
                'grass_side': {'textures': [{'overlay_color': '#df6827', 'variations': sides}]},
                'short_grass': {'textures': {'variations': plants}},
+               'gray_concrete': {'textures': {'variations': [
+                   {'path': f'textures/blocks/concrete_gray_variant_{i}', 'weight': 1} for i in range(4)]}},
                'grass_path_top': {'textures': [{'variations': [
                    {'path': f'textures/blocks/grass_path_top_variant_{i}', 'weight': 1} for i in range(4)]}]},
                'grass_path_side': {'textures': [{'variations': [
