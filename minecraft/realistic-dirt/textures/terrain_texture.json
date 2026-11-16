@@ -447,6 +447,12 @@
         ]
       }
     },
+    "hayblock_side": {
+      "textures": "textures/blocks/hay_block_side"
+    },
+    "hayblock_top": {
+      "textures": "textures/blocks/hay_block_top"
+    },
     "redstone_block": {
       "textures": "textures/blocks/redstone_block"
     },
