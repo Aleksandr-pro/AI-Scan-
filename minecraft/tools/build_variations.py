@@ -230,6 +230,10 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
                'grass_side': {'textures': [{'overlay_color': '#df6827', 'variations': sides}]},
                'short_grass': {'textures': {'variations': plants}},
+               # Five preprocessed user-supplied dirt panels share their borders;
+               # keep dirt.png untouched for grass/path and legacy texture users.
+               'flattened_dirt': {'textures': {'variations': [
+                   {'path': f'textures/blocks/dirt_variant_{i}', 'weight': 1} for i in range(5)]}},
                # Keep Bedrock's own hay block face assignment and axis rotation.
                'hayblock_side': {'textures': 'textures/blocks/hay_block_side'},
                'hayblock_top': {'textures': 'textures/blocks/hay_block_top'},
