@@ -73,6 +73,16 @@ concrete = Image.open(blocks / 'concrete_gray.png').convert('RGB')
 for i in range(4):
     concrete.rotate(90 * i).save(blocks / f'concrete_gray_variant_{i}.png', optimize=True)
 
+# Vary the masonry inside a shared border so neighbouring variants retain
+# the same edge pixels. Keep the horizontal courses oriented horizontally.
+stone = Image.open(blocks / 'stone.png').convert('RGB')
+inner = Image.new('L', (size, size))
+inner.putdata([round(255 * min(1, max(0, min(x, y, size-1-x, size-1-y) / 48)))
+               for y in range(size) for x in range(size)])
+for i in range(4):
+    varied = ImageChops.offset(stone, i * 37, i * 19)
+    Image.composite(varied, stone, inner).save(blocks / f'stone_variant_{i}.png', optimize=True)
+
 # Preserve all 17 vanilla grass-top entries (biome/state indices) while assigning
 # the same position-selected set at each index. Weights are explicit.
 tops = [{'path': f'textures/blocks/grass_top_variant_{i}', 'weight': 1} for i in range(4)]
@@ -83,6 +93,8 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
                'grass_side': {'textures': [{'overlay_color': '#df6827', 'variations': sides}]},
                'short_grass': {'textures': {'variations': plants}},
+               'flattened_stone': {'textures': {'variations': [
+                   {'path': f'textures/blocks/stone_variant_{i}', 'weight': 1} for i in range(4)]}},
                'gray_concrete': {'textures': {'variations': [
                    {'path': f'textures/blocks/concrete_gray_variant_{i}', 'weight': 1} for i in range(4)]}},
                'grass_path_top': {'textures': [{'variations': [
