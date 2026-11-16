@@ -447,6 +447,12 @@
         ]
       }
     },
+    "tall_grass_top": {
+      "textures": "textures/blocks/double_plant_grass_top"
+    },
+    "tall_grass_bottom": {
+      "textures": "textures/blocks/double_plant_grass_bottom"
+    },
     "flattened_dirt": {
       "textures": {
         "variations": [
