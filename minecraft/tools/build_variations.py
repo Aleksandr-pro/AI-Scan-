@@ -7,9 +7,8 @@ The original dirt texture is not modified.
 from pathlib import Path
 import json
 import math
-import random
 import zipfile
-from PIL import Image, ImageChops, ImageDraw
+from PIL import Image, ImageChops
 
 root = Path('minecraft/realistic-dirt')
 blocks = root / 'textures/blocks'
@@ -38,21 +37,17 @@ for i in range(16):
             pix[x, y] = tuple(round(d[k]*(1-blend) + g*blend) for k in range(3)) + (round(blend*255),)
     image.save(blocks / f'grass_side_variant_{i:02}.tga')
 
-# Vanilla short grass already renders as crossed planes: provide translucent blades
-# and variations without changing block geometry or adding costly world entities.
-for variant in range(4):
-    rng = random.Random(5917 + variant)
-    img = Image.new('RGBA', (size, size), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(img)
-    for n in range(60):
-        x = rng.randint(38, 218)
-        bottom = rng.randint(222, 255)
-        tipx = max(1, min(254, x + rng.randint(-75, 75)))
-        tipy = rng.randint(30, 185)
-        width = rng.randint(2, 7)
-        shade = rng.randint(95, 210)
-        draw.polygon([(x-width, bottom), (tipx, tipy), (x+width, bottom)], fill=(shade, shade, shade, 255))
-    img.save(blocks / f'short_grass_variant_{variant}.png', optimize=True)
+# Short grass uses an alpha-isolated, neutral-toned photograph. Keep the
+# standard crossed-plane geometry and biome tint. Mirror and subtly shade it
+# without changing height, rather than growing blocks or changing world data.
+grass_source = Image.open(blocks / 'short_grass_source.png').convert('RGBA')
+if grass_source.size != (size, size):
+    raise ValueError('Short grass source texture must be 256x256')
+for variant, factor in enumerate((1.0, 0.95, 1.05, 0.98)):
+    img = grass_source.transpose(Image.Transpose.FLIP_LEFT_RIGHT) if variant % 2 else grass_source.copy()
+    r, g, b, alpha = img.split()
+    gray = r.point(lambda value: min(255, round(value * factor)))
+    Image.merge('RGBA', (gray, gray, gray, alpha)).save(blocks / f'short_grass_variant_{variant}.png', optimize=True)
 
 # Path top uses the supplied ground photograph; the side uses the supplied
 # grassy-earth photograph, blended into the existing dirt at the bottom.
