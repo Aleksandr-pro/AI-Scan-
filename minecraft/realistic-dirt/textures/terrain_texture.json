@@ -447,6 +447,24 @@
         ]
       }
     },
+    "obsidian": {
+      "textures": "textures/blocks/obsidian"
+    },
+    "real_obsidian_north": {
+      "textures": "textures/blocks/obsidian_north"
+    },
+    "real_obsidian_east": {
+      "textures": "textures/blocks/obsidian_east"
+    },
+    "real_obsidian_south": {
+      "textures": "textures/blocks/obsidian_south"
+    },
+    "real_obsidian_west": {
+      "textures": "textures/blocks/obsidian_west"
+    },
+    "real_obsidian_down": {
+      "textures": "textures/blocks/obsidian_down"
+    },
     "amethyst_block": {
       "textures": {
         "variations": [

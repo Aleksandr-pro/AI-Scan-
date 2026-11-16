@@ -28,5 +28,18 @@
       "side": "snow",
       "down": "snow"
     }
+  },
+  "obsidian": {
+    "ambient_occlusion_exponent": 2.0,
+    "isotropic": false,
+    "sound": "stone",
+    "textures": {
+      "up": "obsidian",
+      "north": "real_obsidian_north",
+      "east": "real_obsidian_east",
+      "south": "real_obsidian_south",
+      "west": "real_obsidian_west",
+      "down": "real_obsidian_down"
+    }
   }
 }
