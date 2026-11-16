@@ -230,6 +230,9 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
                'grass_side': {'textures': [{'overlay_color': '#df6827', 'variations': sides}]},
                'short_grass': {'textures': {'variations': plants}},
+               'obsidian': {'textures': 'textures/blocks/obsidian'},
+               **{f'real_obsidian_{face}': {'textures': f'textures/blocks/obsidian_{face}'}
+                  for face in ('north', 'east', 'south', 'west', 'down')},
                'amethyst_block': {'textures': {'variations': [
                    {'path': f'textures/blocks/amethyst_block_variant_{i}', 'weight': 1} for i in range(4)]}},
                'snow': {'textures': {'variations': [
