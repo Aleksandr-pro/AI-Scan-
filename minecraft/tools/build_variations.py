@@ -296,8 +296,40 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'grass_path_side': {'textures': [{'variations': [
                    {'path': f'textures/blocks/grass_path_side_variant_{i}', 'weight': 1} for i in range(4)]}]},
            }}
-(root / 'textures/terrain_texture.json').write_text(json.dumps(terrain, indent=2) + '\n', encoding='utf-8')
+# Reuse base PNGs only when a generated variant_0 is byte-for-byte identical.
+# Limit this to explicitly referenced variation paths: vanilla and other pack
+# assets may load their original filenames implicitly. Source files are kept.
+omitted = set()
+def reuse_identical_variants(value):
+    if isinstance(value, dict):
+        if 'variations' in value:
+            for variant in value['variations']:
+                path = variant.get('path', '')
+                if not path.endswith('_variant_0'):
+                    continue
+                original = root / (path + '.png')
+                base_path = path.removesuffix('_variant_0')
+                base = root / (base_path + '.png')
+                if original.is_file() and base.is_file() and original.read_bytes() == base.read_bytes():
+                    # Never remove a file that another pack JSON refers to.
+                    others = (p for p in root.rglob('*.json') if p.name != 'terrain_texture.json')
+                    if any(path in p.read_text(encoding='utf-8') for p in others):
+                        continue
+                    variant['path'] = base_path
+                    omitted.add(original.relative_to(root))
+        for child in value.values():
+            reuse_identical_variants(child)
+    elif isinstance(value, list):
+        for child in value:
+            reuse_identical_variants(child)
+
+reuse_identical_variants(terrain)
+# If another atlas entry still names a candidate, retain the file.
+serialized = json.dumps(terrain, indent=2) + '\n'
+omitted = {p for p in omitted if str(p.with_suffix('')) not in serialized}
+(root / 'textures/terrain_texture.json').write_text(serialized, encoding='utf-8')
 with zipfile.ZipFile('minecraft/realistic-dirt.mcpack', 'w', zipfile.ZIP_DEFLATED) as archive:
     for path in sorted(root.rglob('*')):
-        if path.is_file():
+        if path.is_file() and path.relative_to(root) not in omitted:
             archive.write(path, path.relative_to(root))
+print(f'Reused {len(omitted)} identical variation files; source textures retained.')
