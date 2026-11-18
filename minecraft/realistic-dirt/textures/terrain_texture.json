@@ -450,6 +450,9 @@
     "diorite": {
       "textures": "textures/blocks/stone_diorite"
     },
+    "polished_diorite": {
+      "textures": "textures/blocks/stone_diorite_smooth"
+    },
     "netherrack": {
       "textures": {
         "variations": [

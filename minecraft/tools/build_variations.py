@@ -232,6 +232,7 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'short_grass': {'textures': {'variations': plants}},
                # The legacy indexed stone atlas also uses this vanilla path.
                'diorite': {'textures': 'textures/blocks/stone_diorite'},
+               'polished_diorite': {'textures': 'textures/blocks/stone_diorite_smooth'},
                # Four distinct user-supplied images, with shared tile borders.
                # The first also serves as the vanilla filename fallback.
                'netherrack': {'textures': {'variations': [
