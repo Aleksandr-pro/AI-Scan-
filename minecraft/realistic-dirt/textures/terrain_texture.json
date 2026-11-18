@@ -447,6 +447,9 @@
         ]
       }
     },
+    "bamboo_stem": {
+      "textures": "textures/blocks/bamboo_stem"
+    },
     "ladder": {
       "textures": "textures/blocks/ladder"
     },

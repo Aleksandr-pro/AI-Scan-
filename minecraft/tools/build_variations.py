@@ -230,6 +230,9 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
                'grass_side': {'textures': [{'overlay_color': '#df6827', 'variations': sides}]},
                'short_grass': {'textures': {'variations': plants}},
+               # Vanilla bamboo stem is an opaque cube-face texture, not a
+               # cutout sprite; leaves and the sapling keep their vanilla paths.
+               'bamboo_stem': {'textures': 'textures/blocks/bamboo_stem'},
                'ladder': {'textures': 'textures/blocks/ladder'},
                # Vanilla lantern uses a 16x16 UV layout in a three-frame strip.
                'lantern': {'textures': 'textures/blocks/lantern'},
