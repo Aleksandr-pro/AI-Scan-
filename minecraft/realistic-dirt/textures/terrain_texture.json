@@ -447,6 +447,9 @@
         ]
       }
     },
+    "diorite": {
+      "textures": "textures/blocks/stone_diorite"
+    },
     "netherrack": {
       "textures": {
         "variations": [
