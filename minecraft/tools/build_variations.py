@@ -246,6 +246,8 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'dark_oak_log_side': {'textures': 'textures/blocks/log_big_oak'},
                'mangrove_log_top': {'textures': 'textures/blocks/mangrove_log_top'},
                'mangrove_log_side': {'textures': 'textures/blocks/mangrove_log_side'},
+               'cherry_log_top': {'textures': 'textures/blocks/cherry_log_top'},
+               'cherry_log_side': {'textures': 'textures/blocks/cherry_log_side'},
                # Vanilla bamboo stem is an opaque cube-face texture, not a
                # cutout sprite; leaves and the sapling keep their vanilla paths.
                'bamboo_stem': {'textures': 'textures/blocks/bamboo_stem'},

@@ -489,6 +489,12 @@
     "mangrove_log_side": {
       "textures": "textures/blocks/mangrove_log_side"
     },
+    "cherry_log_top": {
+      "textures": "textures/blocks/cherry_log_top"
+    },
+    "cherry_log_side": {
+      "textures": "textures/blocks/cherry_log_side"
+    },
     "bamboo_stem": {
       "textures": "textures/blocks/bamboo_stem"
     },
