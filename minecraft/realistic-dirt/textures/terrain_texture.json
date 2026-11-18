@@ -447,6 +447,9 @@
         ]
       }
     },
+    "lantern": {
+      "textures": "textures/blocks/lantern"
+    },
     "diorite": {
       "textures": "textures/blocks/stone_diorite"
     },
