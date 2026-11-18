@@ -230,6 +230,9 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
                'grass_side': {'textures': [{'overlay_color': '#df6827', 'variations': sides}]},
                'short_grass': {'textures': {'variations': plants}},
+               # Keep the legacy stonebrick indexed atlas intact: its first
+               # vanilla path is also textures/blocks/stonebrick.
+               'stone_bricks': {'textures': 'textures/blocks/stonebrick'},
                # Two halves of the same plant image; never randomize separately.
                # Vanilla legacy double_plant indices also reference these paths.
                'tall_grass_top': {'textures': 'textures/blocks/double_plant_grass_top'},
