@@ -483,6 +483,12 @@
     "dark_oak_log_side": {
       "textures": "textures/blocks/log_big_oak"
     },
+    "mangrove_log_top": {
+      "textures": "textures/blocks/mangrove_log_top"
+    },
+    "mangrove_log_side": {
+      "textures": "textures/blocks/mangrove_log_side"
+    },
     "bamboo_stem": {
       "textures": "textures/blocks/bamboo_stem"
     },
