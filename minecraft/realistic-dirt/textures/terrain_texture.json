@@ -471,6 +471,12 @@
     "jungle_log_side": {
       "textures": "textures/blocks/log_jungle"
     },
+    "acacia_log_top": {
+      "textures": "textures/blocks/log_acacia_top"
+    },
+    "acacia_log_side": {
+      "textures": "textures/blocks/log_acacia"
+    },
     "bamboo_stem": {
       "textures": "textures/blocks/bamboo_stem"
     },
