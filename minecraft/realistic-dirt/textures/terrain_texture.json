@@ -477,6 +477,12 @@
     "acacia_log_side": {
       "textures": "textures/blocks/log_acacia"
     },
+    "dark_oak_log_top": {
+      "textures": "textures/blocks/log_big_oak_top"
+    },
+    "dark_oak_log_side": {
+      "textures": "textures/blocks/log_big_oak"
+    },
     "bamboo_stem": {
       "textures": "textures/blocks/bamboo_stem"
     },
