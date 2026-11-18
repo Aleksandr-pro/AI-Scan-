@@ -230,6 +230,10 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
                'grass_side': {'textures': [{'overlay_color': '#df6827', 'variations': sides}]},
                'short_grass': {'textures': {'variations': plants}},
+               # Keep the fancy/opaque indices in the vanilla order. Legacy
+               # indexed leaves also use these same two oak-specific filenames.
+               'oak_leaves': {'textures': ['textures/blocks/leaves_oak',
+                                           'textures/blocks/leaves_oak_opaque']},
                # Keep the legacy stonebrick indexed atlas intact: its first
                # vanilla path is also textures/blocks/stonebrick.
                'stone_bricks': {'textures': 'textures/blocks/stonebrick'},

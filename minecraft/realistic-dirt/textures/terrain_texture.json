@@ -447,6 +447,12 @@
         ]
       }
     },
+    "oak_leaves": {
+      "textures": [
+        "textures/blocks/leaves_oak",
+        "textures/blocks/leaves_oak_opaque"
+      ]
+    },
     "stone_bricks": {
       "textures": "textures/blocks/stonebrick"
     },
