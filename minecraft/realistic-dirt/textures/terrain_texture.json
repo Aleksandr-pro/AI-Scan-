@@ -447,6 +447,12 @@
         ]
       }
     },
+    "oak_log_top": {
+      "textures": "textures/blocks/log_oak_top"
+    },
+    "oak_log_side": {
+      "textures": "textures/blocks/log_oak"
+    },
     "bamboo_stem": {
       "textures": "textures/blocks/bamboo_stem"
     },
