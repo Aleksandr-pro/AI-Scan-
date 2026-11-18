@@ -498,6 +498,12 @@
     "bamboo_stem": {
       "textures": "textures/blocks/bamboo_stem"
     },
+    "bamboo_block": {
+      "textures": "textures/blocks/bamboo_block"
+    },
+    "bamboo_block_top": {
+      "textures": "textures/blocks/bamboo_block_top"
+    },
     "ladder": {
       "textures": "textures/blocks/ladder"
     },
