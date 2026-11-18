@@ -447,6 +447,9 @@
         ]
       }
     },
+    "ladder": {
+      "textures": "textures/blocks/ladder"
+    },
     "lantern": {
       "textures": "textures/blocks/lantern"
     },
