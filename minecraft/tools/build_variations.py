@@ -230,6 +230,12 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
                'grass_side': {'textures': [{'overlay_color': '#df6827', 'variations': sides}]},
                'short_grass': {'textures': {'variations': plants}},
+               # Four distinct user-supplied images, with shared tile borders.
+               # The first also serves as the vanilla filename fallback.
+               'netherrack': {'textures': {'variations': [
+                   {'path': 'textures/blocks/netherrack', 'weight': 1},
+                   *[{'path': f'textures/blocks/netherrack_variant_{i}', 'weight': 1}
+                     for i in range(1, 4)]]}},
                # Keep the fancy/opaque indices in the vanilla order. Legacy
                # indexed leaves also use these same two oak-specific filenames.
                'oak_leaves': {'textures': ['textures/blocks/leaves_oak',
