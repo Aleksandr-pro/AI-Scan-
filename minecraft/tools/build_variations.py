@@ -253,6 +253,8 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'bamboo_stem': {'textures': 'textures/blocks/bamboo_stem'},
                'bamboo_block': {'textures': 'textures/blocks/bamboo_block'},
                'bamboo_block_top': {'textures': 'textures/blocks/bamboo_block_top'},
+               'stripped_bamboo_block': {'textures': 'textures/blocks/stripped_bamboo_block'},
+               'stripped_bamboo_block_top': {'textures': 'textures/blocks/stripped_bamboo_block_top'},
                'ladder': {'textures': 'textures/blocks/ladder'},
                # Vanilla lantern uses a 16x16 UV layout in a three-frame strip.
                'lantern': {'textures': 'textures/blocks/lantern'},

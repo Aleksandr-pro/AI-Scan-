@@ -504,6 +504,12 @@
     "bamboo_block_top": {
       "textures": "textures/blocks/bamboo_block_top"
     },
+    "stripped_bamboo_block": {
+      "textures": "textures/blocks/stripped_bamboo_block"
+    },
+    "stripped_bamboo_block_top": {
+      "textures": "textures/blocks/stripped_bamboo_block_top"
+    },
     "ladder": {
       "textures": "textures/blocks/ladder"
     },
