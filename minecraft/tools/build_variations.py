@@ -276,6 +276,12 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                # atlas and by slabs/stairs; rough and dark prismarine stay vanilla.
                'prismarine_bricks': {'textures': 'textures/blocks/prismarine_bricks'},
                'prismarine_brick_slab': {'textures': 'textures/blocks/prismarine_bricks'},
+               'iron_block': {'textures': 'textures/blocks/iron_block'},
+               # Ordinary nether brick is also used by fences and stairs; its
+               # vanilla slab and wall entries refer to the same image.
+               'nether_brick': {'textures': 'textures/blocks/nether_brick'},
+               'nether_brick_slab': {'textures': 'textures/blocks/nether_brick'},
+               'nether_brick_wall': {'textures': 'textures/blocks/nether_brick'},
                # The legacy indexed stone atlas also uses this vanilla path.
                'diorite': {'textures': 'textures/blocks/stone_diorite'},
                'polished_diorite': {'textures': 'textures/blocks/stone_diorite_smooth'},
