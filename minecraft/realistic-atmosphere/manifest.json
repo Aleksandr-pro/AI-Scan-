@@ -2,11 +2,11 @@
   "format_version": 2,
   "header": {
     "name": "Реалистичная атмосфера — VV Mobile",
-    "description": "Эксперимент: дождь, лужи-частицы, мягкие тени и вода для VV",
+    "description": "Свет, вода, материалы и брызги для Vibrant Visuals",
     "uuid": "dbbdbd49-e1f6-469d-8166-bfe76ec7ec77",
     "version": [
       1,
-      1,
+      2,
       0
     ],
     "min_engine_version": [
@@ -21,7 +21,7 @@
       "uuid": "07e6929b-5f11-4bbf-9985-a1ff91061a71",
       "version": [
         1,
-        1,
+        2,
         0
       ]
     }
