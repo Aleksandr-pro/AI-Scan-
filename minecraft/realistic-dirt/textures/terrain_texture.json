@@ -447,6 +447,26 @@
         ]
       }
     },
+    "farmland": {
+      "textures": [
+        {
+          "variations": [
+            {
+              "path": "textures/blocks/farmland_wet",
+              "weight": 1
+            },
+            {
+              "path": "textures/blocks/farmland_moist",
+              "weight": 1
+            }
+          ]
+        },
+        "textures/blocks/farmland_dry"
+      ]
+    },
+    "farmland_side": {
+      "textures": "textures/blocks/farmland_side"
+    },
     "oak_log_top": {
       "textures": "textures/blocks/log_oak_top"
     },

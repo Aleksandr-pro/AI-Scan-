@@ -1,4 +1,12 @@
 {
+  "farmland": {
+    "sound": "gravel",
+    "textures": {
+      "down": "farmland_side",
+      "side": "farmland_side",
+      "up": "farmland"
+    }
+  },
   "sand": {
     "ambient_occlusion_exponent": 0.55,
     "isotropic": true,
