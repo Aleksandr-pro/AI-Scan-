@@ -40,7 +40,8 @@ def main():
 
     # Organic surfaces: softly overlap photo margins to reduce tile seams.
     save(prepare(root / '1795102981802.jpg'), 'clay')
-    save(prepare(root / 'Песчаник.jpg'), 'sandstone_normal')
+    # The original sandstone image was superseded by this newer photograph.
+    save(prepare(root / '1795103623625.jpg'), 'sandstone_normal')
     normal = prepare(root / 'Кварц обычный.jpg')
     # Pillar end was not supplied: use neutral normal quartz, never the flutes.
     save(normal, 'quartz_block_side', 'quartz_block_top', 'quartz_block_lines_top')
