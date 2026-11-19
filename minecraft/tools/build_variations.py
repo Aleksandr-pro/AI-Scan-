@@ -271,6 +271,11 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'lantern': {'textures': 'textures/blocks/lantern'},
                # Bedrock's sea-lantern flipbook uses five square frames.
                'sea_lantern': {'textures': 'textures/blocks/sea_lantern'},
+               'glowstone': {'textures': 'textures/blocks/glowstone'},
+               # The brick path is also used by the vanilla indexed prismarine
+               # atlas and by slabs/stairs; rough and dark prismarine stay vanilla.
+               'prismarine_bricks': {'textures': 'textures/blocks/prismarine_bricks'},
+               'prismarine_brick_slab': {'textures': 'textures/blocks/prismarine_bricks'},
                # The legacy indexed stone atlas also uses this vanilla path.
                'diorite': {'textures': 'textures/blocks/stone_diorite'},
                'polished_diorite': {'textures': 'textures/blocks/stone_diorite_smooth'},
