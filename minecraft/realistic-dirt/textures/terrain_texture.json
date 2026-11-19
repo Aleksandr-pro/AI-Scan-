@@ -585,6 +585,9 @@
     "flattened_sandstone": {
       "textures": "textures/blocks/sandstone_normal"
     },
+    "copper_grate": {
+      "textures": "textures/blocks/copper_grate"
+    },
     "flattened_quartz_block_top": {
       "textures": "textures/blocks/quartz_block_top"
     },

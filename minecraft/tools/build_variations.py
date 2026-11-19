@@ -293,6 +293,8 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                # also support legacy indexed entries and related shapes.
                'clay': {'textures': 'textures/blocks/clay'},
                'flattened_sandstone': {'textures': 'textures/blocks/sandstone_normal'},
+               # Normal and waxed unoxidized grates share this vanilla path.
+               'copper_grate': {'textures': 'textures/blocks/copper_grate'},
                'flattened_quartz_block_top': {'textures': 'textures/blocks/quartz_block_top'},
                'flattened_quartz_block_side': {'textures': 'textures/blocks/quartz_block_side'},
                'smooth_quartz': {'textures': 'textures/blocks/quartz_block_bottom'},
