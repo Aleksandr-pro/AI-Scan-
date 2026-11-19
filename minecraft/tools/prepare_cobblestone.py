@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Prepare a repeating 512px cobblestone tile from the supplied photograph.
+"""Prepare a repeating 512px cobblestone tile from a supplied photograph.
 
 Usage from the repository root:
-    python minecraft/tools/prepare_cobblestone.py path/to/photo.jpg
-Requires Pillow. The source photo is supplied separately and is not in the pack.
+    python minecraft/tools/prepare_cobblestone.py path/to/normal.jpg
+    python minecraft/tools/prepare_cobblestone.py path/to/mossy.jpg --mossy
+Requires Pillow. Source photos are supplied separately and are not in the pack.
 """
 import argparse
 from pathlib import Path
@@ -12,7 +13,7 @@ from PIL import Image, ImageOps
 
 SIZE = 512
 OVERLAP = 48
-OUTPUT = Path('minecraft/realistic-dirt/textures/blocks/cobblestone.png')
+BLOCKS = Path('minecraft/realistic-dirt/textures/blocks')
 
 
 def blend_amount(distance):
@@ -49,11 +50,13 @@ def prepare(source):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('source', type=Path)
+    parser.add_argument('--mossy', action='store_true', help='write the mossy vanilla texture instead')
     args = parser.parse_args()
     result = prepare(args.source)
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    result.save(OUTPUT, optimize=True)
-    print(f'Saved {OUTPUT}: {result.width}x{result.height} {result.mode}')
+    output = BLOCKS / ('cobblestone_mossy.png' if args.mossy else 'cobblestone.png')
+    output.parent.mkdir(parents=True, exist_ok=True)
+    result.save(output, optimize=True)
+    print(f'Saved {output}: {result.width}x{result.height} {result.mode}')
 
 
 if __name__ == '__main__':

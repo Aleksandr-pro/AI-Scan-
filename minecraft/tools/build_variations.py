@@ -285,9 +285,10 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                # Keep the legacy stonebrick indexed atlas intact: its first
                # vanilla path is also textures/blocks/stonebrick.
                'stone_bricks': {'textures': 'textures/blocks/stonebrick'},
-               # The vanilla path is also used by cobblestone slabs, walls,
-               # stairs and legacy indexed entries. Leave mossy paths intact.
+               # Preserve vanilla paths; related slabs, walls, stairs and
+               # legacy indexed entries can reference the same two images.
                'cobblestone': {'textures': 'textures/blocks/cobblestone'},
+               'cobblestone_mossy': {'textures': 'textures/blocks/cobblestone_mossy'},
                # Two halves of the same plant image; never randomize separately.
                # Vanilla legacy double_plant indices also reference these paths.
                'tall_grass_top': {'textures': 'textures/blocks/double_plant_grass_top'},
