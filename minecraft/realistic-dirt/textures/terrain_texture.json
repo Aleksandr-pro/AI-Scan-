@@ -539,6 +539,15 @@
     "sea_lantern": {
       "textures": "textures/blocks/sea_lantern"
     },
+    "glowstone": {
+      "textures": "textures/blocks/glowstone"
+    },
+    "prismarine_bricks": {
+      "textures": "textures/blocks/prismarine_bricks"
+    },
+    "prismarine_brick_slab": {
+      "textures": "textures/blocks/prismarine_bricks"
+    },
     "diorite": {
       "textures": "textures/blocks/stone_diorite"
     },
