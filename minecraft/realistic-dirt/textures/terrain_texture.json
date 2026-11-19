@@ -548,6 +548,18 @@
     "prismarine_brick_slab": {
       "textures": "textures/blocks/prismarine_bricks"
     },
+    "iron_block": {
+      "textures": "textures/blocks/iron_block"
+    },
+    "nether_brick": {
+      "textures": "textures/blocks/nether_brick"
+    },
+    "nether_brick_slab": {
+      "textures": "textures/blocks/nether_brick"
+    },
+    "nether_brick_wall": {
+      "textures": "textures/blocks/nether_brick"
+    },
     "diorite": {
       "textures": "textures/blocks/stone_diorite"
     },
