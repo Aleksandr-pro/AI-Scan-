@@ -536,6 +536,9 @@
     "lantern": {
       "textures": "textures/blocks/lantern"
     },
+    "sea_lantern": {
+      "textures": "textures/blocks/sea_lantern"
+    },
     "diorite": {
       "textures": "textures/blocks/stone_diorite"
     },
