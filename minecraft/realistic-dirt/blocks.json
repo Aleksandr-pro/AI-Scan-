@@ -1,4 +1,14 @@
 {
+  "sandstone": {
+    "ambient_occlusion_exponent": 1.0,
+    "isotropic": false,
+    "sound": "stone",
+    "textures": {
+      "up": "flattened_sandstone",
+      "down": "flattened_sandstone",
+      "side": "flattened_sandstone"
+    }
+  },
   "farmland": {
     "sound": "gravel",
     "textures": {
