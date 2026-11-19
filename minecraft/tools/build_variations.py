@@ -269,6 +269,8 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'ladder': {'textures': 'textures/blocks/ladder'},
                # Vanilla lantern uses a 16x16 UV layout in a three-frame strip.
                'lantern': {'textures': 'textures/blocks/lantern'},
+               # Bedrock's sea-lantern flipbook uses five square frames.
+               'sea_lantern': {'textures': 'textures/blocks/sea_lantern'},
                # The legacy indexed stone atlas also uses this vanilla path.
                'diorite': {'textures': 'textures/blocks/stone_diorite'},
                'polished_diorite': {'textures': 'textures/blocks/stone_diorite_smooth'},
