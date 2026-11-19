@@ -230,6 +230,17 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
                'grass_side': {'textures': [{'overlay_color': '#df6827', 'variations': sides}]},
                'short_grass': {'textures': {'variations': plants}},
+               # Bedrock's vanilla farmland texture indices are wet, then dry.
+               # Moist is a position-selected wet-slot variant, not a new
+               # hydration state: resource packs cannot change that mapping.
+               'farmland': {'textures': [
+                   {'variations': [
+                       {'path': 'textures/blocks/farmland_wet', 'weight': 1},
+                       {'path': 'textures/blocks/farmland_moist', 'weight': 1},
+                   ]},
+                   'textures/blocks/farmland_dry',
+               ]},
+               'farmland_side': {'textures': 'textures/blocks/farmland_side'},
                # Vanilla log/log_side indexed arrays retain their layout;
                # their oak entries use these same paths.
                'oak_log_top': {'textures': 'textures/blocks/log_oak_top'},
