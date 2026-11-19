@@ -289,6 +289,18 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                # legacy indexed entries can reference the same two images.
                'cobblestone': {'textures': 'textures/blocks/cobblestone'},
                'cobblestone_mossy': {'textures': 'textures/blocks/cobblestone_mossy'},
+               # Explicit modern atlas entries; matching vanilla file paths
+               # also support legacy indexed entries and related shapes.
+               'clay': {'textures': 'textures/blocks/clay'},
+               'flattened_sandstone': {'textures': 'textures/blocks/sandstone_normal'},
+               'flattened_quartz_block_top': {'textures': 'textures/blocks/quartz_block_top'},
+               'flattened_quartz_block_side': {'textures': 'textures/blocks/quartz_block_side'},
+               'smooth_quartz': {'textures': 'textures/blocks/quartz_block_bottom'},
+               'quartz_bricks': {'textures': 'textures/blocks/quartz_bricks'},
+               'chiseled_quartz_block_top': {'textures': 'textures/blocks/quartz_block_chiseled_top'},
+               'chiseled_quartz_block_side': {'textures': 'textures/blocks/quartz_block_chiseled'},
+               'quartz_pillar_top': {'textures': 'textures/blocks/quartz_block_lines_top'},
+               'quartz_pillar_side': {'textures': 'textures/blocks/quartz_block_lines'},
                # Two halves of the same plant image; never randomize separately.
                # Vanilla legacy double_plant indices also reference these paths.
                'tall_grass_top': {'textures': 'textures/blocks/double_plant_grass_top'},
