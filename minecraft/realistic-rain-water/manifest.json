@@ -1,0 +1,27 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Дождевая вода — эксперимент",
+    "description": "Добавляет воду в ограниченное число замкнутых природных углублений",
+    "uuid": "cbda6a19-f087-475a-9280-9c4f24c87a2f",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 26, 30]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "47bbaee5-ac34-461b-bc4b-9e05b6d19680",
+      "version": [1, 0, 0]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "entry": "scripts/main.js",
+      "uuid": "14d72893-bdf8-4839-8d78-b779047b3d44",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {"module_name": "@minecraft/server", "version": "2.8.0"}
+  ]
+}

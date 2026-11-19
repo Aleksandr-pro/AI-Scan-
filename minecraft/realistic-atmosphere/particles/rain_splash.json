@@ -61,33 +61,7 @@
           0.8
         ]
       },
-      "minecraft:particle_appearance_lighting": {},
-      "minecraft:particle_lifetime_events": {
-        "creation_event": "realistic_atmosphere:rain_surface"
-      }
-    },
-    "events": {
-      "realistic_atmosphere:rain_surface": {
-        "randomize": [
-          {
-            "weight": 2,
-            "particle_effect": {
-              "effect": "realistic_atmosphere:rain_puddle",
-              "type": "particle"
-            }
-          },
-          {
-            "weight": 3,
-            "particle_effect": {
-              "effect": "realistic_atmosphere:rain_ripple",
-              "type": "particle"
-            }
-          },
-          {
-            "weight": 5
-          }
-        ]
-      }
+      "minecraft:particle_appearance_lighting": {}
     }
   }
 }
