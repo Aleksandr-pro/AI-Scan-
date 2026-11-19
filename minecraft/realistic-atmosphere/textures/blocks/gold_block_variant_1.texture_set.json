@@ -1,0 +1,12 @@
+{
+  "format_version": "1.21.30",
+  "minecraft:texture_set": {
+    "color": "gold_block_variant_1",
+    "metalness_emissive_roughness_subsurface": [
+      255,
+      0,
+      110,
+      0
+    ]
+  }
+}
