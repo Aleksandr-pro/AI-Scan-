@@ -3,7 +3,7 @@
 
 From the repository root: python3 minecraft/tools/build_water_fancy_experiment.py
 Requires Pillow. Does not modify the previous classic or VV water packs.
-The source is an oblique photo, not a seamless overhead water texture.
+The 1024px overhead source is user-provided; it is not inherently seamless.
 """
 import json
 import math
@@ -15,12 +15,14 @@ from PIL import Image, ImageOps, ImageStat
 ROOT = Path('minecraft')
 DEST = ROOT / 'realistic-water-fancy-experiment'
 TARGET = ROOT / 'realistic-water-fancy-experiment.mcpack'
-SOURCE = ROOT / 'water-reference/rough_color.jpg'
+SOURCE = ROOT / 'water-reference/overhead_color.jpg'
 HEADER_UUID = 'e8526301-e4af-4b0a-b676-f630af028e13'
 MODULE_UUID = '6dc5b1b5-98d5-4b33-b38d-6d1922c3a4ac'
-SIZE = 128
-FRAMES = 32
-OVERLAP = 16
+# Sixteen 256px still / 512px flow frames cap the flow sheet height at
+# 8192 pixels. Fewer frames lower memory, at the cost of temporal detail.
+SIZE = 256
+FRAMES = 16
+OVERLAP = 32
 STILL_ALPHA = 208
 FLOW_ALPHA = 225
 
@@ -93,8 +95,8 @@ def wave_frame(photo_tile, index):
             tiled.paste(photo_tile, (x * SIZE, y * SIZE))
     phase = 2 * math.pi * (index % FRAMES) / FRAMES
     def point(x, y):
-        dx = 1.8 * math.sin(2 * math.pi * y / SIZE + phase) + 1.1 * math.sin(phase)
-        dy = 1.4 * math.sin(2 * math.pi * x / SIZE - phase)
+        dx = 2.4 * math.sin(2 * math.pi * y / SIZE + phase) + 1.4 * math.sin(phase)
+        dy = 1.8 * math.sin(2 * math.pi * x / SIZE - phase)
         return x + SIZE + dx, y + SIZE + dy
     mesh = []
     for y in range(0, SIZE, 16):
@@ -131,8 +133,8 @@ def main():
         'format_version': 2,
         'header': {'name': 'Экспериментальная вода — красивый режим',
                    'description': 'Фототекстура воды без Vibrant Visuals',
-                   'uuid': HEADER_UUID, 'version': [1, 0, 0], 'min_engine_version': [1, 26, 30]},
-        'modules': [{'type': 'resources', 'uuid': MODULE_UUID, 'version': [1, 0, 0]}],
+                   'uuid': HEADER_UUID, 'version': [1, 1, 0], 'min_engine_version': [1, 26, 30]},
+        'modules': [{'type': 'resources', 'uuid': MODULE_UUID, 'version': [1, 1, 0]}],
     }
     (DEST / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     files = ('manifest.json', 'textures/blocks/water_still_grey.png', 'textures/blocks/water_flow_grey.png')
