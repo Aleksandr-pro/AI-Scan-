@@ -1,0 +1,8 @@
+{
+  "format_version": "1.21.30",
+  "minecraft:texture_set": {
+    "color": "water_still_grey",
+    "normal": "realistic_rough_still_normal",
+    "metalness_emissive_roughness_subsurface": "realistic_rough_still_mers"
+  }
+}
