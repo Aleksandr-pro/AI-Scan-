@@ -22,7 +22,7 @@
     "isotropic": true,
     "sound": "sand",
     "textures": {
-      "up": "realistic_sand_top",
+      "up": "flattened_sand",
       "down": "flattened_sand",
       "side": "flattened_sand"
     }
