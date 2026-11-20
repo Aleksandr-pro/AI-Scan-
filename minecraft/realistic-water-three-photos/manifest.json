@@ -1,0 +1,29 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Вода — тёмная рябь (тест)",
+    "description": "Анимированное фото, немного прозрачности, нейтральные биомы",
+    "uuid": "b4b56257-15a1-4708-8f16-48093cc117b3",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      26,
+      30
+    ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "86b31c20-b3fa-4db8-b24e-c46eabfa8b83",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}
