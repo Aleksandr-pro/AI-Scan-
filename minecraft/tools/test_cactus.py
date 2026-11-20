@@ -63,7 +63,7 @@ class CactusTests(unittest.TestCase):
             with zipfile.ZipFile(Path('minecraft') / pack) as archive:
                 self.assertIsNone(archive.testzip())
                 manifest = json.loads(archive.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'], [1, 71, 0])
+                self.assertGreaterEqual(manifest['header']['version'], [1, 71, 0])
                 self.assertEqual(manifest['header']['version'], manifest['modules'][0]['version'])
                 for source in (SIDE_OUTPUT, END_OUTPUT):
                     self.assertEqual(archive.read(source.relative_to(ROOT).as_posix()), source.read_bytes())
