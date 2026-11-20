@@ -655,10 +655,48 @@
       "textures": "textures/blocks/quartz_block_lines"
     },
     "tall_grass_top": {
-      "textures": "textures/blocks/double_plant_grass_top"
+      "textures": {
+        "variations": [
+          {
+            "path": "textures/blocks/double_plant_grass_top",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/double_plant_grass_top_variant_1",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/double_plant_grass_top_variant_2",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/double_plant_grass_top_variant_3",
+            "weight": 1
+          }
+        ]
+      }
     },
     "tall_grass_bottom": {
-      "textures": "textures/blocks/double_plant_grass_bottom"
+      "textures": {
+        "variations": [
+          {
+            "path": "textures/blocks/double_plant_grass_bottom",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/double_plant_grass_bottom_variant_1",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/double_plant_grass_bottom_variant_2",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/double_plant_grass_bottom_variant_3",
+            "weight": 1
+          }
+        ]
+      }
     },
     "flattened_dirt": {
       "textures": {

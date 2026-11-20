@@ -314,10 +314,12 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'chiseled_quartz_block_side': {'textures': 'textures/blocks/quartz_block_chiseled'},
                'quartz_pillar_top': {'textures': 'textures/blocks/quartz_block_lines_top'},
                'quartz_pillar_side': {'textures': 'textures/blocks/quartz_block_lines'},
-               # Two halves of the same plant image; never randomize separately.
-               # Vanilla legacy double_plant indices also reference these paths.
-               'tall_grass_top': {'textures': 'textures/blocks/double_plant_grass_top'},
-               'tall_grass_bottom': {'textures': 'textures/blocks/double_plant_grass_bottom'},
+               # Four two-block plants. Bedrock may choose the upper and lower
+               # variants independently; prepared assets share a narrow join.
+               # Vanilla legacy double_plant indices fall back to base paths.
+               **{f'tall_grass_{part}': {'textures': {'variations': [
+                   {'path': f'textures/blocks/double_plant_grass_{part}' + (f'_variant_{i}' if i else ''), 'weight': 1}
+                   for i in range(4)]}} for part in ('top', 'bottom')},
                # Five preprocessed user-supplied dirt panels share their borders;
                # keep dirt.png untouched for grass/path and legacy texture users.
                'flattened_dirt': {'textures': {'variations': [
