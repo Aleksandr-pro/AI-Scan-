@@ -74,5 +74,16 @@
       "up": "photo_chest_top",
       "west": "photo_chest_side"
     }
+  },
+  "crafting_table": {
+    "sound": "wood",
+    "textures": {
+      "down": "crafting_table_bottom",
+      "north": "photo_crafting_table_north",
+      "east": "photo_crafting_table_east",
+      "south": "photo_crafting_table_south",
+      "west": "photo_crafting_table_west",
+      "up": "photo_crafting_table_top"
+    }
   }
 }

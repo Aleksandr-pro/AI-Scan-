@@ -387,6 +387,12 @@ for face in ('front', 'side', 'top'):
         'textures': 'textures/blocks/photo_chest_' + face
     }
 
+# Assign all four distinct side photographs and the top to the crafting table.
+for face in ('north', 'east', 'south', 'west', 'top'):
+    terrain['texture_data']['photo_crafting_table_' + face] = {
+        'textures': 'textures/blocks/photo_crafting_table_' + face
+    }
+
 # Reuse base PNGs only when a generated variant_0 is byte-for-byte identical.
 # Limit this to explicitly referenced variation paths: vanilla and other pack
 # assets may load their original filenames implicitly. Source files are kept.
