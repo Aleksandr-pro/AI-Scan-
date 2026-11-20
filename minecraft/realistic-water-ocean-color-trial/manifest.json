@@ -1,0 +1,29 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Вода — тёмный океан (цветной тест)",
+    "description": "Цветная фотография и слабая прозрачность; без расчёта глубины",
+    "uuid": "08b7f0b7-df9f-4529-ac1d-f25b9108fdf3",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      26,
+      30
+    ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "6cd8513c-dd6d-4b53-b6a5-a218c53070c6",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}
