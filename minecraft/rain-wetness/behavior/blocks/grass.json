@@ -1,0 +1,38 @@
+{
+  "format_version": "1.26.30",
+  "minecraft:block": {
+    "description": {
+      "identifier": "rainwet:grass"
+    },
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "rainwet_grass_side",
+          "render_method": "opaque"
+        },
+        "up": {
+          "texture": "rainwet_grass_top",
+          "render_method": "opaque",
+          "tint_method": "grass"
+        },
+        "down": {
+          "texture": "rainwet_dirt",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:collision_box": true,
+      "minecraft:selection_box": true,
+      "minecraft:movable": {
+        "movement_type": "immovable"
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.6
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 0.6
+      },
+      "minecraft:loot": "loot_tables/blocks/grass.json"
+    }
+  }
+}
