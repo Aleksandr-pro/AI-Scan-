@@ -182,14 +182,11 @@ for i, factor in enumerate((1.0, 0.97, 1.03, 0.985)):
     shaded = gold_block.point(lambda value: min(255, round(value * factor)))
     Image.composite(shaded, gold_block, brick_mask).save(blocks / f'gold_block_variant_{i}.png', optimize=True)
 
-# Separate sand sides and top retain a common boundary within each variant set.
-for material in ('sand', 'realistic_sand_top'):
-    sand = Image.open(blocks / f'{material}.png').convert('RGB')
-    if sand.size != brick.size:
-        raise ValueError(f'{material} source texture must be 512x512')
-    for i, factor in enumerate((1.0, 0.97, 1.03, 0.985)):
-        shaded = sand.point(lambda value: min(255, round(value * factor)))
-        Image.composite(shaded, sand, brick_mask).save(blocks / f'{material}_variant_{i}.png', optimize=True)
+# Sand uses one prepared, tileable user photograph on every face. Keeping
+# just the base texture avoids duplicate files and shade differences by face.
+with Image.open(blocks / 'sand.png') as sand:
+    if sand.mode != 'RGB' or sand.size != (512, 512):
+        raise ValueError('Sand texture must be 512x512 RGB')
 
 # Separate snow top and side textures, with matching edges between variants.
 for material in ('snow', 'realistic_snow_top'):
@@ -331,10 +328,7 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                    {'path': f'textures/blocks/snow_variant_{i}', 'weight': 1} for i in range(4)]}},
                'realistic_snow_top': {'textures': {'variations': [
                    {'path': f'textures/blocks/realistic_snow_top_variant_{i}', 'weight': 1} for i in range(4)]}},
-               'flattened_sand': {'textures': {'variations': [
-                   {'path': f'textures/blocks/sand_variant_{i}', 'weight': 1} for i in range(4)]}},
-               'realistic_sand_top': {'textures': {'variations': [
-                   {'path': f'textures/blocks/realistic_sand_top_variant_{i}', 'weight': 1} for i in range(4)]}},
+               'flattened_sand': {'textures': 'textures/blocks/sand'},
                'gold_block': {'textures': {'variations': [
                    {'path': f'textures/blocks/gold_block_variant_{i}', 'weight': 1} for i in range(4)]}},
                'soul_sand': {'textures': {'variations': [
