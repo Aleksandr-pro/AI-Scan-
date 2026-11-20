@@ -1,0 +1,29 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Экспериментальная вода — красивый режим",
+    "description": "Фототекстура воды без Vibrant Visuals",
+    "uuid": "e8526301-e4af-4b0a-b676-f630af028e13",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      26,
+      30
+    ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "6dc5b1b5-98d5-4b33-b38d-6d1922c3a4ac",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}
