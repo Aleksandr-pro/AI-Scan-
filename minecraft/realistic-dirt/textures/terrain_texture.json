@@ -4,6 +4,9 @@
   "padding": 8,
   "num_mip_levels": 4,
   "texture_data": {
+    "realistic_clear_glass": {
+      "textures": "textures/blocks/realistic_clear_glass"
+    },
     "grass_top": {
       "textures": [
         {

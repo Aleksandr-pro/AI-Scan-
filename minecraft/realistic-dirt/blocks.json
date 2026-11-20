@@ -1,4 +1,8 @@
 {
+  "glass": {
+    "sound": "glass",
+    "textures": "realistic_clear_glass"
+  },
   "sandstone": {
     "ambient_occlusion_exponent": 1.0,
     "isotropic": false,
