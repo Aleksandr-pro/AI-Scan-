@@ -218,6 +218,10 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'realistic_clear_glass': {'textures': 'textures/blocks/realistic_clear_glass'},
                # Standard ground leaf litter; carried item remains vanilla.
                'leaf_litter': {'textures': 'textures/blocks/leaf_litter'},
+               # Preserve vanilla cactus faces, reusing the single end image.
+               'cactus_side': {'textures': 'textures/blocks/cactus_side'},
+               'cactus_top': {'textures': 'textures/blocks/cactus_top'},
+               'cactus_bottom': {'textures': 'textures/blocks/cactus_top'},
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
                # Vanilla's held/inventory top normally points at grass_carried;
                # reuse the new first top without keeping a duplicate image.

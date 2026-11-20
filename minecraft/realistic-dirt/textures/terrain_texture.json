@@ -10,6 +10,15 @@
     "leaf_litter": {
       "textures": "textures/blocks/leaf_litter"
     },
+    "cactus_side": {
+      "textures": "textures/blocks/cactus_side"
+    },
+    "cactus_top": {
+      "textures": "textures/blocks/cactus_top"
+    },
+    "cactus_bottom": {
+      "textures": "textures/blocks/cactus_top"
+    },
     "grass_top": {
       "textures": [
         {

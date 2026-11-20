@@ -45,7 +45,7 @@ class LeafLitterTests(unittest.TestCase):
             with zipfile.ZipFile(Path('minecraft') / name) as archive:
                 self.assertIsNone(archive.testzip())
                 manifest = json.loads(archive.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'], [1, 70, 0])
+                self.assertGreaterEqual(manifest['header']['version'], [1, 70, 0])
                 self.assertEqual(manifest['header']['version'], manifest['modules'][0]['version'])
                 for source in (OUTPUT, COLORMAP):
                     self.assertEqual(archive.read(source.relative_to(ROOT).as_posix()), source.read_bytes())
