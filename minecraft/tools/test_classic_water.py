@@ -2,6 +2,7 @@
 """Validate normal-renderer water packages, not an in-game render test."""
 import io
 import json
+import statistics
 import unittest
 import zipfile
 from pathlib import Path
@@ -30,12 +31,25 @@ class ClassicWaterTests(unittest.TestCase):
                 manifest = json.loads(archive.read('manifest.json'))
                 self.assertNotIn('pbr', manifest.get('capabilities', []))
                 self.assertEqual(manifest['header']['min_engine_version'], [1, 26, 30])
+                self.assertEqual(manifest['header']['version'], [1, 1, 0])
                 self.assertEqual(manifest['header']['version'], manifest['modules'][0]['version'])
                 for identifier in (manifest['header']['uuid'], manifest['modules'][0]['uuid']):
                     UUID(identifier)
                     self.assertNotIn(identifier, all_ids)
                     all_ids.add(identifier)
                 tile = prepare_tile(ROOT / 'water-reference' / info['source'])
+                gray = tile.convert('L').load()
+                rows = [sum(gray[x, y] for x in range(SIZE)) / SIZE for y in range(SIZE)]
+                cols = [sum(gray[x, y] for y in range(SIZE)) / SIZE for x in range(SIZE)]
+                # Bounds long full-tile bands that tend to alias in perspective.
+                # This metric does not prove how the game will render them.
+                self.assertLess(statistics.pstdev(rows), 6)
+                self.assertLess(statistics.pstdev(cols), 5)
+                self.assertEqual(frame_for(tile, 0).tobytes(), frame_for(tile, FRAMES).tobytes())
+                adjacent = [difference(frame_for(tile, i), frame_for(tile, (i + 1) % FRAMES)) for i in range(FRAMES)]
+                self.assertGreater(min(adjacent), 0.1)
+                self.assertLess(max(adjacent), 3)
+                self.assertLess(adjacent[-1], max(adjacent[:-1]) * 1.3)
                 x_seam = difference(tile.crop((0, 0, 1, SIZE)), tile.crop((SIZE-1, 0, SIZE, SIZE)))
                 x_detail = difference(tile.crop((0, 0, SIZE-1, SIZE)), tile.crop((1, 0, SIZE, SIZE)))
                 y_seam = difference(tile.crop((0, 0, SIZE, 1)), tile.crop((0, SIZE-1, SIZE, SIZE)))
@@ -49,7 +63,10 @@ class ClassicWaterTests(unittest.TestCase):
                     first_frames.append(still.crop((0, 0, SIZE, SIZE)).tobytes())
                     self.assertNotEqual(first_frames[-1], still.crop((0, SIZE, SIZE, SIZE * 2)).tobytes())
                     for i in range(FRAMES):
-                        expected = frame_for(tile, i).convert('RGBA')
+                        warped = frame_for(tile, i)
+                        self.assertLess(difference(warped.crop((0, 0, 1, SIZE)), warped.crop((SIZE-1, 0, SIZE, SIZE))), 1)
+                        self.assertLess(difference(warped.crop((0, 0, SIZE, 1)), warped.crop((0, SIZE-1, SIZE, SIZE))), 1)
+                        expected = warped.convert('RGBA')
                         expected.putalpha(240)
                         self.assertEqual(still.crop((0, i * SIZE, SIZE, (i+1) * SIZE)).tobytes(), expected.tobytes())
                         expected.putalpha(255)
