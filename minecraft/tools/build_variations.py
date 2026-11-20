@@ -1,41 +1,29 @@
 #!/usr/bin/env python3
-"""Build the Bedrock texture variants from the existing dirt and grass textures.
+"""Build the Bedrock texture pack and its generated variants.
 
 Requires Pillow. Run from repository root: python minecraft/tools/build_variations.py
-The original dirt texture is not modified.
+Grass tops and sides are prepared assets and are never regenerated here.
 """
 from pathlib import Path
 import json
-import math
 import zipfile
 from PIL import Image, ImageChops
 
 root = Path('minecraft/realistic-dirt')
 blocks = root / 'textures/blocks'
 size = 256
-base_grass = Image.open(blocks / 'grass_top.png').convert('L').resize((size, size), Image.Resampling.LANCZOS)
 dirt = Image.open(blocks / 'dirt.png').convert('RGB').resize((size, size), Image.Resampling.LANCZOS)
 
-# Quarter turns and their reflections preserve the already blended tile edges.
+# Keep the four user-supplied top photographs in full colour. Do not derive
+# them from grass_top.png or alter the existing grass-side tint-mask textures.
 for i in range(4):
-    top = base_grass.rotate(90 * i).convert('RGB')
-    top.save(blocks / f'grass_top_variant_{i}.png', optimize=True)
-
-# Keep the soil identical for all sides and adjust only the periodic grass edge.
-# The alpha channel is Bedrock's biome tint mask for grass_side TGA.
+    with Image.open(blocks / f'grass_top_variant_{i}.png') as top:
+        if top.mode != 'RGB' or top.size != (512, 512):
+            raise ValueError('Grass top variants must be 512x512 RGB')
 for i in range(16):
-    image = Image.new('RGBA', (size, size))
-    pix, soil, grass = image.load(), dirt.load(), base_grass.load()
-    phase = i * math.pi / 8
-    for y in range(size):
-        for x in range(size):
-            t = 2 * math.pi * x / size
-            edge = 37 + 4 * math.sin(3*t + phase) + 2.5 * math.sin(9*t - phase) + math.sin(19*t + phase)
-            blend = max(0.0, min(1.0, (edge-y)/3.5 + 0.5))
-            g = grass[x, y]
-            d = soil[x, y]
-            pix[x, y] = tuple(round(d[k]*(1-blend) + g*blend) for k in range(3)) + (round(blend*255),)
-    image.save(blocks / f'grass_side_variant_{i:02}.tga')
+    with Image.open(blocks / f'grass_side_variant_{i:02}.tga') as side:
+        if side.mode != 'RGBA' or side.size != (size, size):
+            raise ValueError('Prepared grass side variants must be 256x256 RGBA')
 
 # Short grass variants are preprocessed, full-colour user-provided textures.
 # Keep their alpha and detail intact rather than synthesizing or desaturating
