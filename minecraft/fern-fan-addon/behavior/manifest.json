@@ -1,0 +1,39 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Папоротник веером — эксперимент",
+    "description": "Добавляет отдельный блок, не заменяет ванильные растения",
+    "uuid": "d5990368-35dc-47a7-b84f-309633af4f9a",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      26,
+      30
+    ]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "a4fe8f62-8e0d-42ac-8d41-68da1a899145",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "a13d6dfb-1fc6-4ea8-99f0-66e50402cfee",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

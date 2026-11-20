@@ -1,0 +1,9 @@
+{
+  "resource_pack_name": "aifern",
+  "texture_name": "atlas.terrain",
+  "texture_data": {
+    "aifern_fan": {
+      "textures": "textures/blocks/aifern_fan"
+    }
+  }
+}

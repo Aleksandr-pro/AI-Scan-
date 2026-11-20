@@ -465,6 +465,9 @@
         ]
       }
     },
+    "fern": {
+      "textures": "textures/blocks/fern"
+    },
     "farmland": {
       "textures": [
         {
