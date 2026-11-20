@@ -228,6 +228,8 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'grass_carried_top': {'textures': 'textures/blocks/grass_top'},
                'grass_side': {'textures': [{'overlay_color': '#df6827', 'variations': sides}]},
                'short_grass': {'textures': {'variations': plants}},
+               # Vanilla one-block fern; large fern keeps its own textures.
+               'fern': {'textures': 'textures/blocks/fern'},
                # Bedrock's vanilla farmland texture indices are wet, then dry.
                # Moist is a position-selected wet-slot variant, not a new
                # hydration state: resource packs cannot change that mapping.

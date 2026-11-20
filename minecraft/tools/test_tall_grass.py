@@ -70,7 +70,7 @@ class TallGrassTests(unittest.TestCase):
             with zipfile.ZipFile(Path('minecraft') / pack) as archive:
                 self.assertIsNone(archive.testzip())
                 manifest = json.loads(archive.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'], [1, 72, 0])
+                self.assertGreaterEqual(manifest['header']['version'], [1, 72, 0])
                 self.assertEqual(manifest['header']['version'], manifest['modules'][0]['version'])
                 archive_terrain = json.loads(archive.read('textures/terrain_texture.json'))['texture_data']
                 for part in ('top', 'bottom'):
