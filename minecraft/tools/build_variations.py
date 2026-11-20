@@ -213,6 +213,9 @@ sides = [{'path': f'textures/blocks/grass_side_variant_{i:02}', 'weight': 1} for
 plants = [{'path': f'textures/blocks/short_grass_variant_{i}', 'weight': 1} for i in range(5)]
 terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'padding': 8, 'num_mip_levels': 4,
            'texture_data': {
+               # A separate atlas key changes only the full glass block, not
+               # the vanilla glass texture shared by uncoloured glass panes.
+               'realistic_clear_glass': {'textures': 'textures/blocks/realistic_clear_glass'},
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
                # Vanilla's held/inventory top normally points at grass_carried;
                # reuse the new first top without keeping a duplicate image.
