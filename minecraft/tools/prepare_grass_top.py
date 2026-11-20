@@ -2,8 +2,8 @@
 """Prepare four supplied grass-block top photographs; requires Pillow.
 
 From the repository root: python minecraft/tools/prepare_grass_top.py
-The ordered user originals are in minecraft/grass-top-reference/. This only
-writes grass_top.png and the four grass_top_variant_*.png files.
+The ordered user originals are in minecraft/grass-top-reference/. This writes
+one grass_top.png and three grass_top_variant_*.png files without duplicates.
 """
 from pathlib import Path
 from PIL import Image
@@ -35,9 +35,8 @@ def main():
     BLOCKS.mkdir(parents=True, exist_ok=True)
     for i, tile in enumerate(tiles):
         result = Image.composite(tile, common, mask)
-        result.save(BLOCKS / f'grass_top_variant_{i}.png', optimize=True)
-        if i == 0:
-            result.save(BLOCKS / 'grass_top.png', optimize=True)
+        name = 'grass_top.png' if i == 0 else f'grass_top_variant_{i}.png'
+        result.save(BLOCKS / name, optimize=True)
     print('Prepared four distinct 512x512 RGB grass tops; sides unchanged.')
 
 
