@@ -216,6 +216,8 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                # A separate atlas key changes only the full glass block, not
                # the vanilla glass texture shared by uncoloured glass panes.
                'realistic_clear_glass': {'textures': 'textures/blocks/realistic_clear_glass'},
+               # Standard ground leaf litter; carried item remains vanilla.
+               'leaf_litter': {'textures': 'textures/blocks/leaf_litter'},
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
                # Vanilla's held/inventory top normally points at grass_carried;
                # reuse the new first top without keeping a duplicate image.

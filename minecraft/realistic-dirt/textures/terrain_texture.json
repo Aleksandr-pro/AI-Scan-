@@ -7,6 +7,9 @@
     "realistic_clear_glass": {
       "textures": "textures/blocks/realistic_clear_glass"
     },
+    "leaf_litter": {
+      "textures": "textures/blocks/leaf_litter"
+    },
     "grass_top": {
       "textures": [
         {
