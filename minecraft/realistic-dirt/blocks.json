@@ -63,5 +63,16 @@
       "west": "real_obsidian_west",
       "down": "real_obsidian_down"
     }
+  },
+  "chest": {
+    "sound": "wood",
+    "textures": {
+      "down": "photo_chest_top",
+      "east": "photo_chest_side",
+      "north": "photo_chest_side",
+      "south": "photo_chest_front",
+      "up": "photo_chest_top",
+      "west": "photo_chest_side"
+    }
   }
 }

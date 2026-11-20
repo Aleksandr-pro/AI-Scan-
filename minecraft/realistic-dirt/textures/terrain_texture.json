@@ -1250,6 +1250,15 @@
           ]
         }
       ]
+    },
+    "photo_chest_front": {
+      "textures": "textures/blocks/photo_chest_front"
+    },
+    "photo_chest_side": {
+      "textures": "textures/blocks/photo_chest_side"
+    },
+    "photo_chest_top": {
+      "textures": "textures/blocks/photo_chest_top"
     }
   }
 }

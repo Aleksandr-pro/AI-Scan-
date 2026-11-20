@@ -381,6 +381,12 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'grass_path_side': {'textures': [{'variations': [
                    {'path': f'textures/blocks/grass_path_side_variant_{i}', 'weight': 1} for i in range(4)]}]},
            }}
+# Private inventory names avoid changing the trapped chest's shared vanilla faces.
+for face in ('front', 'side', 'top'):
+    terrain['texture_data']['photo_chest_' + face] = {
+        'textures': 'textures/blocks/photo_chest_' + face
+    }
+
 # Reuse base PNGs only when a generated variant_0 is byte-for-byte identical.
 # Limit this to explicitly referenced variation paths: vanilla and other pack
 # assets may load their original filenames implicitly. Source files are kept.
