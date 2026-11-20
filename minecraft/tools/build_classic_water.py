@@ -10,8 +10,7 @@ import math
 import zipfile
 from pathlib import Path
 
-from PIL import Image, ImageChops
-from prepare_realistic_water import square_crop, seamless, soften_baked_highlights
+from PIL import Image, ImageChops, ImageEnhance, ImageOps, ImageStat
 
 ROOT = Path('minecraft')
 BASE = ROOT / 'realistic-water-classic'
@@ -53,13 +52,71 @@ def match_outer_edges(image):
 
 
 def prepare_tile(source):
-    return match_outer_edges(soften_baked_highlights(seamless(square_crop(source, SIZE))))
+    # Unlike the previous half-offset crossfade, overlapping a source margin
+    # does not duplicate the photo at half a tile's width in both directions.
+    overlap = 8
+    extent = SIZE + 2 * overlap
+    with Image.open(source) as src:
+        photo = ImageOps.fit(src.convert('RGB'), (extent, extent), Image.Resampling.LANCZOS)
+    horizontal = photo.crop((overlap, 0, overlap + SIZE, extent))
+    for d in range(overlap):
+        t = 1 - d / overlap
+        alpha = .5 * t * t * (3 - 2 * t)
+        for x, offset in ((d, SIZE), (SIZE - 1 - d, -SIZE)):
+            sx = x + overlap
+            a = photo.crop((sx, 0, sx + 1, extent))
+            b = photo.crop((sx + offset, 0, sx + offset + 1, extent))
+            horizontal.paste(Image.blend(a, b, alpha), (x, 0))
+    tile = horizontal.crop((0, overlap, SIZE, overlap + SIZE))
+    for d in range(overlap):
+        t = 1 - d / overlap
+        alpha = .5 * t * t * (3 - 2 * t)
+        for y, offset in ((d, SIZE), (SIZE - 1 - d, -SIZE)):
+            sy = y + overlap
+            a = horizontal.crop((0, sy, SIZE, sy + 1))
+            b = horizontal.crop((0, sy + offset, SIZE, sy + offset + 1))
+            tile.paste(Image.blend(a, b, alpha), (0, y))
+    # Soften intense, static photographic highlights and reduce long straight
+    # bands. This is a best-effort mitigation, not connected textures.
+    lut = [i if i <= 150 else round(150 + (i - 150) * .3) for i in range(256)]
+    tile = tile.point(lut * 3)
+    rotated = ImageChops.offset(tile.transpose(Image.Transpose.ROTATE_90), 13, 21)
+    tile = ImageEnhance.Contrast(Image.blend(tile, rotated, .20)).enhance(.8)
+    gray = tile.convert('L')
+    luminance = gray.load()
+    average = ImageStat.Stat(gray).mean[0]
+    rows = [sum(luminance[x, y] for x in range(SIZE)) / SIZE for y in range(SIZE)]
+    cols = [sum(luminance[x, y] for y in range(SIZE)) / SIZE for x in range(SIZE)]
+    source_pixels = tile.load()
+    result = Image.new('RGB', tile.size)
+    output = result.load()
+    for y in range(SIZE):
+        for x in range(SIZE):
+            correction = .8 * (rows[y] + cols[x] - 2 * average)
+            output[x, y] = tuple(max(0, min(255, round(c - correction))) for c in source_pixels[x, y])
+    return match_outer_edges(result)
 
 
 def frame_for(tile, index):
-    # Move the same periodic image cyclically, not a physical wave simulation.
-    return ImageChops.offset(tile, index * SIZE // FRAMES,
-                             round(SIZE * 0.025 * math.sin(2 * math.pi * index / FRAMES)))
+    # Periodic low-amplitude warp instead of sliding an entire tile across
+    # every block. It is still a visual effect, not simulated fluid physics.
+    tiled = Image.new('RGB', (SIZE * 3, SIZE * 3))
+    for x in range(3):
+        for y in range(3):
+            tiled.paste(tile, (x * SIZE, y * SIZE))
+    phase = 2 * math.pi * (index % FRAMES) / FRAMES
+    def point(x, y):
+        dx = .9 * math.sin(2 * math.pi * y / SIZE + phase) + .55 * math.sin(phase)
+        dy = .7 * math.sin(2 * math.pi * x / SIZE - phase)
+        return x + SIZE + dx, y + SIZE + dy
+    mesh = []
+    for y in range(0, SIZE, 8):
+        for x in range(0, SIZE, 8):
+            x2, y2 = x + 8, y + 8
+            quad = (*point(x, y), *point(x, y2), *point(x2, y2), *point(x2, y))
+            mesh.append(((x, y, x2, y2), quad))
+    warped = tiled.transform((SIZE, SIZE), Image.Transform.MESH, mesh, Image.Resampling.BICUBIC)
+    return match_outer_edges(warped)
 
 
 def sheets(tile):
@@ -92,9 +149,9 @@ def main():
             'header': {
                 'name': f'Реалистичная вода — обычный режим, {settings["label"]}',
                 'description': 'Экспериментальная анимированная текстура воды без Vibrant Visuals',
-                'uuid': settings['header'], 'version': [1, 0, 0], 'min_engine_version': [1, 26, 30],
+                'uuid': settings['header'], 'version': [1, 1, 0], 'min_engine_version': [1, 26, 30],
             },
-            'modules': [{'type': 'resources', 'uuid': settings['module'], 'version': [1, 0, 0]}],
+            'modules': [{'type': 'resources', 'uuid': settings['module'], 'version': [1, 1, 0]}],
         }
         (dest / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
         # Do not write flipbook_textures.json: the vanilla definitions already
