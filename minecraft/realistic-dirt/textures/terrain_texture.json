@@ -348,6 +348,9 @@
         }
       ]
     },
+    "grass_carried_top": {
+      "textures": "textures/blocks/grass_top"
+    },
     "grass_side": {
       "textures": [
         {

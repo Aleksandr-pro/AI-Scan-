@@ -16,8 +16,8 @@ dirt = Image.open(blocks / 'dirt.png').convert('RGB').resize((size, size), Image
 
 # Keep the four user-supplied top photographs in full colour. Do not derive
 # them from grass_top.png or alter the existing grass-side tint-mask textures.
-for i in range(4):
-    with Image.open(blocks / f'grass_top_variant_{i}.png') as top:
+for filename in ['grass_top.png'] + [f'grass_top_variant_{i}.png' for i in range(1, 4)]:
+    with Image.open(blocks / filename) as top:
         if top.mode != 'RGB' or top.size != (512, 512):
             raise ValueError('Grass top variants must be 512x512 RGB')
 for i in range(16):
@@ -210,12 +210,16 @@ for i, factor in enumerate((1.0, 0.97, 1.03, 0.985)):
 
 # Preserve all 17 vanilla grass-top entries (biome/state indices) while assigning
 # the same position-selected set at each index. Weights are explicit.
-tops = [{'path': f'textures/blocks/grass_top_variant_{i}', 'weight': 1} for i in range(4)]
+tops = [{'path': 'textures/blocks/grass_top', 'weight': 1}] + [
+    {'path': f'textures/blocks/grass_top_variant_{i}', 'weight': 1} for i in range(1, 4)]
 sides = [{'path': f'textures/blocks/grass_side_variant_{i:02}', 'weight': 1} for i in range(16)]
 plants = [{'path': f'textures/blocks/short_grass_variant_{i}', 'weight': 1} for i in range(5)]
 terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'padding': 8, 'num_mip_levels': 4,
            'texture_data': {
                'grass_top': {'textures': [{'variations': tops} for _ in range(17)]},
+               # Vanilla's held/inventory top normally points at grass_carried;
+               # reuse the new first top without keeping a duplicate image.
+               'grass_carried_top': {'textures': 'textures/blocks/grass_top'},
                'grass_side': {'textures': [{'overlay_color': '#df6827', 'variations': sides}]},
                'short_grass': {'textures': {'variations': plants}},
                # Bedrock's vanilla farmland texture indices are wet, then dry.
