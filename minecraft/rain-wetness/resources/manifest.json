@@ -1,0 +1,6 @@
+{
+  "format_version": 2,
+  "header": {"name": "Мокрые поверхности — ресурсы", "description": "Текстуры для экспериментального аддона влажности", "uuid": "bf749575-cdf1-4b34-9cad-5a58b5fa1b60", "version": [1, 0, 0], "min_engine_version": [1, 26, 30]},
+  "modules": [{"type": "resources", "uuid": "eb1d06ef-4d3b-427f-9021-7ae089858b50", "version": [1, 0, 0]}],
+  "capabilities": ["pbr"]
+}
