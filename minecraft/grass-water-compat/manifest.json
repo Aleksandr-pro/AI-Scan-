@@ -1,0 +1,29 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Фото-трава + вода: совместимость",
+    "description": "Нейтральная трава и настройки воды из пакета трёх фотографий",
+    "uuid": "b6b4f173-66b9-4967-bd0d-0b0414cef357",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      26,
+      30
+    ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "fd8aec1a-7ca7-4ad1-ae48-38f1461118f4",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

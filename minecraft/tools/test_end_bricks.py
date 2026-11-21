@@ -34,8 +34,8 @@ class EndBrickTests(unittest.TestCase):
                 self.assertEqual(z.read('textures/blocks/end_bricks.png'),OUTPUT.read_bytes())
                 self.assertEqual(json.loads(z.read('textures/terrain_texture.json')),terrain)
                 manifest=json.loads(z.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'],[2, 5, 0])
-                self.assertEqual(manifest['modules'][0]['version'],[2, 5, 0])
+                self.assertEqual(manifest['header']['version'],[2, 6, 0])
+                self.assertEqual(manifest['modules'][0]['version'],[2, 6, 0])
                 for i in range(4):
                     n='end_stone'+(f'_variant_{i}' if i else '')+'.png'
                     self.assertEqual(z.read('textures/blocks/'+n),(ROOT/'textures/blocks'/n).read_bytes())

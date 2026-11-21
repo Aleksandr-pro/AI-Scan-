@@ -369,7 +369,7 @@
     "grass_side": {
       "textures": [
         {
-          "overlay_color": "#df6827",
+          "overlay_color": "#75b04a",
           "variations": [
             {
               "path": "textures/blocks/grass_side_variant_00",

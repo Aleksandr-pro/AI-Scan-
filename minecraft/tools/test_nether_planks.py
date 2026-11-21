@@ -56,8 +56,8 @@ class NetherPlankTests(unittest.TestCase):
                 self.assertIsNone(z.testzip())
                 self.assertEqual(json.loads(z.read('textures/terrain_texture.json')),terrain)
                 manifest=json.loads(z.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'],[2, 5, 0])
-                self.assertEqual(manifest['modules'][0]['version'],[2, 5, 0])
+                self.assertEqual(manifest['header']['version'],[2, 6, 0])
+                self.assertEqual(manifest['modules'][0]['version'],[2, 6, 0])
                 for kind in ('warped','crimson'):
                     name=f'textures/blocks/photo_{kind}_planks.png'
                     self.assertEqual(z.read(name),(ROOT/name).read_bytes())
