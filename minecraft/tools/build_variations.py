@@ -393,6 +393,13 @@ for face in ('north', 'east', 'south', 'west', 'top'):
         'textures': 'textures/blocks/photo_crafting_table_' + face
     }
 
+# Six position-selected ordinary-vine textures; individual blocks are not
+# guaranteed to choose matching strands when stacked vertically.
+terrain['texture_data']['vine'] = {'textures': {'variations': [
+    {'path': 'textures/blocks/vine' + (f'_variant_{i}' if i else ''), 'weight': 1}
+    for i in range(6)
+]}}
+
 # Two supplied flowers have no exact vanilla counterpart. Offer the violet
 # as an allium variant and the buttercup as a dandelion variant where the
 # engine supports terrain variations. Legacy red_flower remains unchanged.
