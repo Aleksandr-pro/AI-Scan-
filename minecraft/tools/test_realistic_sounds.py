@@ -33,17 +33,21 @@ class SoundPackTests(unittest.TestCase):
         doc = json.loads((PACK / 'sounds/sound_definitions.json').read_text())
         self.assertEqual(doc['format_version'], '1.20.20')
         defs = doc['sound_definitions']
-        self.assertEqual(set(defs), set(VANILLA))
+        custom_ids = {'livingworld.birds', 'livingworld.wind', 'livingworld.crickets',
+                      'livingworld.stream', 'livingworld.shore'}
+        self.assertEqual(set(defs), set(VANILLA) | custom_ids)
         referenced = set()
         for key, definition in defs.items():
-            for prop, value in VANILLA[key].items():
-                if prop != 'sounds':
-                    self.assertEqual(definition[prop], value)
+            if key in VANILLA:
+                for prop, value in VANILLA[key].items():
+                    if prop != 'sounds':
+                        self.assertEqual(definition[prop], value)
             for entry in definition['sounds']:
                 name = entry if isinstance(entry, str) else entry['name']
                 if not name.startswith(CUSTOM):
-                    self.assertEqual(key, 'ambient.cave')
-                    self.assertIn(name, VANILLA[key]['sounds'])
+                    self.assertIn(key, {'ambient.cave', 'ambient.underwater.additions'})
+                    originals = [s if isinstance(s, str) else s['name'] for s in VANILLA[key]['sounds']]
+                    self.assertIn(name, originals)
                     continue
                 path = PACK / (name + '.ogg')
                 self.assertTrue(path.is_file(), name)
@@ -60,8 +64,10 @@ class SoundPackTests(unittest.TestCase):
                 self.assertLess(abs(samples[-1]), .01, name)
                 self.assertLess(info.duration, 8, name)
         self.assertEqual(referenced, set(PACK.rglob('*.ogg')))
-        self.assertEqual(len(referenced), 57)
-        self.assertEqual(len(defs['ambient.cave']['sounds']), 27)
+        self.assertEqual(len(referenced), 84)
+        self.assertEqual(len(defs['ambient.cave']['sounds']), 30)
+        for key in ('ambient.cave', 'ambient.underwater.additions'):
+            self.assertEqual(defs[key]['sounds'][:len(VANILLA[key]['sounds'])], VANILLA[key]['sounds'])
         self.assertTrue(all(s['volume'] == .02 for s in defs['ambient.weather.rain']['sounds']))
 
     def test_sources(self):
@@ -70,6 +76,31 @@ class SoundPackTests(unittest.TestCase):
         for name, record in sources.items():
             self.assertEqual(hashlib.sha256((ROOT / 'sound-reference/source' / name).read_bytes()).hexdigest(), record['sha256'])
             self.assertTrue(record['source_ids'])
+
+    def test_dynamic_addon(self):
+        behavior = ROOT / 'living-world-behavior'
+        manifest = json.loads((behavior / 'manifest.json').read_text())
+        resource = json.loads((PACK / 'manifest.json').read_text())
+        self.assertIn({'uuid': resource['header']['uuid'], 'version': resource['header']['version']}, manifest['dependencies'])
+        self.assertIn({'module_name': '@minecraft/server', 'version': '2.8.0'}, manifest['dependencies'])
+        self.assertEqual(manifest['header']['min_engine_version'], [1, 26, 30])
+        definitions = json.loads((PACK / 'sounds/sound_definitions.json').read_text())['sound_definitions']
+        code = (behavior / 'scripts/ambience.js').read_text()
+        import re
+        ids = set(re.findall(r"'((?:livingworld\.)[a-z]+)'", code))
+        self.assertEqual(ids, {key for key in definitions if key.startswith('livingworld.')})
+        import io
+        addon = ROOT / 'living-world-nature.mcaddon'
+        with zipfile.ZipFile(addon) as archive:
+            self.assertIsNone(archive.testzip())
+            self.assertEqual(set(archive.namelist()), {'living-world-behavior.mcpack', 'realistic-sounds.mcpack'})
+            self.assertEqual(archive.read('realistic-sounds.mcpack'), ARCHIVE.read_bytes())
+            with zipfile.ZipFile(io.BytesIO(archive.read('living-world-behavior.mcpack'))) as bp:
+                expected = {p.relative_to(behavior).as_posix(): p for p in behavior.rglob('*') if p.is_file()}
+                self.assertIsNone(bp.testzip())
+                self.assertEqual(set(bp.namelist()), set(expected))
+                for name, path in expected.items():
+                    self.assertEqual(bp.read(name), path.read_bytes(), name)
 
     def test_archive_is_exact(self):
         with zipfile.ZipFile(ARCHIVE) as archive:

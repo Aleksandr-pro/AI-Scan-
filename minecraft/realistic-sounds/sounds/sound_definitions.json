@@ -349,9 +349,259 @@
         {
           "name": "sounds/realistic_audio/cave/drips4",
           "weight": 3
+        },
+        {
+          "name": "sounds/realistic_audio/cave/depth1",
+          "weight": 2
+        },
+        {
+          "name": "sounds/realistic_audio/cave/depth2",
+          "weight": 2
+        },
+        {
+          "name": "sounds/realistic_audio/cave/depth3",
+          "weight": 2
         }
       ],
       "subtitle": "subtitles.ambient.sound"
+    },
+    "ambient.underwater.additions": {
+      "__use_legacy_max_distance": "true",
+      "category": "ambient",
+      "max_distance": null,
+      "min_distance": null,
+      "sounds": [
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions/bubbles1",
+          "weight": 90
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions/bubbles2",
+          "weight": 90
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions/bubbles3",
+          "weight": 90
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions/bubbles4",
+          "weight": 90
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions/bubbles5",
+          "weight": 90
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions/bubbles6",
+          "weight": 90
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions/water1",
+          "weight": 90
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions/water2",
+          "weight": 90
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions_rare/animal1",
+          "weight": 9
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions_rare/bass_whale1",
+          "weight": 9
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions_rare/bass_whale2",
+          "weight": 9
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions_rare/crackles1",
+          "weight": 9
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions_rare/crackles2",
+          "weight": 9
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions_rare/driplets1",
+          "weight": 9
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions_rare/driplets2",
+          "weight": 9
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions_rare/earth_crack",
+          "weight": 9
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions_ultrarare/animal2",
+          "weight": 1
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions_ultrarare/dark1",
+          "weight": 1
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions_ultrarare/dark2",
+          "weight": 1
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions_ultrarare/dark3",
+          "weight": 1
+        },
+        {
+          "is3D": false,
+          "name": "sounds/ambient/underwater/additions_ultrarare/dark4",
+          "weight": 1
+        },
+        {
+          "name": "sounds/realistic_audio/water/underwater1",
+          "is3D": false,
+          "weight": 90
+        },
+        {
+          "name": "sounds/realistic_audio/water/underwater2",
+          "is3D": false,
+          "weight": 90
+        },
+        {
+          "name": "sounds/realistic_audio/water/underwater3",
+          "is3D": false,
+          "weight": 90
+        },
+        {
+          "name": "sounds/realistic_audio/water/underwater4",
+          "is3D": false,
+          "weight": 90
+        }
+      ]
+    },
+    "livingworld.birds": {
+      "category": "ambient",
+      "sounds": [
+        {
+          "name": "sounds/realistic_audio/nature/bird1",
+          "is3D": false
+        },
+        {
+          "name": "sounds/realistic_audio/nature/bird2",
+          "is3D": false
+        },
+        {
+          "name": "sounds/realistic_audio/nature/bird3",
+          "is3D": false
+        },
+        {
+          "name": "sounds/realistic_audio/nature/bird4",
+          "is3D": false
+        },
+        {
+          "name": "sounds/realistic_audio/nature/bird5",
+          "is3D": false
+        },
+        {
+          "name": "sounds/realistic_audio/nature/bird6",
+          "is3D": false
+        },
+        {
+          "name": "sounds/realistic_audio/nature/bird7",
+          "is3D": false
+        },
+        {
+          "name": "sounds/realistic_audio/nature/bird8",
+          "is3D": false
+        }
+      ]
+    },
+    "livingworld.wind": {
+      "category": "ambient",
+      "sounds": [
+        {
+          "name": "sounds/realistic_audio/nature/wind1",
+          "is3D": false
+        },
+        {
+          "name": "sounds/realistic_audio/nature/wind2",
+          "is3D": false
+        },
+        {
+          "name": "sounds/realistic_audio/nature/wind3",
+          "is3D": false
+        }
+      ]
+    },
+    "livingworld.crickets": {
+      "category": "ambient",
+      "sounds": [
+        {
+          "name": "sounds/realistic_audio/nature/crickets1",
+          "is3D": false
+        },
+        {
+          "name": "sounds/realistic_audio/nature/crickets2",
+          "is3D": false
+        },
+        {
+          "name": "sounds/realistic_audio/nature/crickets3",
+          "is3D": false
+        }
+      ]
+    },
+    "livingworld.stream": {
+      "category": "ambient",
+      "sounds": [
+        {
+          "name": "sounds/realistic_audio/nature/stream1",
+          "is3D": false
+        },
+        {
+          "name": "sounds/realistic_audio/nature/stream2",
+          "is3D": false
+        },
+        {
+          "name": "sounds/realistic_audio/nature/stream3",
+          "is3D": false
+        }
+      ]
+    },
+    "livingworld.shore": {
+      "category": "ambient",
+      "sounds": [
+        {
+          "name": "sounds/realistic_audio/nature/shore1",
+          "is3D": false
+        },
+        {
+          "name": "sounds/realistic_audio/nature/shore2",
+          "is3D": false
+        },
+        {
+          "name": "sounds/realistic_audio/nature/shore3",
+          "is3D": false
+        }
+      ]
     }
   }
 }

@@ -364,6 +364,90 @@
         "freesound-402929"
       ],
       "sha256": "48302f1719f7991076fe4b5992cd12f278ec3aed07e591c5abe2184a19c76b68"
+    },
+    "bird-day-1.84f086e8.mp3": {
+      "type": "ambience",
+      "source_ids": [
+        "freesound-811988"
+      ],
+      "sha256": "84f086e8e5e9cfcdc8cd767447959277d46bdf0c23673168734fdeea77fcaaf0"
+    },
+    "bird-day-2.e534eab1.mp3": {
+      "type": "ambience",
+      "source_ids": [
+        "freesound-725331"
+      ],
+      "sha256": "e534eab11f397c81d44a733274d01d485b451296da9335ae7020d19d45158ad3"
+    },
+    "bird-day-3.af8164bf.mp3": {
+      "type": "ambience",
+      "source_ids": [
+        "freesound-724597"
+      ],
+      "sha256": "af8164bfa1faee0eeb49345917f56bb5a87fdd392a2c12ba284368b33d4bc6a1"
+    },
+    "bird-day-4.924cae83.mp3": {
+      "type": "ambience",
+      "source_ids": [
+        "freesound-725333"
+      ],
+      "sha256": "924cae839983f31a739d6d0694e63e96c5a7c4778fc97287d465dbb8f98108b4"
+    },
+    "bird-day-5.2c36fd00.mp3": {
+      "type": "ambience",
+      "source_ids": [
+        "freesound-725051"
+      ],
+      "sha256": "2c36fd004b8ca0af534080d10fd492cc4f8b72ac08fefd1f2ed8e08c5cd1633a"
+    },
+    "bird-day-6.defdd488.mp3": {
+      "type": "ambience",
+      "source_ids": [
+        "freesound-811988"
+      ],
+      "sha256": "defdd488b75e98b3b72dbfbd80012a7d474d1f03f4d6cc9307367b03aeb1ff09"
+    },
+    "bird-day-7.9010134a.mp3": {
+      "type": "ambience",
+      "source_ids": [
+        "freesound-725331"
+      ],
+      "sha256": "9010134ae80361b8ef552bbd66a471da5de42e7ae2f82d25fa01fe4b9e257b32"
+    },
+    "bird-day-8.fea3140d.mp3": {
+      "type": "ambience",
+      "source_ids": [
+        "freesound-724597"
+      ],
+      "sha256": "fea3140d53ad59a164028822003517e0b6b75d02a674e864b4c9b93748297174"
+    },
+    "night-loop-1.508dbc29.mp3": {
+      "type": "ambience",
+      "source_ids": [
+        "freesound-637083"
+      ],
+      "sha256": "508dbc2990f354630562c8d6064162f507fe816a4a69c87780d710b6f7a59774"
+    },
+    "stream-loop-1.975a7cd5.mp3": {
+      "type": "ambience",
+      "source_ids": [
+        "freesound-548373"
+      ],
+      "sha256": "975a7cd5575c43cc410ac13174337e8d652fb094068968115dfc7dc1f406b0ee"
+    },
+    "wind-forest-1.52cc589e.mp3": {
+      "type": "ambience",
+      "source_ids": [
+        "freesound-530908"
+      ],
+      "sha256": "52cc589e2b2554023d577adb86288acf97faf51fa58ff66dac20b2ddde010fb6"
+    },
+    "lake-lapping-1.d72cdf84.mp3": {
+      "type": "ambience",
+      "source_ids": [
+        "freesound-568819"
+      ],
+      "sha256": "d72cdf84ebe6818a76287f94ace2f67de6a8c65b05332d8ed3a092af1631ff93"
     }
   }
 }

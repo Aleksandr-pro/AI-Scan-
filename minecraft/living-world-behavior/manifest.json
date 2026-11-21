@@ -1,0 +1,18 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Живой мир — динамическая природа",
+    "description": "Необязательный механизм птиц, ветра и воды; работает с ресурс-паком Живой мир 1.1",
+    "uuid": "8764e669-3609-42fd-9f8e-e1337d3cfe15",
+    "version": [1, 1, 0],
+    "min_engine_version": [1, 26, 30]
+  },
+  "modules": [
+    {"type": "data", "uuid": "6bd74217-4df5-49d5-b013-d02a4c43d1ec", "version": [1, 1, 0]},
+    {"type": "script", "language": "javascript", "entry": "scripts/main.js", "uuid": "d7fc26d0-6b1c-40a2-aa3d-ea27ca5d5741", "version": [1, 1, 0]}
+  ],
+  "dependencies": [
+    {"module_name": "@minecraft/server", "version": "2.8.0"},
+    {"uuid": "97d0a519-1d35-431b-859d-1c82bdc81ce3", "version": [1, 1, 0]}
+  ]
+}
