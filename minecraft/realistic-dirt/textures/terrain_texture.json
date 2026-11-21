@@ -1275,6 +1275,36 @@
     "photo_crafting_table_top": {
       "textures": "textures/blocks/photo_crafting_table_top"
     },
+    "vine": {
+      "textures": {
+        "variations": [
+          {
+            "path": "textures/blocks/vine",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/vine_variant_1",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/vine_variant_2",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/vine_variant_3",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/vine_variant_4",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/vine_variant_5",
+            "weight": 1
+          }
+        ]
+      }
+    },
     "allium": {
       "textures": {
         "variations": [
