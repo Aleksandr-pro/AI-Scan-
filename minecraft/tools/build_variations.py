@@ -426,6 +426,14 @@ for color in ('black', 'white', 'pink'):
 for kind in ('warped', 'crimson'):
     terrain['texture_data'][kind+'_planks'] = {'textures': 'textures/blocks/photo_'+kind+'_planks'}
 
+# Separate end-grain and bark: vanilla uses crimson_log_* but warped_stem_*.
+# The corresponding hyphae use the same bark key on all faces.
+for key, filename in (('crimson_log_top','photo_crimson_stem_top'),
+                      ('crimson_log_side','photo_crimson_stem_side'),
+                      ('warped_stem_top','photo_warped_stem_top'),
+                      ('warped_stem_side','photo_warped_stem_side')):
+    terrain['texture_data'][key] = {'textures': 'textures/blocks/'+filename}
+
 # Modern smooth stone and slab keys: isolate them from comparator/repeater
 # and the old indexed slab array, which also contains unrelated materials.
 for key in ('smooth_stone', 'smooth_stone_slab_top', 'smooth_stone_slab_bottom'):

@@ -14,7 +14,13 @@ FILES=('textures/blocks/sea_lantern.png', 'textures/entity/chest/double_normal.p
        'textures/entity/chest/normal.png', 'textures/blocks/farmland_dry.png',
        'textures/blocks/diamond_block.png', 'textures/blocks/sand.png',
        'textures/blocks/cobblestone.png', 'textures/blocks/log_acacia_top.png',
-       'textures/blocks/log_birch_top.png', 'textures/blocks/hay_block_top.png')
+       'textures/blocks/log_birch_top.png', 'textures/blocks/hay_block_top.png',
+       'textures/blocks/log_spruce_top.png', 'textures/blocks/log_jungle_top.png',
+       'textures/blocks/log_oak_top.png', 'textures/blocks/farmland_wet.png',
+       'textures/blocks/farmland_moist.png', 'textures/blocks/farmland_side.png',
+       'textures/blocks/cherry_log_side.png', 'textures/blocks/cherry_log_top.png',
+       'textures/blocks/mangrove_log_side.png', 'textures/blocks/bamboo_block_top.png',
+       'textures/blocks/hay_block_side.png', 'textures/blocks/log_birch.png')
 
 
 def chunk(kind,data):
