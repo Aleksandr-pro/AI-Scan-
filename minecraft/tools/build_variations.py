@@ -393,6 +393,12 @@ for face in ('north', 'east', 'south', 'west', 'top'):
         'textures': 'textures/blocks/photo_crafting_table_' + face
     }
 
+# Furnace-only names avoid changing vanilla textures shared with dispensers
+# and droppers. blocks.json keeps vanilla's respective lit/unlit face mapping.
+for part in ('body', 'front_on', 'front_off'):
+    key = 'photo_furnace_' + part
+    terrain['texture_data'][key] = {'textures': 'textures/blocks/' + key}
+
 # Four prepared end-stone photos with a common, periodic tile boundary.
 terrain['texture_data']['end_stone'] = {'textures': {'variations': [
     {'path': 'textures/blocks/end_stone' + (f'_variant_{i}' if i else ''), 'weight': 1}

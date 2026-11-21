@@ -85,5 +85,27 @@
       "west": "photo_crafting_table_west",
       "up": "photo_crafting_table_top"
     }
+  },
+  "furnace": {
+    "sound": "stone",
+    "textures": {
+      "down": "photo_furnace_body",
+      "east": "photo_furnace_body",
+      "north": "photo_furnace_body",
+      "south": "photo_furnace_front_off",
+      "up": "photo_furnace_body",
+      "west": "photo_furnace_body"
+    }
+  },
+  "lit_furnace": {
+    "sound": "stone",
+    "textures": {
+      "down": "photo_furnace_body",
+      "east": "photo_furnace_front_on",
+      "north": "photo_furnace_body",
+      "south": "photo_furnace_body",
+      "up": "photo_furnace_body",
+      "west": "photo_furnace_body"
+    }
   }
 }

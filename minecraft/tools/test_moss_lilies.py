@@ -68,8 +68,8 @@ class MossLilyTests(unittest.TestCase):
             with zipfile.ZipFile(Path('minecraft') / package) as pack:
                 self.assertIsNone(pack.testzip())
                 manifest = json.loads(pack.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'], [1,93,0])
-                self.assertEqual(manifest['modules'][0]['version'], [1,93,0])
+                self.assertEqual(manifest['header']['version'], [1,94,0])
+                self.assertEqual(manifest['modules'][0]['version'], [1,94,0])
                 self.assertEqual(json.loads(pack.read('textures/terrain_texture.json')), json.loads((ROOT/'textures/terrain_texture.json').read_text()))
                 for p in names:
                     self.assertEqual(pack.read(p), (ROOT / p).read_bytes())
