@@ -35,8 +35,8 @@ class WheatTests(unittest.TestCase):
             with zipfile.ZipFile(Path('minecraft') / pack) as z:
                 self.assertIsNone(z.testzip())
                 manifest = json.loads(z.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'], [1, 92, 0])
-                self.assertEqual(manifest['modules'][0]['version'], [1, 92, 0])
+                self.assertEqual(manifest['header']['version'], [1, 93, 0])
+                self.assertEqual(manifest['modules'][0]['version'], [1, 93, 0])
                 self.assertEqual(z.read('textures/blocks/wheat_stage_7.png'), OUTPUT.read_bytes())
                 self.assertNotIn('textures/items/wheat.png', z.namelist())
 

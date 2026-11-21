@@ -1275,6 +1275,28 @@
     "photo_crafting_table_top": {
       "textures": "textures/blocks/photo_crafting_table_top"
     },
+    "end_stone": {
+      "textures": {
+        "variations": [
+          {
+            "path": "textures/blocks/end_stone",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/end_stone_variant_1",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/end_stone_variant_2",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/end_stone_variant_3",
+            "weight": 1
+          }
+        ]
+      }
+    },
     "glow_lichen": {
       "textures": {
         "variations": [

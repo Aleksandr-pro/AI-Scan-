@@ -393,6 +393,12 @@ for face in ('north', 'east', 'south', 'west', 'top'):
         'textures': 'textures/blocks/photo_crafting_table_' + face
     }
 
+# Four prepared end-stone photos with a common, periodic tile boundary.
+terrain['texture_data']['end_stone'] = {'textures': {'variations': [
+    {'path': 'textures/blocks/end_stone' + (f'_variant_{i}' if i else ''), 'weight': 1}
+    for i in range(4)
+]}}
+
 # Three transparent photographic overlays on the ordinary glow-lichen block.
 terrain['texture_data']['glow_lichen'] = {'textures': {'variations': [
     {'path': 'textures/blocks/glow_lichen' + (f'_variant_{i}' if i else ''), 'weight': 1}
