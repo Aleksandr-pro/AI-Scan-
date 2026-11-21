@@ -56,8 +56,8 @@ class WildflowerTests(unittest.TestCase):
             with zipfile.ZipFile(Path('minecraft') / name) as pack:
                 self.assertIsNone(pack.testzip())
                 manifest = json.loads(pack.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'], [1, 97, 0])
-                self.assertEqual(manifest['modules'][0]['version'], [1, 97, 0])
+                self.assertEqual(manifest['header']['version'], [1, 98, 0])
+                self.assertEqual(manifest['modules'][0]['version'], [1, 98, 0])
                 self.assertEqual(json.loads(pack.read('textures/terrain_texture.json')), json.loads((ROOT / 'textures/terrain_texture.json').read_text()))
                 for path in files:
                     self.assertEqual(pack.read(path), (ROOT / path).read_bytes())

@@ -1300,6 +1300,15 @@
     "photo_furnace_front_off": {
       "textures": "textures/blocks/photo_furnace_front_off"
     },
+    "photo_stained_glass_black": {
+      "textures": "textures/blocks/photo_stained_glass_black"
+    },
+    "photo_stained_glass_white": {
+      "textures": "textures/blocks/photo_stained_glass_white"
+    },
+    "photo_stained_glass_pink": {
+      "textures": "textures/blocks/photo_stained_glass_pink"
+    },
     "end_stone": {
       "textures": {
         "variations": [
