@@ -55,7 +55,7 @@ class StainedGlassTests(unittest.TestCase):
                 self.assertIsNone(z.testzip())
                 packed_blocks=json.loads(z.read('blocks.json'))
                 packed_atlas=json.loads(z.read('textures/terrain_texture.json'))['texture_data']
-                self.assertEqual(json.loads(z.read('manifest.json'))['header']['version'],[2, 1, 0])
+                self.assertEqual(json.loads(z.read('manifest.json'))['header']['version'],[2, 2, 0])
                 for color in TINTS:
                     key=f'photo_stained_glass_{color}'
                     self.assertEqual(packed_blocks[f'{color}_stained_glass'],blocks[f'{color}_stained_glass'])

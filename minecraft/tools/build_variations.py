@@ -421,6 +421,10 @@ for color in ('black', 'white', 'pink'):
     key = 'photo_stained_glass_' + color
     terrain['texture_data'][key] = {'textures': 'textures/blocks/' + key}
 
+# End-stone bricks use their vanilla atlas key, shared with brick stairs;
+# vanilla slab and wall entries also refer to the same end_bricks texture.
+terrain['texture_data']['end_bricks'] = {'textures': 'textures/blocks/end_bricks'}
+
 # Four prepared end-stone photos with a common, periodic tile boundary.
 terrain['texture_data']['end_stone'] = {'textures': {'variations': [
     {'path': 'textures/blocks/end_stone' + (f'_variant_{i}' if i else ''), 'weight': 1}

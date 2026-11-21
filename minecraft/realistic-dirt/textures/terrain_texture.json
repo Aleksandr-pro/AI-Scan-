@@ -1309,6 +1309,9 @@
     "photo_stained_glass_pink": {
       "textures": "textures/blocks/photo_stained_glass_pink"
     },
+    "end_bricks": {
+      "textures": "textures/blocks/end_bricks"
+    },
     "end_stone": {
       "textures": {
         "variations": [

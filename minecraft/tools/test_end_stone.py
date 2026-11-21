@@ -42,13 +42,13 @@ class EndStoneTests(unittest.TestCase):
             self.assertLess(path.stat().st_size,100*1024*1024)
             with zipfile.ZipFile(path) as z:
                 self.assertIsNone(z.testzip()); manifest=json.loads(z.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'],[2, 1, 0])
-                self.assertEqual(manifest['modules'][0]['version'],[2, 1, 0])
+                self.assertEqual(manifest['header']['version'],[2, 2, 0])
+                self.assertEqual(manifest['modules'][0]['version'],[2, 2, 0])
                 self.assertEqual(json.loads(z.read('textures/terrain_texture.json')),json.loads((ROOT/'textures/terrain_texture.json').read_text()))
                 for i in range(4):
                     p='textures/blocks/'+name(i)+'.png';self.assertEqual(z.read(p),(ROOT/p).read_bytes())
                     self.assertNotIn('textures/blocks/'+name(i)+'.texture_set.json',z.namelist())
-                self.assertNotIn('textures/blocks/end_bricks.png',z.namelist())
+                self.assertIn('textures/blocks/end_bricks.png',z.namelist())
 
     def test_estimated_maps_and_optional_pbr_contract(self):
         with zipfile.ZipFile(MAPS_ZIP) as z, zipfile.ZipFile(PBR_PACK) as p:
