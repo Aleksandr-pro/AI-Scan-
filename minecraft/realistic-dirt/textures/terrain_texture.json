@@ -1275,6 +1275,15 @@
     "photo_crafting_table_top": {
       "textures": "textures/blocks/photo_crafting_table_top"
     },
+    "photo_furnace_body": {
+      "textures": "textures/blocks/photo_furnace_body"
+    },
+    "photo_furnace_front_on": {
+      "textures": "textures/blocks/photo_furnace_front_on"
+    },
+    "photo_furnace_front_off": {
+      "textures": "textures/blocks/photo_furnace_front_off"
+    },
     "end_stone": {
       "textures": {
         "variations": [
