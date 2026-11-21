@@ -393,6 +393,21 @@ for face in ('north', 'east', 'south', 'west', 'top'):
         'textures': 'textures/blocks/photo_crafting_table_' + face
     }
 
+# Ordinary moss block and carpet share the same vanilla atlas entry. All
+# four photographic tiles share matching borders. Lily pad uses its own
+# six full-colour textures; override vanilla's green #208030 static tint.
+terrain['texture_data']['moss_block'] = {'textures': {'variations': [
+    {'path': 'textures/blocks/moss_block' + (f'_variant_{i}' if i else ''), 'weight': 1}
+    for i in range(4)
+]}}
+terrain['texture_data']['waterlily'] = {'textures': [{
+    'tint_color': '#ffffff',
+    'variations': [
+        {'path': 'textures/blocks/waterlily' + (f'_variant_{i}' if i else ''), 'weight': 1}
+        for i in range(6)
+    ]
+}]}
+
 # Six position-selected ordinary-vine textures; individual blocks are not
 # guaranteed to choose matching strands when stacked vertically.
 terrain['texture_data']['vine'] = {'textures': {'variations': [
