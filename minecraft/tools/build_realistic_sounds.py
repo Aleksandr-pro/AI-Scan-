@@ -60,11 +60,11 @@ def main():
     (PACK / 'sounds').mkdir(parents=True)
     manifest = {'format_version': 2,
                 'header': {'name': 'Живой мир — реалистичные звуки',
-                           'description': 'Шаги, дождь, гром, пещеры и костёр',
+                           'description': 'Шаги, природа, вода и пещеры',
                            'uuid': '97d0a519-1d35-431b-859d-1c82bdc81ce3',
-                           'version': [1, 0, 0], 'min_engine_version': [1, 21, 0]},
+                           'version': [1, 1, 0], 'min_engine_version': [1, 21, 0]},
                 'modules': [{'type': 'resources', 'uuid': '06751380-5460-41dc-9157-4523efebe142',
-                             'version': [1, 0, 0]}]}
+                             'version': [1, 1, 0]}]}
     (PACK / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     vanilla = json.loads((ROOT / 'sound-reference/vanilla-sound-definitions.json').read_text())
     defs = copy.deepcopy(vanilla['sound_definitions'])
@@ -130,6 +130,56 @@ def main():
         defs['ambient.cave']['sounds'].append({'name': save(f'cave/drips{i}', audio), 'weight': 3})
     demo.append(audio * 0.8)
 
+    # These are short one-shots, not loops: the optional behavior pack schedules them
+    # per listener in suitable conditions. Without it they stay silent.
+    nature_demo = []
+    birds = []
+    for i in range(1, 9):
+        audio = shape(source(f'bird-day-{i}'), 0.065, hp=180, fade_out=0.12)
+        birds.append({'name': save(f'nature/bird{i}', audio), 'is3D': False})
+        if i in (1, 3):
+            nature_demo.extend([audio, np.zeros(RATE // 3)])
+    defs['livingworld.birds'] = {'category': 'ambient', 'sounds': birds}
+
+    for event, prefix, starts, directory in [
+        ('livingworld.wind', 'wind-forest-1', [3, 13, 24], 'wind'),
+        ('livingworld.crickets', 'night-loop-1', [2, 9, 17], 'crickets'),
+        ('livingworld.stream', 'stream-loop-1', [2, 9, 16], 'stream'),
+        ('livingworld.shore', 'lake-lapping-1', [2, 10, 19], 'shore'),
+    ]:
+        recording = source(prefix)
+        entries = []
+        for i, start in enumerate(starts, 1):
+            audio = shape(recording[int(start * RATE):int((start + 5.5) * RATE)],
+                          0.065, hp=85, fade_in=0.3, fade_out=0.5)
+            entries.append({'name': save(f'nature/{directory}{i}', audio), 'is3D': False})
+            if i == 1:
+                nature_demo.extend([np.zeros(RATE // 2), audio])
+        defs[event] = {'category': 'ambient', 'sounds': entries}
+
+    # Add muffled water details to existing underwater additions, without replacing
+    # vanilla loops or rare creature sounds. Engine controls when they play.
+    stream = source('stream-loop-1')
+    for i, start in enumerate([3, 8, 13, 18], 1):
+        segment = stream[int(start * RATE):int((start + 3) * RATE)]
+        low = sosfiltfilt(butter(3, 850, btype='lowpass', fs=RATE, output='sos'), segment)
+        audio = shape(low, 0.06, hp=55, fade_in=0.12, fade_out=0.3)
+        defs['ambient.underwater.additions']['sounds'].append(
+            {'name': save(f'water/underwater{i}', audio), 'is3D': False, 'weight': 90})
+        if i == 1:
+            nature_demo.extend([np.zeros(RATE // 2), audio])
+
+    # A subtle, deliberately sound-designed stone rumble under real cave drops.
+    wind = source('wind-forest-1')
+    for i, start in enumerate([5, 15, 25], 1):
+        segment = wind[int(start * RATE):int((start + 5) * RATE)]
+        low = sosfiltfilt(butter(3, 320, btype='lowpass', fs=RATE, output='sos'), segment)
+        drops = cave[int((i * 7) * RATE):int((i * 7 + 5) * RATE)]
+        audio = shape(drops * 0.35 + low * 0.9, 0.06, hp=45, fade_in=0.2, fade_out=0.6)
+        defs['ambient.cave']['sounds'].append({'name': save(f'cave/depth{i}', audio), 'weight': 2})
+        if i == 1:
+            nature_demo.extend([np.zeros(RATE // 2), audio])
+
     (PACK / 'sounds/sound_definitions.json').write_text(json.dumps(
         {'format_version': vanilla['format_version'], 'sound_definitions': defs}, indent=2) + '\n')
     # A distinct pack icon helps the audio overlay stand out in Bedrock's pack list.
@@ -153,6 +203,9 @@ def main():
         sf.write(wav, np.concatenate(demo), RATE)
         subprocess.run([ffmpeg(), '-v', 'error', '-y', '-i', str(wav), '-codec:a', 'libmp3lame',
                         '-b:a', '96k', str(ROOT / 'realistic-sounds-demo.mp3')], check=True)
+        sf.write(wav, np.concatenate(nature_demo), RATE)
+        subprocess.run([ffmpeg(), '-v', 'error', '-y', '-i', str(wav), '-codec:a', 'libmp3lame',
+                        '-b:a', '96k', str(ROOT / 'living-world-nature-demo.mp3')], check=True)
     print(f'Built {output}, {len(list(PACK.rglob("*.ogg")))} OGGs')
 
 
