@@ -32,18 +32,17 @@ class CarrotTests(unittest.TestCase):
         # Bedrock's vanilla carrots array continues to select stages 0..3.
         self.assertNotIn('carrots', terrain)
         self.assertNotIn('carrots', blocks)
-        for stage in range(3):
-            self.assertFalse((ROOT / f'textures/blocks/carrots_stage_{stage}.png').exists())
         self.assertFalse((ROOT / 'textures/items/carrot.png').exists())
         for pack in ('realistic-dirt.mcpack', 'realistic-dirt-vibrant.mcpack'):
             with zipfile.ZipFile(Path('minecraft') / pack) as archive:
                 self.assertIsNone(archive.testzip())
                 manifest = json.loads(archive.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'], [1, 79, 0])
-                self.assertEqual(manifest['modules'][0]['version'], [1, 79, 0])
+                self.assertEqual(manifest['header']['version'], [1, 80, 0])
+                self.assertEqual(manifest['modules'][0]['version'], [1, 80, 0])
                 self.assertEqual(archive.read('textures/blocks/carrots_stage_3.png'), OUTPUT.read_bytes())
                 for stage in range(3):
-                    self.assertNotIn(f'textures/blocks/carrots_stage_{stage}.png', archive.namelist())
+                    path = f'textures/blocks/carrots_stage_{stage}.png'
+                    self.assertEqual(archive.read(path), (ROOT / path).read_bytes())
                 self.assertNotIn('textures/items/carrot.png', archive.namelist())
 
 
