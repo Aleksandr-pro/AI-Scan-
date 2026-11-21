@@ -59,8 +59,8 @@ class NetherStemTests(unittest.TestCase):
             self.assertLess(path.stat().st_size,100*1024*1024)
             with zipfile.ZipFile(path) as z:
                 self.assertIsNone(z.testzip());manifest=json.loads(z.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'],[2,5,0])
-                self.assertEqual(manifest['modules'][0]['version'],[2,5,0])
+                self.assertEqual(manifest['header']['version'],[2, 6, 0])
+                self.assertEqual(manifest['modules'][0]['version'],[2, 6, 0])
                 self.assertEqual(json.loads(z.read('textures/terrain_texture.json')),terrain)
                 for kind in ('crimson','warped'):
                     for face in ('top','side'):

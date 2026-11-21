@@ -27,7 +27,8 @@ for i in range(16):
 
 # Short grass variants are preprocessed, full-colour user-provided textures.
 # Keep their alpha and detail intact rather than synthesizing or desaturating
-# them. The standard crossed-plane model and engine biome tint still apply.
+# them. The standard crossed-plane model still applies; neutral grass
+# colormaps and selected client biome overrides are prepared separately.
 for variant in range(5):
     img = Image.open(blocks / f'short_grass_variant_{variant}.png')
     if img.size != (size, size) or img.mode != 'RGBA':
@@ -231,7 +232,10 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                # Vanilla's held/inventory top normally points at grass_carried;
                # reuse the new first top without keeping a duplicate image.
                'grass_carried_top': {'textures': 'textures/blocks/grass_top'},
-               'grass_side': {'textures': [{'overlay_color': '#df6827', 'variations': sides}]},
+               # Side files store grey grass in the tint mask and coloured
+               # dirt under alpha=0. A fixed green overlay keeps the grass
+               # green when biome colormaps are neutral, without tinting dirt.
+               'grass_side': {'textures': [{'overlay_color': '#75b04a', 'variations': sides}]},
                'short_grass': {'textures': {'variations': plants}},
                # Vanilla one-block fern; large fern keeps its own textures.
                'fern': {'textures': 'textures/blocks/fern'},
