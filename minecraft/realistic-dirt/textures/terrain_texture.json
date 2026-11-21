@@ -1274,6 +1274,48 @@
     },
     "photo_crafting_table_top": {
       "textures": "textures/blocks/photo_crafting_table_top"
+    },
+    "allium": {
+      "textures": {
+        "variations": [
+          {
+            "path": "textures/blocks/flower_allium",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/photo_flower_violet",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    "dandelion": {
+      "textures": {
+        "variations": [
+          {
+            "path": "textures/blocks/flower_dandelion",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/photo_flower_buttercup",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    "yellow_flower": {
+      "textures": {
+        "variations": [
+          {
+            "path": "textures/blocks/flower_dandelion",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/photo_flower_buttercup",
+            "weight": 1
+          }
+        ]
+      }
     }
   }
 }
