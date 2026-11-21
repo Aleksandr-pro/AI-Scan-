@@ -393,6 +393,19 @@ for face in ('north', 'east', 'south', 'west', 'top'):
         'textures': 'textures/blocks/photo_crafting_table_' + face
     }
 
+# Two supplied flowers have no exact vanilla counterpart. Offer the violet
+# as an allium variant and the buttercup as a dandelion variant where the
+# engine supports terrain variations. Legacy red_flower remains unchanged.
+flower_variants = {
+    'allium': ('flower_allium', 'photo_flower_violet'),
+    'dandelion': ('flower_dandelion', 'photo_flower_buttercup'),
+    'yellow_flower': ('flower_dandelion', 'photo_flower_buttercup'),
+}
+for key, names in flower_variants.items():
+    terrain['texture_data'][key] = {'textures': {'variations': [
+        {'path': 'textures/blocks/' + name, 'weight': 1} for name in names
+    ]}}
+
 # Reuse base PNGs only when a generated variant_0 is byte-for-byte identical.
 # Limit this to explicitly referenced variation paths: vanilla and other pack
 # assets may load their original filenames implicitly. Source files are kept.
