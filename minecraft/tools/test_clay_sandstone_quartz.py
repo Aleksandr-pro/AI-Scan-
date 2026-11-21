@@ -14,9 +14,9 @@ ATLAS = {
     'flattened_quartz_block_side': 'quartz_block_side',
     'smooth_quartz': 'quartz_block_bottom',
     'quartz_bricks': 'quartz_bricks',
-    'chiseled_quartz_block_top': 'quartz_block_chiseled_top',
+    'chiseled_quartz_block_top': 'quartz_block_chiseled',
     'chiseled_quartz_block_side': 'quartz_block_chiseled',
-    'quartz_pillar_top': 'quartz_block_lines_top',
+    'quartz_pillar_top': 'quartz_block_top',
     'quartz_pillar_side': 'quartz_block_lines',
 }
 
@@ -36,6 +36,10 @@ class MaterialsTests(unittest.TestCase):
                 self.assertEqual(atlas[key]['textures'], f'textures/blocks/{name}')
                 with Image.open(ROOT / f'textures/blocks/{name}.png') as image:
                     self.assertEqual((image.mode, image.size), ('RGB', (512, 512)))
+        caps = ['textures/blocks/'+name for name in ('quartz_block_top', 'quartz_block_chiseled', 'quartz_block_top', 'quartz_block_bottom')]
+        self.assertEqual(atlas['quartz_block_top']['textures'], caps)
+        self.assertEqual(atlas['quartz_block_bottom']['textures'], caps)
+        self.assertEqual((ROOT/'textures/blocks/quartz_block_chiseled_top.png').read_bytes(), (ROOT/'textures/blocks/quartz_block_chiseled.png').read_bytes())
         # No aliases were installed for unrelated red/cut/chiseled sandstone.
         self.assertNotIn('flattened_redsandstone', atlas)
         self.assertNotIn('cut_sandstone', atlas)

@@ -646,13 +646,13 @@
       "textures": "textures/blocks/quartz_bricks"
     },
     "chiseled_quartz_block_top": {
-      "textures": "textures/blocks/quartz_block_chiseled_top"
+      "textures": "textures/blocks/quartz_block_chiseled"
     },
     "chiseled_quartz_block_side": {
       "textures": "textures/blocks/quartz_block_chiseled"
     },
     "quartz_pillar_top": {
-      "textures": "textures/blocks/quartz_block_lines_top"
+      "textures": "textures/blocks/quartz_block_top"
     },
     "quartz_pillar_side": {
       "textures": "textures/blocks/quartz_block_lines"
@@ -1274,6 +1274,22 @@
     },
     "photo_crafting_table_top": {
       "textures": "textures/blocks/photo_crafting_table_top"
+    },
+    "quartz_block_top": {
+      "textures": [
+        "textures/blocks/quartz_block_top",
+        "textures/blocks/quartz_block_chiseled",
+        "textures/blocks/quartz_block_top",
+        "textures/blocks/quartz_block_bottom"
+      ]
+    },
+    "quartz_block_bottom": {
+      "textures": [
+        "textures/blocks/quartz_block_top",
+        "textures/blocks/quartz_block_chiseled",
+        "textures/blocks/quartz_block_top",
+        "textures/blocks/quartz_block_bottom"
+      ]
     },
     "photo_furnace_body": {
       "textures": "textures/blocks/photo_furnace_body"

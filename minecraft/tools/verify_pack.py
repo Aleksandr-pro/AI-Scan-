@@ -42,11 +42,14 @@ with zipfile.ZipFile(pack) as archive:
             assert name.removesuffix('.png') not in paths, f'Build input referenced: {name}'
             omitted.append(name)
             continue
-        # Only an identical zero-variant may be absent. Short grass uses the
-        # historical vanilla fallback name rather than a same-prefix base.
-        assert name.endswith('_variant_0.png'), f'Unexpected omitted file: {name}'
-        base = ('textures/blocks/tallgrass.png' if name == 'textures/blocks/short_grass_variant_0.png'
-                else name.removesuffix('_variant_0.png') + '.png')
+        # Explicit aliases retain their exact bytes through the canonical path.
+        aliases = {
+            'textures/blocks/short_grass_variant_0.png': 'textures/blocks/tallgrass.png',
+            'textures/blocks/quartz_block_chiseled_top.png': 'textures/blocks/quartz_block_chiseled.png',
+            'textures/blocks/quartz_block_lines_top.png': 'textures/blocks/quartz_block_top.png',
+        }
+        assert name in aliases or name.endswith('_variant_0.png'), f'Unexpected omitted file: {name}'
+        base = aliases.get(name, name.removesuffix('_variant_0.png') + '.png')
         assert base in names and archive.read(base) == file.read_bytes(), f'Non-identical {name}'
         assert base.removesuffix('.png') in paths, f'Base not referenced: {base}'
         assert name.removesuffix('.png') not in paths, f'Stale atlas reference: {name}'
