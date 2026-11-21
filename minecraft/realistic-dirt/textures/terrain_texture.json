@@ -443,7 +443,7 @@
       "textures": {
         "variations": [
           {
-            "path": "textures/blocks/short_grass_variant_0",
+            "path": "textures/blocks/tallgrass",
             "weight": 1
           },
           {
