@@ -1,0 +1,13 @@
+{
+  "namespace": "cartography_pocket",
+  "photo_cartography_bg": {
+    "type": "image",
+    "texture": "textures/ui/photo_cartography_panel"
+  },
+  "left_panel/content/bg": {
+    "$dialog_background": "cartography_pocket.photo_cartography_bg"
+  },
+  "right_panel/content/bg": {
+    "$dialog_background": "cartography_pocket.photo_cartography_bg"
+  }
+}

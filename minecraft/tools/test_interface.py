@@ -22,13 +22,18 @@ SIDECARS={
     'button_borderless_lightpressed':([4,4],1), 'button_borderless_lightpressednohover':([4,4],1),
     'classic-button':([5,5],2), 'classic-button-hover':([5,5],2),
     'classic-button-pressed':([5,5],2), 'effect_background':([120,32],4),
-    **{f'photo_{name}_panel':([16,16],4) for name in ('crafting','chest','furnace','enchanting')},
+    **{f'photo_{name}_panel':([16,16],4) for name in ('crafting','chest','furnace','enchanting','brewing','cartography','loom')},
 }
-NO_META={f'hotbar_{i}':(80,88) for i in range(9)} | {'selected_hotbar_slot':(96,96)}
+EQUIPMENT=('helmet','chestplate','leggings','boots','shield')
+NO_META=({f'hotbar_{i}':(80,88) for i in range(9)} | {'selected_hotbar_slot':(96,96)}
+         | {f'empty_armor_slot_{n}':(64,64) for n in EQUIPMENT})
 PATCHES={'inventory_screen.json':'crafting','inventory_screen_pocket.json':'crafting_pocket',
          'chest_screen.json':'chest','pocket_containers.json':'pocket_containers',
          'furnace_screen.json':'furnace','furnace_screen_pocket.json':'furnace_pocket',
-         'enchanting_screen.json':'enchanting','enchanting_screen_pocket.json':'enchanting_pocket'}
+         'enchanting_screen.json':'enchanting','enchanting_screen_pocket.json':'enchanting_pocket',
+         'brewing_stand_screen.json':'brewing_stand','brewing_stand_screen_pocket.json':'brewing_stand_pocket',
+         'cartography_screen.json':'cartography','cartography_screen_pocket.json':'cartography_pocket',
+         'loom_screen.json':'loom','loom_screen_pocket.json':'loom_pocket'}
 
 
 def read_sample(path):
@@ -95,10 +100,29 @@ class InterfaceTests(unittest.TestCase):
         self.assertGreater(samples['button_borderless_light'],samples['button_borderless_lighthover'])
         self.assertGreater(samples['button_borderless_lighthover'],samples['button_borderless_lightpressed'])
         with Image.open(UI/'cell_image.png') as im:self.assertLess(sum(im.getpixel((10,10))[:3])/3,160)
+        for name in ('crafting','chest','furnace','enchanting','brewing','cartography','loom'):
+            with Image.open(UI/f'photo_{name}_panel.png') as im, Image.open(MASKS/'dialog_background_opaque.png') as vanilla:
+                actual=im.convert('RGBA').getchannel('A')
+                expected=vanilla.convert('RGBA').getchannel('A').resize((128,128),Image.Resampling.NEAREST)
+                self.assertEqual(actual.tobytes(),expected.tobytes(),f'{name}: panel silhouette changed')
         with Image.open(UI/'photo_chest_panel.png') as im:
-            red,green,blue,_=im.getpixel((64,64));self.assertGreater(red,green);self.assertGreater(green,blue)
+            red,green,blue,_=im.convert('RGBA').getpixel((64,64));self.assertGreater(red,green);self.assertGreater(green,blue)
         with Image.open(UI/'photo_enchanting_panel.png') as im:
-            red,green,blue,_=im.getpixel((64,6));self.assertGreater(blue,green)
+            red,green,blue,_=im.convert('RGBA').getpixel((64,6));self.assertGreater(blue,green)
+        for name in EQUIPMENT:
+            with Image.open(UI/f'empty_armor_slot_{name}.png') as im:
+                alpha=im.convert('RGBA').getchannel('A')
+                self.assertEqual(alpha.getpixel((0,0)),0)
+                bbox=alpha.point(lambda value:255 if value>127 else 0).getbbox()
+                self.assertGreater(bbox[2]-bbox[0],20)
+                self.assertLess(bbox[2]-bbox[0],64)
+                self.assertGreater(len(im.convert('RGBA').getcolors(maxcolors=4096)),4)
+        # They remain bound to empty slots; no player/real item is replaced.
+        inv=read_sample(VANILLA/'inventory_screen.json')
+        for name in EQUIPMENT:
+            self.assertIn('textures/ui/empty_armor_slot_'+name,(VANILLA/'inventory_screen.json').read_text())
+        self.assertEqual(inv['armor_overlay']['bindings'][0]['binding_name'],'#empty_armor_image_visible')
+        self.assertEqual(inv['offhand_overlay']['bindings'][0]['binding_name'],'#empty_offhand_image_visible')
 
     def test_patch_targets_exist_in_vanilla_samples(self):
         for file,namespace in PATCHES.items():
@@ -126,17 +150,28 @@ class InterfaceTests(unittest.TestCase):
             ('chest_screen.json','large_chest_panel/root_panel/common_panel'):'chest.photo_chest_bg',
             ('furnace_screen.json','right_panel/common_panel'):'furnace.photo_furnace_bg',
             ('enchanting_screen.json','enchanting_panel/root_panel/common_panel'):'enchanting.photo_enchanting_bg',
+            ('brewing_stand_screen.json','brewing_stand_panel/root_panel/common_panel'):'brewing_stand.photo_brewing_bg',
+            ('cartography_screen.json','cartography_panel/root_panel/common_panel'):'cartography.photo_cartography_bg',
+            ('cartography_screen_pocket.json','left_panel/content/bg'):'cartography_pocket.photo_cartography_bg',
+            ('cartography_screen_pocket.json','right_panel/content/bg'):'cartography_pocket.photo_cartography_bg',
+            ('loom_screen.json','right_panel/common_panel'):'loom.photo_loom_bg',
+            ('loom_screen.json','pattern_book_panel/bg'):'loom.photo_loom_bg',
+            ('loom_screen_pocket.json','left_panel/content/bg'):'loom_pocket.photo_loom_bg',
+            ('loom_screen_pocket.json','right_panel/content/bg'):'loom_pocket.photo_loom_bg',
         }
         for (file,target),value in expected_targets.items():
             self.assertEqual(json.loads((PACK/'ui'/file).read_text())[target]['$dialog_background'],value)
         for file,panel in [('pocket_containers.json','photo_chest_panel'),
                            ('furnace_screen_pocket.json','photo_furnace_panel'),
-                           ('enchanting_screen_pocket.json','photo_enchanting_panel')]:
+                           ('enchanting_screen_pocket.json','photo_enchanting_panel'),
+                           ('brewing_stand_screen_pocket.json','photo_brewing_panel')]:
             patch=json.loads((PACK/'ui'/file).read_text())
             self.assertIn({'texture':'textures/ui/'+panel},patch.values())
         # Sample routing selects both classic and pocket layouts for these screens.
         for file,screen in [('chest_screen.json','small_chest_screen'),('chest_screen.json','large_chest_screen'),
-                            ('furnace_screen.json','furnace_screen'),('enchanting_screen.json','enchanting_screen')]:
+                            ('furnace_screen.json','furnace_screen'),('enchanting_screen.json','enchanting_screen'),
+                            ('brewing_stand_screen.json','brewing_stand_screen'),('cartography_screen.json','cartography_screen'),
+                            ('loom_screen.json','loom_screen')]:
             doc=read_sample(VANILLA/file);_,node=control(doc,screen)
             routes=[v.get('requires') for v in node.get('variables',[])]
             self.assertIn('$desktop_screen',routes);self.assertIn('$pocket_screen',routes)
@@ -145,7 +180,7 @@ class InterfaceTests(unittest.TestCase):
         manifest=json.loads((PACK/'manifest.json').read_text())
         uuid.UUID(manifest['header']['uuid']);uuid.UUID(manifest['modules'][0]['uuid'])
         self.assertNotEqual(manifest['header']['uuid'],json.loads((MAIN/'manifest.json').read_text())['header']['uuid'])
-        self.assertEqual(manifest['header']['version'],[1,1,0])
+        self.assertEqual(manifest['header']['version'],[1,2,0])
         expected={'manifest.json'} | {f'textures/ui/{name}.png' for name in SIDECARS | NO_META} | {f'textures/ui/{name}.json' for name in SIDECARS} | {f'ui/{p}' for p in PATCHES}
         with zipfile.ZipFile(ARCHIVE) as z:
             self.assertIsNone(z.testzip());self.assertEqual(set(z.namelist()),expected)
@@ -157,7 +192,7 @@ class InterfaceTests(unittest.TestCase):
             self.assertLess(path.stat().st_size,100*1024*1024)
             with zipfile.ZipFile(path) as z:
                 self.assertIsNone(z.testzip())
-                self.assertEqual(json.loads(z.read('manifest.json'))['header']['version'],[1,99,0])
+                self.assertEqual(json.loads(z.read('manifest.json'))['header']['version'],[2,0,0])
                 for name in expected-{'manifest.json'}:
                     self.assertEqual(z.read(name),(PACK/name).read_bytes())
                     self.assertEqual((MAIN/name).read_bytes(),(PACK/name).read_bytes())

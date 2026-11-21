@@ -41,7 +41,9 @@ def main(textures_only=False):
             data = original.read(item.filename)
             if item.filename == 'manifest.json':
                 data = (json.dumps(manifest, ensure_ascii=False, indent=2) + '\n').encode('utf-8')
-            output.writestr(item, data)
+            # Preserve entries and their compression type, but match the
+            # main archive's lossless level 9 to stay within hosting limits.
+            output.writestr(item, data, compresslevel=9)
     if textures_only:
         print(f'Built {COMPAT_PACK}; effects and original pack unchanged.')
     else:

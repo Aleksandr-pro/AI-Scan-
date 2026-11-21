@@ -1,0 +1,13 @@
+{
+  "namespace": "loom",
+  "photo_loom_bg": {
+    "type": "image",
+    "texture": "textures/ui/photo_loom_panel"
+  },
+  "right_panel/common_panel": {
+    "$dialog_background": "loom.photo_loom_bg"
+  },
+  "pattern_book_panel/bg": {
+    "$dialog_background": "loom.photo_loom_bg"
+  }
+}

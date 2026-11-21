@@ -1,0 +1,10 @@
+{
+  "namespace": "brewing_stand",
+  "photo_brewing_bg": {
+    "type": "image",
+    "texture": "textures/ui/photo_brewing_panel"
+  },
+  "brewing_stand_panel/root_panel/common_panel": {
+    "$dialog_background": "brewing_stand.photo_brewing_bg"
+  }
+}

@@ -523,7 +523,9 @@ for path in extra_omissions:
         raise ValueError(f'Missing build input: {path}')
 omitted.update(extra_omissions)
 (root / 'textures/terrain_texture.json').write_text(serialized, encoding='utf-8')
-with zipfile.ZipFile('minecraft/realistic-dirt.mcpack', 'w', zipfile.ZIP_DEFLATED) as archive:
+# Lossless maximum compression leaves room for new UI assets without dropping
+# any runtime files from the nearly 100 MiB GitHub distribution.
+with zipfile.ZipFile('minecraft/realistic-dirt.mcpack', 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
     for path in sorted(root.rglob('*')):
         if path.is_file() and path.relative_to(root) not in omitted:
             archive.write(path, path.relative_to(root))
