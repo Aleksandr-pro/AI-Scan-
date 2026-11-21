@@ -1,0 +1,357 @@
+{
+  "format_version": "1.20.20",
+  "sound_definitions": {
+    "step.grass": {
+      "__use_legacy_max_distance": "true",
+      "category": "player",
+      "max_distance": null,
+      "min_distance": null,
+      "sounds": [
+        {
+          "name": "sounds/realistic_audio/steps/grass1",
+          "load_on_low_memory": true
+        },
+        {
+          "name": "sounds/realistic_audio/steps/grass2",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/grass3",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/grass4",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/grass5",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/grass6",
+          "load_on_low_memory": false
+        }
+      ],
+      "subtitle": "subtitles.block.generic.footsteps"
+    },
+    "step.gravel": {
+      "__use_legacy_max_distance": "true",
+      "category": "player",
+      "max_distance": null,
+      "min_distance": null,
+      "sounds": [
+        {
+          "name": "sounds/realistic_audio/steps/gravel1",
+          "load_on_low_memory": true
+        },
+        {
+          "name": "sounds/realistic_audio/steps/gravel2",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/gravel3",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/gravel4",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/gravel5",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/gravel6",
+          "load_on_low_memory": false
+        }
+      ],
+      "subtitle": "subtitles.block.generic.footsteps"
+    },
+    "step.stone": {
+      "__use_legacy_max_distance": "true",
+      "category": "player",
+      "max_distance": null,
+      "min_distance": null,
+      "sounds": [
+        {
+          "name": "sounds/realistic_audio/steps/stone1",
+          "load_on_low_memory": true
+        },
+        {
+          "name": "sounds/realistic_audio/steps/stone2",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/stone3",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/stone4",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/stone5",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/stone6",
+          "load_on_low_memory": false
+        }
+      ],
+      "subtitle": "subtitles.block.generic.footsteps"
+    },
+    "step.wood": {
+      "__use_legacy_max_distance": "true",
+      "category": "player",
+      "max_distance": null,
+      "min_distance": null,
+      "sounds": [
+        {
+          "name": "sounds/realistic_audio/steps/wood1",
+          "load_on_low_memory": true
+        },
+        {
+          "name": "sounds/realistic_audio/steps/wood2",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/wood3",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/wood4",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/wood5",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/wood6",
+          "load_on_low_memory": false
+        }
+      ],
+      "subtitle": "subtitles.block.generic.footsteps"
+    },
+    "step.sand": {
+      "__use_legacy_max_distance": "true",
+      "category": "player",
+      "max_distance": null,
+      "min_distance": null,
+      "sounds": [
+        {
+          "name": "sounds/realistic_audio/steps/sand1",
+          "load_on_low_memory": true
+        },
+        {
+          "name": "sounds/realistic_audio/steps/sand2",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/sand3",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/sand4",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/sand5",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/sand6",
+          "load_on_low_memory": false
+        }
+      ],
+      "subtitle": "subtitles.block.generic.footsteps"
+    },
+    "step.snow": {
+      "__use_legacy_max_distance": "true",
+      "category": "player",
+      "max_distance": null,
+      "min_distance": null,
+      "sounds": [
+        {
+          "name": "sounds/realistic_audio/steps/snow1",
+          "load_on_low_memory": true
+        },
+        {
+          "name": "sounds/realistic_audio/steps/snow2",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/snow3",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/snow4",
+          "load_on_low_memory": false
+        }
+      ],
+      "subtitle": "subtitles.block.generic.footsteps"
+    },
+    "block.mud.step": {
+      "category": "block",
+      "max_distance": null,
+      "min_distance": null,
+      "sounds": [
+        {
+          "name": "sounds/realistic_audio/steps/mud1",
+          "load_on_low_memory": true
+        },
+        {
+          "name": "sounds/realistic_audio/steps/mud2",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/mud3",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/mud4",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/mud5",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/steps/mud6",
+          "load_on_low_memory": false
+        }
+      ],
+      "subtitle": "subtitles.block.generic.footsteps"
+    },
+    "ambient.weather.rain": {
+      "__use_legacy_max_distance": "true",
+      "category": "weather",
+      "max_distance": null,
+      "min_distance": 100.0,
+      "sounds": [
+        {
+          "name": "sounds/realistic_audio/weather/rain1",
+          "volume": 0.02,
+          "load_on_low_memory": true
+        },
+        {
+          "name": "sounds/realistic_audio/weather/rain2",
+          "volume": 0.02,
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/weather/rain3",
+          "volume": 0.02,
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/weather/rain4",
+          "volume": 0.02,
+          "load_on_low_memory": false
+        }
+      ],
+      "subtitle": "subtitles.weather.rain"
+    },
+    "ambient.weather.thunder": {
+      "__use_legacy_max_distance": "true",
+      "category": "weather",
+      "max_distance": null,
+      "min_distance": 100.0,
+      "sounds": [
+        {
+          "name": "sounds/realistic_audio/weather/thunder1",
+          "load_on_low_memory": true
+        },
+        {
+          "name": "sounds/realistic_audio/weather/thunder2",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/weather/thunder3",
+          "load_on_low_memory": false
+        }
+      ],
+      "subtitle": "subtitles.entity.lightning_bolt.thunder"
+    },
+    "block.campfire.crackle": {
+      "__use_legacy_max_distance": "true",
+      "category": "block",
+      "max_distance": 24.0,
+      "min_distance": null,
+      "sounds": [
+        {
+          "name": "sounds/realistic_audio/fire/crackle1",
+          "load_on_low_memory": true
+        },
+        {
+          "name": "sounds/realistic_audio/fire/crackle2",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/fire/crackle3",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/fire/crackle4",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/fire/crackle5",
+          "load_on_low_memory": false
+        },
+        {
+          "name": "sounds/realistic_audio/fire/crackle6",
+          "load_on_low_memory": false
+        }
+      ],
+      "subtitle": "subtitles.block.campfire.crackle"
+    },
+    "ambient.cave": {
+      "category": "ambient",
+      "max_distance": null,
+      "min_distance": null,
+      "sounds": [
+        "sounds/cave/cave1",
+        "sounds/cave/cave2",
+        "sounds/cave/cave3",
+        "sounds/cave/cave4",
+        "sounds/cave/cave5",
+        "sounds/cave/cave6",
+        "sounds/cave/cave7",
+        "sounds/cave/cave8",
+        "sounds/cave/cave9",
+        "sounds/cave/cave10",
+        "sounds/cave/cave11",
+        "sounds/cave/cave12",
+        "sounds/cave/cave13",
+        "sounds/cave/cave14",
+        "sounds/cave/cave15",
+        "sounds/cave/cave16",
+        "sounds/cave/cave17",
+        "sounds/cave/cave18",
+        "sounds/cave/cave19",
+        "sounds/cave/cave20",
+        "sounds/cave/cave21",
+        "sounds/cave/cave22",
+        "sounds/cave/cave23",
+        {
+          "name": "sounds/realistic_audio/cave/drips1",
+          "weight": 3
+        },
+        {
+          "name": "sounds/realistic_audio/cave/drips2",
+          "weight": 3
+        },
+        {
+          "name": "sounds/realistic_audio/cave/drips3",
+          "weight": 3
+        },
+        {
+          "name": "sounds/realistic_audio/cave/drips4",
+          "weight": 3
+        }
+      ],
+      "subtitle": "subtitles.ambient.sound"
+    }
+  }
+}

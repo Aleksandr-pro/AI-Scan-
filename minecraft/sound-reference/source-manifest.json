@@ -1,0 +1,369 @@
+{
+  "source_repository": "https://github.com/hoffspot/conquest",
+  "source_commit": "f685660a3dc9cf8fe323f010ab3ac33fa46cc493",
+  "license": "CC0 1.0",
+  "files": {
+    "step-grass-1.1b3723da.mp3": {
+      "type": "footstep",
+      "material": "grass",
+      "source_ids": [
+        "556042"
+      ],
+      "sha256": "1b3723da760d2913df815e230dfc223316fed3d31e8cbb88b63706f866dddd1f"
+    },
+    "step-grass-2.53007b05.mp3": {
+      "type": "footstep",
+      "material": "grass",
+      "source_ids": [
+        "556042"
+      ],
+      "sha256": "53007b057ecb5e3b35213dfd1d8677cfd9d32ccf3c31ea65974fca598a609822"
+    },
+    "step-grass-3.6bc8b51c.mp3": {
+      "type": "footstep",
+      "material": "grass",
+      "source_ids": [
+        "556042"
+      ],
+      "sha256": "6bc8b51cd003c75de1037fd4a141b0ffa9c718f645e6f2d3921e465e81e70075"
+    },
+    "step-grass-4.506cce84.mp3": {
+      "type": "footstep",
+      "material": "grass",
+      "source_ids": [
+        "556042"
+      ],
+      "sha256": "506cce843a7d811fc9049be6fe57a364ad7ec058f86a1bf9d07547543d4a99af"
+    },
+    "step-grass-5.823510f4.mp3": {
+      "type": "footstep",
+      "material": "grass",
+      "source_ids": [
+        "556042"
+      ],
+      "sha256": "823510f4c6e112308a067ed6e66dda8f41af76f0b27677a368f40ba83667bb6e"
+    },
+    "step-grass-6.09331791.mp3": {
+      "type": "footstep",
+      "material": "grass",
+      "source_ids": [
+        "556042"
+      ],
+      "sha256": "09331791fe2f2c5906a08a4426164a625684d1acbdc9cffc3b10edf58c444310"
+    },
+    "step-gravel-1.9302eeab.mp3": {
+      "type": "footstep",
+      "material": "gravel",
+      "source_ids": [
+        "556002"
+      ],
+      "sha256": "9302eeabb7cfcdcd5f4ab1d18006ca2033e8e3ead0b45a2ccfe28ed9cb88f534"
+    },
+    "step-gravel-2.f05a1f79.mp3": {
+      "type": "footstep",
+      "material": "gravel",
+      "source_ids": [
+        "556002"
+      ],
+      "sha256": "f05a1f79459432754ac9f366bdf61ed6967cee0f68f5ebcbe565a4a5840abaac"
+    },
+    "step-gravel-3.bca1e20a.mp3": {
+      "type": "footstep",
+      "material": "gravel",
+      "source_ids": [
+        "556002"
+      ],
+      "sha256": "bca1e20ac78074b8f9a709390d897a68cf0ac25c7780c78287bc407324c43d21"
+    },
+    "step-gravel-4.00aa0d2d.mp3": {
+      "type": "footstep",
+      "material": "gravel",
+      "source_ids": [
+        "556002"
+      ],
+      "sha256": "00aa0d2d229f00a4609e24c722cd2681453e01789737617cb3e5d85dc4ade8e5"
+    },
+    "step-gravel-5.92f9b6ab.mp3": {
+      "type": "footstep",
+      "material": "gravel",
+      "source_ids": [
+        "556002"
+      ],
+      "sha256": "92f9b6abb9e17928e95cef9de5ee3bb9e66d2a309183dab28d6d7aa40d97591d"
+    },
+    "step-gravel-6.e060d839.mp3": {
+      "type": "footstep",
+      "material": "gravel",
+      "source_ids": [
+        "556002"
+      ],
+      "sha256": "e060d8394361a256e5aa15e7069e98f4aa323dbc48593a04f89497b41fa2c228"
+    },
+    "step-stone-1.be3548ca.mp3": {
+      "type": "footstep",
+      "material": "stone",
+      "source_ids": [
+        "558472"
+      ],
+      "sha256": "be3548ca594c8702f0a28f5abbd4313ea51060e15703f475eb230e4a440195d2"
+    },
+    "step-stone-2.2813f3a5.mp3": {
+      "type": "footstep",
+      "material": "stone",
+      "source_ids": [
+        "558472"
+      ],
+      "sha256": "2813f3a59afb367d6563a595e6de35a7f6a316be84ae30f294b08e1744fa5757"
+    },
+    "step-stone-3.6bd244ad.mp3": {
+      "type": "footstep",
+      "material": "stone",
+      "source_ids": [
+        "558472"
+      ],
+      "sha256": "6bd244add4f3a242b66d317ce3f391b46aa3bf28e3e29129ee007d8ee3dd56b0"
+    },
+    "step-stone-4.fdf8dc64.mp3": {
+      "type": "footstep",
+      "material": "stone",
+      "source_ids": [
+        "558472"
+      ],
+      "sha256": "fdf8dc64c2817384ff9226b45ec7ac5aff549b47db28517f25a375029187ec47"
+    },
+    "step-stone-5.bb46d86a.mp3": {
+      "type": "footstep",
+      "material": "stone",
+      "source_ids": [
+        "558472"
+      ],
+      "sha256": "bb46d86afe9690c7d52a4d35e56f2bb056ed79bf9a53759995dd2aebdba1084a"
+    },
+    "step-stone-6.f5de1e50.mp3": {
+      "type": "footstep",
+      "material": "stone",
+      "source_ids": [
+        "558472"
+      ],
+      "sha256": "f5de1e50c0f7ed60356c8563ef63be73d56a80556f3af13b7f38f6e2cede90ff"
+    },
+    "step-wood-1.48da0d0c.mp3": {
+      "type": "footstep",
+      "material": "wood",
+      "source_ids": [
+        "543685"
+      ],
+      "sha256": "48da0d0c3ec69a65bec938f3c068f8862b71204b56fee3129d7c6e5ecf909263"
+    },
+    "step-wood-2.48060753.mp3": {
+      "type": "footstep",
+      "material": "wood",
+      "source_ids": [
+        "543685"
+      ],
+      "sha256": "4806075335e9a6fe9e28259a94a8b1937cd009c09ce195b18aae32a0e1bda47d"
+    },
+    "step-wood-3.9dddc5d0.mp3": {
+      "type": "footstep",
+      "material": "wood",
+      "source_ids": [
+        "543685"
+      ],
+      "sha256": "9dddc5d0279bfee30891632a39e197935239a6faa226df80c6f9edd729e8fe60"
+    },
+    "step-wood-4.0758080e.mp3": {
+      "type": "footstep",
+      "material": "wood",
+      "source_ids": [
+        "543685"
+      ],
+      "sha256": "0758080e57613f37331bb719314c5327fd0d333f9c100dac8b3e9c8e9c24788d"
+    },
+    "step-wood-5.4087fb2f.mp3": {
+      "type": "footstep",
+      "material": "wood",
+      "source_ids": [
+        "543685"
+      ],
+      "sha256": "4087fb2f83ee74147b5470cc2d65ce11bc06e6d2cf35c231ab81e0139adff934"
+    },
+    "step-wood-6.51a50469.mp3": {
+      "type": "footstep",
+      "material": "wood",
+      "source_ids": [
+        "543685"
+      ],
+      "sha256": "51a504693f91e5282f8be015d3e4b53777fb8496deeb446fc2658294fc8d9cc2"
+    },
+    "step-sand-1.2ca22ae1.mp3": {
+      "type": "footstep",
+      "material": "sand",
+      "source_ids": [
+        "564893"
+      ],
+      "sha256": "2ca22ae1d65efc48a33714dd2bf988d5a022f4021639a30db7222ecceb3591e0"
+    },
+    "step-sand-2.b5adcbc1.mp3": {
+      "type": "footstep",
+      "material": "sand",
+      "source_ids": [
+        "564893"
+      ],
+      "sha256": "b5adcbc1487b88edfd5161155ec70e2aae8c97da78ed83e55666af2150f48799"
+    },
+    "step-sand-3.a580ffcf.mp3": {
+      "type": "footstep",
+      "material": "sand",
+      "source_ids": [
+        "564893"
+      ],
+      "sha256": "a580ffcf533b9afcd0380776c439832c89d726f21088208671739ddb5d64305f"
+    },
+    "step-sand-4.5bd2035e.mp3": {
+      "type": "footstep",
+      "material": "sand",
+      "source_ids": [
+        "564893"
+      ],
+      "sha256": "5bd2035efe27c7455e20e1c62c3e9b7c7aa97618e5a3f50116c8f0da18660634"
+    },
+    "step-sand-5.e2b30149.mp3": {
+      "type": "footstep",
+      "material": "sand",
+      "source_ids": [
+        "564893"
+      ],
+      "sha256": "e2b30149f598a4de27cfb6c940122885e856f399c6bb5d650753fccce66b359e"
+    },
+    "step-sand-6.3851a202.mp3": {
+      "type": "footstep",
+      "material": "sand",
+      "source_ids": [
+        "564893"
+      ],
+      "sha256": "3851a20298f550a5b9e6a8aaae94a5ea15aaf6360186ea730a16d80d5e2714c1"
+    },
+    "step-snow-1.43634bd9.mp3": {
+      "type": "footstep",
+      "material": "snow",
+      "source_ids": [
+        "613849"
+      ],
+      "sha256": "43634bd94edb512da7234459b3f7afb82d6053cc485d4ef14caf344443094d66"
+    },
+    "step-snow-2.c95cbb2d.mp3": {
+      "type": "footstep",
+      "material": "snow",
+      "source_ids": [
+        "613849"
+      ],
+      "sha256": "c95cbb2de30470dc61337c505df1869ea2f4b096ba6a3447a1f57bd04273fc0c"
+    },
+    "step-snow-3.da2cf652.mp3": {
+      "type": "footstep",
+      "material": "snow",
+      "source_ids": [
+        "613849"
+      ],
+      "sha256": "da2cf652653cd528a9fdc3318efe2c025230915f062a6f32371d31fc85484c17"
+    },
+    "step-snow-4.98186820.mp3": {
+      "type": "footstep",
+      "material": "snow",
+      "source_ids": [
+        "613849"
+      ],
+      "sha256": "98186820d935bbca6694adc439a2464e21524f48d1c47f0cd689121a6cc63159"
+    },
+    "step-mud-1.93a262a2.mp3": {
+      "type": "footstep",
+      "material": "mud",
+      "source_ids": [
+        "548384"
+      ],
+      "sha256": "93a262a2c3a5582fb516636074a72d6435718dbe4149b51c8f3bdee320a5740e"
+    },
+    "step-mud-2.aa8cd86b.mp3": {
+      "type": "footstep",
+      "material": "mud",
+      "source_ids": [
+        "548384"
+      ],
+      "sha256": "aa8cd86b0b7a13e2a315d2ce79d51fe4dd4dd240d539729c6b94a326f4a9c665"
+    },
+    "step-mud-3.a6eaa924.mp3": {
+      "type": "footstep",
+      "material": "mud",
+      "source_ids": [
+        "548384"
+      ],
+      "sha256": "a6eaa92473589172ec47e187bfff8d04caff8a46c9ea6793ad45e043d432c809"
+    },
+    "step-mud-4.4f4fab9a.mp3": {
+      "type": "footstep",
+      "material": "mud",
+      "source_ids": [
+        "548384"
+      ],
+      "sha256": "4f4fab9a2ed5fb9d51fcdaf15f4a20cb1ee953367aa92db6b505b002c3434aed"
+    },
+    "step-mud-5.b315a51a.mp3": {
+      "type": "footstep",
+      "material": "mud",
+      "source_ids": [
+        "548384"
+      ],
+      "sha256": "b315a51af4efaed37301b29357446d3be6657430481e3506d19d4ed9caea7c67"
+    },
+    "step-mud-6.341a3415.mp3": {
+      "type": "footstep",
+      "material": "mud",
+      "source_ids": [
+        "548384"
+      ],
+      "sha256": "341a34150b5baa1ce8c901d3fe5f37fc8b46e2fd9911d8bf1095ba25f70bc07d"
+    },
+    "rain-loop-1.444e0324.mp3": {
+      "type": "ambience",
+      "source_ids": [
+        "freesound-200273"
+      ],
+      "sha256": "444e03241b021357b06ef5d4dfc08a976e59926701a617cb593ca4d6f98ce63b"
+    },
+    "thunder-1.2c22c4be.mp3": {
+      "type": "ambience",
+      "source_ids": [
+        "freesound-361401"
+      ],
+      "sha256": "2c22c4be41674366a3468004c0ae88abb26f7a1059ec13f1186d95f7b45b5a68"
+    },
+    "thunder-2.71ec893a.mp3": {
+      "type": "ambience",
+      "source_ids": [
+        "freesound-361401"
+      ],
+      "sha256": "71ec893af2397a48a16c00d2631a5940631c56f65c5b66d877fb675f9b53dc1d"
+    },
+    "thunder-3.8c9ed4d8.mp3": {
+      "type": "ambience",
+      "source_ids": [
+        "freesound-581125"
+      ],
+      "sha256": "8c9ed4d850f83d49c0f7b3572fa9870fa6892638788c2ecd3e36784aa1339885"
+    },
+    "campfire-loop-1.965f39c0.mp3": {
+      "type": "ambience",
+      "source_ids": [
+        "freesound-637523"
+      ],
+      "sha256": "965f39c03b38c09e43a42372e0c6ed78bb010f4fdb5920909fd7634b2619e7af"
+    },
+    "cave-drips-1.48302f17.mp3": {
+      "type": "ambience",
+      "source_ids": [
+        "freesound-402929"
+      ],
+      "sha256": "48302f1719f7991076fe4b5992cd12f278ec3aed07e591c5abe2184a19c76b68"
+    }
+  }
+}
