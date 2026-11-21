@@ -37,8 +37,8 @@ class CarrotTests(unittest.TestCase):
             with zipfile.ZipFile(Path('minecraft') / pack) as archive:
                 self.assertIsNone(archive.testzip())
                 manifest = json.loads(archive.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'], [1, 91, 0])
-                self.assertEqual(manifest['modules'][0]['version'], [1, 91, 0])
+                self.assertEqual(manifest['header']['version'], [1, 92, 0])
+                self.assertEqual(manifest['modules'][0]['version'], [1, 92, 0])
                 self.assertEqual(archive.read('textures/blocks/carrots_stage_3.png'), OUTPUT.read_bytes())
                 for stage in range(3):
                     path = f'textures/blocks/carrots_stage_{stage}.png'
