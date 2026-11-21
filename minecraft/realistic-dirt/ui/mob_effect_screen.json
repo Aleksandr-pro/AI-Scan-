@@ -1,0 +1,12 @@
+{
+  "namespace": "mob_effect",
+  "main_background": {
+    "texture": "textures/ui/photo_menu_pressed"
+  },
+  "effect_background/default_background": {
+    "texture": "textures/ui/photo_menu_default"
+  },
+  "effect_background/ambient_background": {
+    "texture": "textures/ui/photo_menu_selected"
+  }
+}

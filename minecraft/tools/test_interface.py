@@ -23,6 +23,7 @@ SIDECARS={
     'classic-button':([5,5],2), 'classic-button-hover':([5,5],2),
     'classic-button-pressed':([5,5],2), 'effect_background':([120,32],4),
     **{f'photo_{name}_panel':([16,16],4) for name in ('crafting','chest','furnace','enchanting','brewing','cartography','loom')},
+    **{f'photo_menu_{name}':([4,4],1) for name in ('default','selected','hover','pressed','locked')},
 }
 EQUIPMENT=('helmet','chestplate','leggings','boots','shield')
 NO_META=({f'hotbar_{i}':(80,88) for i in range(9)} | {'selected_hotbar_slot':(96,96)}
@@ -34,6 +35,9 @@ PATCHES={'inventory_screen.json':'crafting','inventory_screen_pocket.json':'craf
          'brewing_stand_screen.json':'brewing_stand','brewing_stand_screen_pocket.json':'brewing_stand_pocket',
          'cartography_screen.json':'cartography','cartography_screen_pocket.json':'cartography_pocket',
          'loom_screen.json':'loom','loom_screen_pocket.json':'loom_pocket'}
+
+MENU_PATCHES={'pause_screen.json':'pause','settings_sections/settings_common.json':'settings_common',
+              'mob_effect_screen.json':'mob_effect'}
 
 
 def read_sample(path):
@@ -176,12 +180,57 @@ class InterfaceTests(unittest.TestCase):
             routes=[v.get('requires') for v in node.get('variables',[])]
             self.assertIn('$desktop_screen',routes);self.assertIn('$pocket_screen',routes)
 
+    def test_menu_patch_targets_and_bindings(self):
+        patches={}
+        for filename,namespace in MENU_PATCHES.items():
+            vanilla=read_sample(VANILLA/filename)
+            patch=json.loads((PACK/'ui'/filename).read_text())
+            self.assertEqual(vanilla['namespace'],namespace)
+            self.assertEqual(patch['namespace'],namespace)
+            for target,change in patch.items():
+                if target=='namespace':continue
+                resolve_path(vanilla,target)
+                # Only visual fields are touched; no control trees or bindings.
+                self.assertTrue(all(k in ('texture','color') or k.startswith('$') for k in change))
+                for value in change.values():
+                    if isinstance(value,str) and value.startswith('textures/ui/'):
+                        self.assertTrue((PACK/(value+'.png')).is_file())
+            patches[filename]=patch
+        pause=patches['pause_screen.json']
+        for target in ('pause_button_template','grid_button_template'):
+            self.assertEqual(pause[target]['$default_button_texture'],'textures/ui/photo_menu_default')
+            self.assertEqual(pause[target]['$hover_button_texture'],'textures/ui/photo_menu_hover')
+            self.assertEqual(pause[target]['$pressed_button_texture'],'textures/ui/photo_menu_pressed')
+            self.assertEqual(pause[target]['$default_text_color'],[1,1,1])
+        settings=patches['settings_sections/settings_common.json']
+        toggle=settings['section_toggle_base']
+        for key,state in [('$default_texture','default'),('$hover_texture','selected'),
+                          ('$pressed_texture','hover'),('$pressed_no_hover_texture','pressed')]:
+            self.assertEqual(toggle[key],f'textures/ui/photo_menu_{state}')
+        self.assertEqual(settings['settings_content/background']['color'],[0.32]*3)
+        effects=read_sample(VANILLA/'mob_effect_screen.json')
+        for child,expr in [('default_background','(not #mob_effect_is_ambient)'),
+                           ('ambient_background','#mob_effect_is_ambient')]:
+            self.assertEqual(resolve_path(effects,'effect_background/'+child)['bindings'][0]['binding_name'],expr)
+        self.assertEqual(effects['effect_icon']['texture'],'#texture')
+        self.assertEqual(effects['effect_name']['text'],'#mob_effect_name')
+        self.assertEqual(effects['effect_timer']['text'],'#mob_effect_timer')
+        self.assertEqual(set(patches['mob_effect_screen.json']),{'namespace','main_background',
+                         'effect_background/default_background','effect_background/ambient_background'})
+        samples=[]
+        for name in ('default','selected','hover','pressed','locked'):
+            with Image.open(UI/f'photo_menu_{name}.png') as im:
+                self.assertEqual(im.size,(32,32))
+                samples.append(im.convert('RGBA').getpixel((16,16)))
+                self.assertLess(max(samples[-1][:3]),160)
+        self.assertEqual(len(set(samples)),5)
+
     def test_archive_and_scope(self):
         manifest=json.loads((PACK/'manifest.json').read_text())
         uuid.UUID(manifest['header']['uuid']);uuid.UUID(manifest['modules'][0]['uuid'])
         self.assertNotEqual(manifest['header']['uuid'],json.loads((MAIN/'manifest.json').read_text())['header']['uuid'])
-        self.assertEqual(manifest['header']['version'],[1,2,0])
-        expected={'manifest.json'} | {f'textures/ui/{name}.png' for name in SIDECARS | NO_META} | {f'textures/ui/{name}.json' for name in SIDECARS} | {f'ui/{p}' for p in PATCHES}
+        self.assertEqual(manifest['header']['version'],[1,3,0])
+        expected={'manifest.json'} | {f'textures/ui/{name}.png' for name in SIDECARS | NO_META} | {f'textures/ui/{name}.json' for name in SIDECARS} | {f'ui/{p}' for p in PATCHES | MENU_PATCHES}
         with zipfile.ZipFile(ARCHIVE) as z:
             self.assertIsNone(z.testzip());self.assertEqual(set(z.namelist()),expected)
             for name in expected:self.assertEqual(z.read(name),(PACK/name).read_bytes())
@@ -192,7 +241,7 @@ class InterfaceTests(unittest.TestCase):
             self.assertLess(path.stat().st_size,100*1024*1024)
             with zipfile.ZipFile(path) as z:
                 self.assertIsNone(z.testzip())
-                self.assertEqual(json.loads(z.read('manifest.json'))['header']['version'],[2,0,0])
+                self.assertEqual(json.loads(z.read('manifest.json'))['header']['version'],[2, 1, 0])
                 for name in expected-{'manifest.json'}:
                     self.assertEqual(z.read(name),(PACK/name).read_bytes())
                     self.assertEqual((MAIN/name).read_bytes(),(PACK/name).read_bytes())

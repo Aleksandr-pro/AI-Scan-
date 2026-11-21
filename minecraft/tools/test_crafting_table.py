@@ -46,7 +46,7 @@ class CraftingTableTests(unittest.TestCase):
         for name in ('realistic-dirt.mcpack', 'realistic-dirt-vibrant.mcpack'):
             with zipfile.ZipFile(Path('minecraft') / name) as pack:
                 self.assertIsNone(pack.testzip())
-                self.assertEqual(json.loads(pack.read('manifest.json'))['header']['version'], [2, 0, 0])
+                self.assertEqual(json.loads(pack.read('manifest.json'))['header']['version'], [2, 1, 0])
                 for path in ['blocks.json', 'textures/terrain_texture.json'] + [
                     f'textures/blocks/photo_crafting_table_{face}.png' for face in FACES
                 ]:

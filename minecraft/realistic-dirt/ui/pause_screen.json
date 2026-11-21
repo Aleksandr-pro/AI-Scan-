@@ -1,0 +1,43 @@
+{
+  "namespace": "pause",
+  "pause_button_template": {
+    "$default_button_texture": "textures/ui/photo_menu_default",
+    "$hover_button_texture": "textures/ui/photo_menu_hover",
+    "$pressed_button_texture": "textures/ui/photo_menu_pressed",
+    "$default_text_color": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "$hover_text_color": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "$pressed_text_color": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "grid_button_template": {
+    "$default_button_texture": "textures/ui/photo_menu_default",
+    "$hover_button_texture": "textures/ui/photo_menu_hover",
+    "$pressed_button_texture": "textures/ui/photo_menu_pressed",
+    "$default_text_color": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "$hover_text_color": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "$pressed_text_color": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  }
+}

@@ -66,7 +66,7 @@ class WhiteShulkerAnvilTests(unittest.TestCase):
             self.assertLess(path.stat().st_size,100*1024*1024)
             with zipfile.ZipFile(path) as z:
                 self.assertIsNone(z.testzip());manifest=json.loads(z.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'],[2,0,0]);self.assertEqual(manifest['modules'][0]['version'],[2,0,0])
+                self.assertEqual(manifest['header']['version'],[2, 1, 0]);self.assertEqual(manifest['modules'][0]['version'],[2, 1, 0])
                 for p in paths:self.assertEqual(z.read(p.relative_to(ROOT).as_posix()),p.read_bytes())
                 self.assertNotIn('textures/entity/shulker/shulker_undyed.png',z.namelist())
                 self.assertNotIn('entity/shulker.entity.json',z.namelist())
