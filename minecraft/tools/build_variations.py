@@ -393,6 +393,14 @@ for face in ('north', 'east', 'south', 'west', 'top'):
         'textures': 'textures/blocks/photo_crafting_table_' + face
     }
 
+# Four photographic leaf surfaces for each vanilla dripleaf model. Stems,
+# sides and model UVs remain independent; no custom plant geometry is added.
+for name in ('big_dripleaf_top', 'small_dripleaf_top'):
+    terrain['texture_data'][name] = {'textures': {'variations': [
+        {'path': 'textures/blocks/' + name + (f'_variant_{i}' if i else ''), 'weight': 1}
+        for i in range(4)
+    ]}}
+
 # Ordinary moss block and carpet share the same vanilla atlas entry. All
 # four photographic tiles share matching borders. Lily pad uses its own
 # six full-colour textures; override vanilla's green #208030 static tint.

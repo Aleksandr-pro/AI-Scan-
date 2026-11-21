@@ -49,8 +49,8 @@ class SweetBerryTests(unittest.TestCase):
             with zipfile.ZipFile(Path('minecraft') / name) as archive:
                 self.assertIsNone(archive.testzip())
                 manifest = json.loads(archive.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'], [1, 90, 0])
-                self.assertEqual(manifest['modules'][0]['version'], [1, 90, 0])
+                self.assertEqual(manifest['header']['version'], [1, 91, 0])
+                self.assertEqual(manifest['modules'][0]['version'], [1, 91, 0])
                 for stage in range(4):
                     path = f'textures/blocks/sweet_berry_bush_stage{stage}.png'
                     self.assertEqual(archive.read(path), (ROOT / path).read_bytes())
