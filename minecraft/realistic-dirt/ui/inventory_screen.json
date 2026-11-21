@@ -1,0 +1,10 @@
+{
+  "namespace": "crafting",
+  "photo_crafting_bg": {
+    "type": "image",
+    "texture": "textures/ui/photo_crafting_panel"
+  },
+  "player_inventory/common_panel": {
+    "$dialog_background": "crafting.photo_crafting_bg"
+  }
+}

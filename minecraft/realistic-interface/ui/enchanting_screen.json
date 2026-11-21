@@ -1,0 +1,10 @@
+{
+  "namespace": "enchanting",
+  "photo_enchanting_bg": {
+    "type": "image",
+    "texture": "textures/ui/photo_enchanting_panel"
+  },
+  "enchanting_panel/root_panel/common_panel": {
+    "$dialog_background": "enchanting.photo_enchanting_bg"
+  }
+}

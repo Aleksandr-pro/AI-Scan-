@@ -39,7 +39,7 @@ class FernTests(unittest.TestCase):
             with zipfile.ZipFile(Path('minecraft') / pack) as z:
                 self.assertIsNone(z.testzip())
                 manifest = json.loads(z.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'], [1, 98, 0])
+                self.assertEqual(manifest['header']['version'], [1, 99, 0])
                 self.assertEqual(manifest['header']['version'], manifest['modules'][0]['version'])
                 self.assertEqual(z.read('textures/blocks/fern.png'), OUTPUT.read_bytes())
                 self.assertEqual(json.loads(z.read('textures/terrain_texture.json'))['texture_data']['fern'], terrain['fern'])

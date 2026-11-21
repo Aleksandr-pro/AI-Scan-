@@ -1,17 +1,29 @@
 {
   "format_version": 2,
   "header": {
-    "name": "Каменный интерфейс — фото",
-    "description": "Отдельный экспериментальный интерфейс для Minecraft Bedrock",
+    "name": "Фото-интерфейсы: 4 экрана",
+    "description": "Обновлённый пакет оформления Bedrock: создание, сундук, печь, чары",
     "uuid": "beb418ad-2f4d-48e6-89c8-d3d7a273a072",
-    "version": [1, 0, 0],
-    "min_engine_version": [1, 21, 0]
+    "version": [
+      1,
+      1,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      0
+    ]
   },
   "modules": [
     {
       "type": "resources",
       "uuid": "71ef8358-d694-41a2-b776-2a1f50c3a51b",
-      "version": [1, 0, 0]
+      "version": [
+        1,
+        1,
+        0
+      ]
     }
   ]
 }

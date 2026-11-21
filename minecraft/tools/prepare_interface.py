@@ -7,7 +7,6 @@ not put screenshot text, icons, grids or controls into panel backgrounds.
 """
 from pathlib import Path
 import json
-import zipfile
 from PIL import Image, ImageDraw, ImageEnhance, ImageOps
 
 ROOT = Path('minecraft')
@@ -119,7 +118,7 @@ def effect():
     write('effect_background',im,[120,32],4)
 
 
-def main():
+def prepare_assets():
     UI.mkdir(parents=True,exist_ok=True)
     for name in ('dialog_background_opaque','dialog_background_opaque_overlap_bottom','background_panel'):
         panel(name)
@@ -143,11 +142,12 @@ def main():
         button(name,[5,5],2,brightness,light,dark)
     hotbar()
     effect()
-    with zipfile.ZipFile(ARCHIVE, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as z:
-        for path in sorted(PACK.rglob('*')):
-            if path.is_file():
-                z.write(path, path.relative_to(PACK).as_posix())
-    print(f'Built {ARCHIVE}')
+
+
+def main():
+    # The current full build also creates the four screen-specific styles.
+    from prepare_four_interfaces import main as build_four
+    build_four()
 
 
 if __name__=='__main__': main()
