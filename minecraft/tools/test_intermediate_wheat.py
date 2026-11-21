@@ -40,8 +40,8 @@ class IntermediateWheatTests(unittest.TestCase):
             with zipfile.ZipFile(Path('minecraft') / name) as pack:
                 self.assertIsNone(pack.testzip())
                 manifest = json.loads(pack.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'], [1, 90, 0])
-                self.assertEqual(manifest['modules'][0]['version'], [1, 90, 0])
+                self.assertEqual(manifest['header']['version'], [1, 91, 0])
+                self.assertEqual(manifest['modules'][0]['version'], [1, 91, 0])
                 for stage in range(8):
                     path = f'textures/blocks/wheat_stage_{stage}.png'
                     self.assertEqual(pack.read(path), (ROOT / path).read_bytes())

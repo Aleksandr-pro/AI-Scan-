@@ -1275,6 +1275,50 @@
     "photo_crafting_table_top": {
       "textures": "textures/blocks/photo_crafting_table_top"
     },
+    "big_dripleaf_top": {
+      "textures": {
+        "variations": [
+          {
+            "path": "textures/blocks/big_dripleaf_top",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/big_dripleaf_top_variant_1",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/big_dripleaf_top_variant_2",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/big_dripleaf_top_variant_3",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    "small_dripleaf_top": {
+      "textures": {
+        "variations": [
+          {
+            "path": "textures/blocks/small_dripleaf_top",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/small_dripleaf_top_variant_1",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/small_dripleaf_top_variant_2",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/small_dripleaf_top_variant_3",
+            "weight": 1
+          }
+        ]
+      }
+    },
     "moss_block": {
       "textures": {
         "variations": [
