@@ -241,7 +241,7 @@ class InterfaceTests(unittest.TestCase):
             self.assertLess(path.stat().st_size,100*1024*1024)
             with zipfile.ZipFile(path) as z:
                 self.assertIsNone(z.testzip())
-                self.assertEqual(json.loads(z.read('manifest.json'))['header']['version'],[2, 3, 0])
+                self.assertEqual(json.loads(z.read('manifest.json'))['header']['version'],[2, 4, 0])
                 for name in expected-{'manifest.json'}:
                     self.assertEqual(z.read(name),(PACK/name).read_bytes())
                     self.assertEqual((MAIN/name).read_bytes(),(PACK/name).read_bytes())

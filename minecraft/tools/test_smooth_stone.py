@@ -54,8 +54,8 @@ class SmoothStoneTests(unittest.TestCase):
                 self.assertIsNone(z.testzip())
                 self.assertEqual(json.loads(z.read('textures/terrain_texture.json')),terrain)
                 manifest=json.loads(z.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'],[2,3,0])
-                self.assertEqual(manifest['modules'][0]['version'],[2,3,0])
+                self.assertEqual(manifest['header']['version'],[2, 4, 0])
+                self.assertEqual(manifest['modules'][0]['version'],[2, 4, 0])
                 for name in (FACE,SIDE):
                     self.assertEqual(z.read(f'textures/blocks/{name}.png'),(BLOCKS/(name+'.png')).read_bytes())
                 self.assertNotIn('textures/blocks/stone_slab_top.png',z.namelist())

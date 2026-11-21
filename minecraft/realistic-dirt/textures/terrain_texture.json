@@ -1309,6 +1309,12 @@
     "photo_stained_glass_pink": {
       "textures": "textures/blocks/photo_stained_glass_pink"
     },
+    "warped_planks": {
+      "textures": "textures/blocks/photo_warped_planks"
+    },
+    "crimson_planks": {
+      "textures": "textures/blocks/photo_crimson_planks"
+    },
     "smooth_stone": {
       "textures": "textures/blocks/photo_smooth_stone"
     },

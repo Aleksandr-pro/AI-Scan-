@@ -421,6 +421,11 @@ for color in ('black', 'white', 'pink'):
     key = 'photo_stained_glass_' + color
     terrain['texture_data'][key] = {'textures': 'textures/blocks/' + key}
 
+# The two Nether plank keys retain their vanilla block bindings. Private
+# filenames leave the distinct sign atlas keys and other assets untouched.
+for kind in ('warped', 'crimson'):
+    terrain['texture_data'][kind+'_planks'] = {'textures': 'textures/blocks/photo_'+kind+'_planks'}
+
 # Modern smooth stone and slab keys: isolate them from comparator/repeater
 # and the old indexed slab array, which also contains unrelated materials.
 for key in ('smooth_stone', 'smooth_stone_slab_top', 'smooth_stone_slab_bottom'):
