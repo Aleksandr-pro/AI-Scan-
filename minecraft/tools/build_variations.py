@@ -210,7 +210,12 @@ for i, factor in enumerate((1.0, 0.97, 1.03, 0.985)):
 tops = [{'path': 'textures/blocks/grass_top', 'weight': 1}] + [
     {'path': f'textures/blocks/grass_top_variant_{i}', 'weight': 1} for i in range(1, 4)]
 sides = [{'path': f'textures/blocks/grass_side_variant_{i:02}', 'weight': 1} for i in range(16)]
-plants = [{'path': f'textures/blocks/short_grass_variant_{i}', 'weight': 1} for i in range(5)]
+# Variant zero is byte-identical to tallgrass.png, the vanilla fallback. Use
+# one archive copy while retaining both prepared source files for rebuilding.
+if (blocks / 'short_grass_variant_0.png').read_bytes() != (blocks / 'tallgrass.png').read_bytes():
+    raise ValueError('Short grass alias must be byte-identical to tallgrass')
+plants = [{'path': 'textures/blocks/tallgrass', 'weight': 1}] + [
+    {'path': f'textures/blocks/short_grass_variant_{i}', 'weight': 1} for i in range(1, 5)]
 terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'padding': 8, 'num_mip_levels': 4,
            'texture_data': {
                # A separate atlas key changes only the full glass block, not
@@ -457,6 +462,12 @@ for key, names in flower_variants.items():
 # Reuse base PNGs only when a generated variant_0 is byte-for-byte identical.
 # Limit this to explicitly referenced variation paths: vanilla and other pack
 # assets may load their original filenames implicitly. Source files are kept.
+# These are strictly build inputs or an exact duplicate, not runtime paths.
+# Check the atlas and other JSON before excluding either one from the archive.
+extra_omissions = {
+    Path('textures/blocks/short_grass_variant_0.png'),
+    Path('textures/blocks/grass_path_side_source.png'),
+}
 omitted = set()
 def reuse_identical_variants(value):
     if isinstance(value, dict):
@@ -485,9 +496,16 @@ reuse_identical_variants(terrain)
 # If another atlas entry still names a candidate, retain the file.
 serialized = json.dumps(terrain, indent=2) + '\n'
 omitted = {p for p in omitted if str(p.with_suffix('')) not in serialized}
+for path in extra_omissions:
+    ref = path.with_suffix('').as_posix()
+    if ref in serialized or any(ref in p.read_text(encoding='utf-8') for p in root.rglob('*.json') if p.name != 'terrain_texture.json'):
+        raise ValueError(f'Cannot omit a referenced build input: {ref}')
+    if not (root / path).is_file():
+        raise ValueError(f'Missing build input: {path}')
+omitted.update(extra_omissions)
 (root / 'textures/terrain_texture.json').write_text(serialized, encoding='utf-8')
 with zipfile.ZipFile('minecraft/realistic-dirt.mcpack', 'w', zipfile.ZIP_DEFLATED) as archive:
     for path in sorted(root.rglob('*')):
         if path.is_file() and path.relative_to(root) not in omitted:
             archive.write(path, path.relative_to(root))
-print(f'Reused {len(omitted)} identical variation files; source textures retained.')
+print(f'Omitted {len(omitted)} redundant or build-only files; source textures retained.')

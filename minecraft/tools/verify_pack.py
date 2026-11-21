@@ -37,13 +37,19 @@ with zipfile.ZipFile(pack) as archive:
         if name in names:
             assert archive.read(name) == file.read_bytes(), f'Changed {name}'
             continue
-        # Only an identical zero-variant may be absent; its base and source
-        # remain, and its old name must not still be referenced by the atlas.
+        # A build-only path photograph is never referenced by the game.
+        if name == 'textures/blocks/grass_path_side_source.png':
+            assert name.removesuffix('.png') not in paths, f'Build input referenced: {name}'
+            omitted.append(name)
+            continue
+        # Only an identical zero-variant may be absent. Short grass uses the
+        # historical vanilla fallback name rather than a same-prefix base.
         assert name.endswith('_variant_0.png'), f'Unexpected omitted file: {name}'
-        base = name.removesuffix('_variant_0.png') + '.png'
+        base = ('textures/blocks/tallgrass.png' if name == 'textures/blocks/short_grass_variant_0.png'
+                else name.removesuffix('_variant_0.png') + '.png')
         assert base in names and archive.read(base) == file.read_bytes(), f'Non-identical {name}'
         assert base.removesuffix('.png') in paths, f'Base not referenced: {base}'
         assert name.removesuffix('.png') not in paths, f'Stale atlas reference: {name}'
         omitted.append(name)
     assert len(names) + len(omitted) == sum(1 for p in root.rglob('*') if p.is_file()), 'Unexpected archive entries'
-    print(f'Archive valid: {len(names)} files, {len(paths)} atlas paths, {len(omitted)} identical variants reused.')
+    print(f'Archive valid: {len(names)} files, {len(paths)} atlas paths, {len(omitted)} redundant or build-only files omitted.')

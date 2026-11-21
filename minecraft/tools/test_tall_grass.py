@@ -79,7 +79,10 @@ class TallGrassTests(unittest.TestCase):
                         suffix = '' if i == 0 else f'_variant_{i}'
                         path = BLOCKS / f'double_plant_grass_{part}{suffix}.png'
                         self.assertEqual(archive.read(path.relative_to(ROOT).as_posix()), path.read_bytes())
-                for i, checksum in enumerate(SHORT):
+                self.assertEqual(archive_terrain['short_grass']['textures']['variations'][0]['path'], 'textures/blocks/tallgrass')
+                self.assertNotIn('textures/blocks/short_grass_variant_0.png', archive.namelist())
+                self.assertEqual(hashlib.sha256(archive.read('textures/blocks/tallgrass.png')).hexdigest(), SHORT[0])
+                for i, checksum in enumerate(SHORT[1:], 1):
                     self.assertEqual(hashlib.sha256(archive.read(f'textures/blocks/short_grass_variant_{i}.png')).hexdigest(), checksum)
                 self.assertNotIn('textures/blocks/double_plant_fern_top.png', archive.namelist())
 
