@@ -12,6 +12,7 @@ import shutil
 import zipfile
 from PIL import Image, ImageDraw, ImageEnhance, ImageOps
 import prepare_interface as base
+import prepare_menu_interface as menus
 
 MAIN=Path('minecraft/realistic-dirt')
 
@@ -220,6 +221,7 @@ def main():
         indexed.putpalette(palette+[0]*(768-len(palette)))
         indexed.save(path,optimize=True,transparency=255)
     patch_files()
+    menus.build(write_patch)
     # Both separate and combined distribution use exactly the same UI files.
     for folder in ('textures/ui','ui'):
         shutil.copytree(base.PACK/folder,MAIN/folder,dirs_exist_ok=True)

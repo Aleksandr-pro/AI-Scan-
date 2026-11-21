@@ -1,0 +1,59 @@
+{
+  "namespace": "settings_common",
+  "section_toggle_base": {
+    "$default_texture": "textures/ui/photo_menu_default",
+    "$hover_texture": "textures/ui/photo_menu_selected",
+    "$pressed_texture": "textures/ui/photo_menu_hover",
+    "$pressed_no_hover_texture": "textures/ui/photo_menu_pressed",
+    "$locked_texture": "textures/ui/photo_menu_locked",
+    "$default_text_color": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "$hover_text_color": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "$default_checked_text_color": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "$hover_checked_text_color": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "$default_glyph_color": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "$hover_glyph_color": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "$default_checked_glyph_color": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "$hover_checked_glyph_color": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "$locked_alpha": 0.65
+  },
+  "settings_content/background": {
+    "texture": "textures/ui/photo_furnace_panel",
+    "color": [
+      0.32,
+      0.32,
+      0.32
+    ]
+  }
+}

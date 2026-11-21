@@ -35,8 +35,8 @@ class DeadBushTests(unittest.TestCase):
             with zipfile.ZipFile(Path('minecraft') / name) as pack:
                 self.assertIsNone(pack.testzip())
                 manifest = json.loads(pack.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'], [2, 0, 0])
-                self.assertEqual(manifest['modules'][0]['version'], [2, 0, 0])
+                self.assertEqual(manifest['header']['version'], [2, 1, 0])
+                self.assertEqual(manifest['modules'][0]['version'], [2, 1, 0])
                 self.assertEqual(pack.read('textures/blocks/deadbush.png'), OUTPUT.read_bytes())
                 self.assertEqual(pack.read('textures/blocks/bush.png'), (ROOT / 'textures/blocks/bush.png').read_bytes())
                 for i in range(4):
