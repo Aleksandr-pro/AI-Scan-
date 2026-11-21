@@ -12,7 +12,9 @@ import zopfli.zlib
 ROOT=Path('minecraft/realistic-dirt')
 FILES=('textures/blocks/sea_lantern.png', 'textures/entity/chest/double_normal.png',
        'textures/entity/chest/normal.png', 'textures/blocks/farmland_dry.png',
-       'textures/blocks/diamond_block.png')
+       'textures/blocks/diamond_block.png', 'textures/blocks/sand.png',
+       'textures/blocks/cobblestone.png', 'textures/blocks/log_acacia_top.png',
+       'textures/blocks/log_birch_top.png', 'textures/blocks/hay_block_top.png')
 
 
 def chunk(kind,data):
