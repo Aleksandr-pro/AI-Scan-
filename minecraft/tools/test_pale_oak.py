@@ -37,7 +37,7 @@ class PaleOakTests(unittest.TestCase):
             self.assertLess(path.stat().st_size,100*1024*1024)
             with zipfile.ZipFile(path) as z:
                 self.assertIsNone(z.testzip());m=json.loads(z.read('manifest.json'))
-                self.assertEqual(m['header']['version'],[2, 2, 0]);self.assertEqual(m['modules'][0]['version'],[2, 2, 0])
+                self.assertEqual(m['header']['version'],[2, 3, 0]);self.assertEqual(m['modules'][0]['version'],[2, 3, 0])
                 self.assertEqual(z.read(OUTPUT.relative_to(ROOT).as_posix()),OUTPUT.read_bytes())
                 self.assertNotIn('textures/blocks/pale_oak_log_side.png',z.namelist())
                 self.assertNotIn('textures/blocks/pale_oak_door_top.png',z.namelist())

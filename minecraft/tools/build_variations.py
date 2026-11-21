@@ -421,6 +421,12 @@ for color in ('black', 'white', 'pink'):
     key = 'photo_stained_glass_' + color
     terrain['texture_data'][key] = {'textures': 'textures/blocks/' + key}
 
+# Modern smooth stone and slab keys: isolate them from comparator/repeater
+# and the old indexed slab array, which also contains unrelated materials.
+for key in ('smooth_stone', 'smooth_stone_slab_top', 'smooth_stone_slab_bottom'):
+    terrain['texture_data'][key] = {'textures': 'textures/blocks/photo_smooth_stone'}
+terrain['texture_data']['smooth_stone_slab_side'] = {'textures': 'textures/blocks/photo_smooth_stone_slab_side'}
+
 # End-stone bricks use their vanilla atlas key, shared with brick stairs;
 # vanilla slab and wall entries also refer to the same end_bricks texture.
 terrain['texture_data']['end_bricks'] = {'textures': 'textures/blocks/end_bricks'}

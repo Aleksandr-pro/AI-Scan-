@@ -1309,6 +1309,18 @@
     "photo_stained_glass_pink": {
       "textures": "textures/blocks/photo_stained_glass_pink"
     },
+    "smooth_stone": {
+      "textures": "textures/blocks/photo_smooth_stone"
+    },
+    "smooth_stone_slab_top": {
+      "textures": "textures/blocks/photo_smooth_stone"
+    },
+    "smooth_stone_slab_bottom": {
+      "textures": "textures/blocks/photo_smooth_stone"
+    },
+    "smooth_stone_slab_side": {
+      "textures": "textures/blocks/photo_smooth_stone_slab_side"
+    },
     "end_bricks": {
       "textures": "textures/blocks/end_bricks"
     },

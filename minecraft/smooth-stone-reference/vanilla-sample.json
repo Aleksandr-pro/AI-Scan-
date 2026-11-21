@@ -1,0 +1,100 @@
+{
+  "source": "Mojang bedrock-samples resource_pack v1.26.30.5; selected entries only",
+  "terrain": {
+    "smooth_stone": {
+      "textures": "textures/blocks/stone_slab_top"
+    },
+    "smooth_stone_slab_top": {
+      "textures": "textures/blocks/stone_slab_top"
+    },
+    "smooth_stone_slab_bottom": {
+      "textures": "textures/blocks/stone_slab_top"
+    },
+    "smooth_stone_slab_side": {
+      "textures": "textures/blocks/stone_slab_side"
+    },
+    "stone_slab_top": {
+      "textures": [
+        "textures/blocks/stone_slab_top",
+        "textures/blocks/sandstone_top",
+        "textures/blocks/planks_oak",
+        "textures/blocks/cobblestone",
+        "textures/blocks/brick",
+        "textures/blocks/stonebrick",
+        "textures/blocks/quartz_block_top",
+        "textures/blocks/nether_brick"
+      ]
+    },
+    "stone_slab_bottom": {
+      "textures": [
+        "textures/blocks/stone_slab_top",
+        "textures/blocks/sandstone_bottom",
+        "textures/blocks/planks_oak",
+        "textures/blocks/cobblestone",
+        "textures/blocks/brick",
+        "textures/blocks/stonebrick",
+        "textures/blocks/quartz_block_top",
+        "textures/blocks/nether_brick"
+      ]
+    },
+    "stone_slab_side": {
+      "textures": [
+        "textures/blocks/stone_slab_side",
+        "textures/blocks/sandstone_normal",
+        "textures/blocks/planks_oak",
+        "textures/blocks/cobblestone",
+        "textures/blocks/brick",
+        "textures/blocks/stonebrick",
+        "textures/blocks/quartz_block_side",
+        "textures/blocks/nether_brick"
+      ]
+    },
+    "repeater_floor": {
+      "textures": [
+        "textures/blocks/stone_slab_top",
+        "textures/blocks/stone_slab_top"
+      ]
+    },
+    "comparator_stone_slab": {
+      "textures": "textures/blocks/stone_slab_top"
+    }
+  },
+  "blocks": {
+    "smooth_stone": {
+      "sound": "stone",
+      "textures": "smooth_stone"
+    },
+    "smooth_stone_slab": {
+      "sound": "stone",
+      "textures": {
+        "down": "smooth_stone_slab_bottom",
+        "side": "smooth_stone_slab_side",
+        "up": "smooth_stone_slab_top"
+      }
+    },
+    "smooth_stone_double_slab": {
+      "sound": "stone",
+      "textures": {
+        "down": "smooth_stone_slab_bottom",
+        "side": "smooth_stone_slab_side",
+        "up": "smooth_stone_slab_top"
+      }
+    },
+    "stone_slab": {
+      "sound": "stone",
+      "textures": {
+        "down": "stone_slab_bottom",
+        "side": "stone_slab_side",
+        "up": "stone_slab_top"
+      }
+    },
+    "double_stone_slab": {
+      "sound": "stone",
+      "textures": {
+        "down": "stone_slab_bottom",
+        "side": "stone_slab_side",
+        "up": "stone_slab_top"
+      }
+    }
+  }
+}
