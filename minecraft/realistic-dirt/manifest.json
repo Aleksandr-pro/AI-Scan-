@@ -5,8 +5,8 @@
     "description": "Реалистичные блоки: земля, камень, металл и доски",
     "uuid": "c82fb06e-bbe1-4f64-b6aa-c3136b61a026",
     "version": [
-      1,
-      99,
+      2,
+      0,
       0
     ],
     "min_engine_version": [
@@ -20,8 +20,8 @@
       "type": "resources",
       "uuid": "e7e90526-e117-4882-b14c-066db0df3161",
       "version": [
-        1,
-        99,
+        2,
+        0,
         0
       ]
     }

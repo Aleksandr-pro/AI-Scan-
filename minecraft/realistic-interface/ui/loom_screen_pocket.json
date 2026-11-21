@@ -1,0 +1,13 @@
+{
+  "namespace": "loom_pocket",
+  "photo_loom_bg": {
+    "type": "image",
+    "texture": "textures/ui/photo_loom_panel"
+  },
+  "left_panel/content/bg": {
+    "$dialog_background": "loom_pocket.photo_loom_bg"
+  },
+  "right_panel/content/bg": {
+    "$dialog_background": "loom_pocket.photo_loom_bg"
+  }
+}

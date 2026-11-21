@@ -1,0 +1,10 @@
+{
+  "namespace": "cartography",
+  "photo_cartography_bg": {
+    "type": "image",
+    "texture": "textures/ui/photo_cartography_panel"
+  },
+  "cartography_panel/root_panel/common_panel": {
+    "$dialog_background": "cartography.photo_cartography_bg"
+  }
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build four screen-specific Bedrock interface styles and integrate them.
+"""Build eight photo-inspired Bedrock interface styles and integrate them.
 
 Starts with the original photo-inspired assets, adds targeted JSON UI overrides
 for classic and pocket layouts, and copies the overlay into the main pack.
@@ -32,14 +32,59 @@ def nine_patch_body(source, palette):
     return im
 
 
-def make_panel(name, source, palette, border):
+def make_panel(name, source, palette, border, moss=False):
     im=nine_patch_body(source,palette)
     base.rim(im,border[0],border[1],4)
     base.rim(im,border[2],border[3],6,4)
     base.rim(im,border[4],border[5],2,10)
+    if moss:
+        # Small leaves from the right edge of the supplied brewing mockup;
+        # approximate colour selection, never screenshot text or controls.
+        with Image.open(base.REFERENCE) as ref:
+            leaves=ref.convert('RGB').resize((1536,865),Image.Resampling.LANCZOS).crop((365,401,402,450)).resize((22,26),Image.Resampling.LANCZOS).convert('RGBA')
+        alpha=Image.new('L',leaves.size)
+        for y in range(leaves.height):
+            for x in range(leaves.width):
+                r,g,b,_=leaves.getpixel((x,y))
+                strength=max(0,min(255,(g-b-12)*16)) if abs(r-g)<23 and g>45 else 0
+                alpha.putpixel((x,y),strength)
+        leaves.putalpha(alpha)
+        im.alpha_composite(leaves,(99,10))
     with Image.open(base.MASKS/'dialog_background_opaque.png') as mask:
         im.putalpha(mask.convert('RGBA').getchannel('A').resize((128,128),Image.Resampling.NEAREST))
     base.write(name,im,[16,16],4)
+
+
+def equipment_icons():
+    """Shaded empty-slot markers, preserving the vanilla shape and transparency.
+
+    These appear only when the corresponding equipment slot is empty. Actual
+    item icons and the player renderer are not baked into the UI textures.
+    """
+    reference=Path('minecraft/ui-reference/vanilla-equipment')
+    for name in ('helmet','chestplate','leggings','boots','shield'):
+        filename='empty_armor_slot_'+name
+        with Image.open(reference/(filename+'.png')) as original:
+            outline=original.convert('RGBA').getchannel('A')
+        # Fill enclosed silhouette interiors, but not the outside background.
+        # Padding gives the flood fill a known seed even for edge-touching art.
+        padded=Image.new('L',(18,18),0)
+        padded.paste(outline,(1,1))
+        ImageDraw.floodfill(padded,(0,0),128,thresh=0)
+        solid=padded.point(lambda v: 0 if v==128 else 255).crop((1,1,17,17))
+        # Smooth only the silhouette edge; 4x resolution keeps a crisp symbol.
+        mask=solid.resize((64,64),Image.Resampling.LANCZOS)
+        stroke=outline.resize((64,64),Image.Resampling.NEAREST)
+        img=Image.new('RGBA',(64,64),(0,0,0,0))
+        d=ImageDraw.Draw(img)
+        for y in range(64):
+            light=round(191-68*y/63)
+            d.line((0,y,63,y),fill=(light,light-3,light-8,255))
+        img.putalpha(mask)
+        ink=Image.new('RGBA',(64,64),(40,39,37,0));ink.putalpha(stroke)
+        img=Image.alpha_composite(img,ink)
+        # RGBA preserves exactly transparent background and softened edges.
+        img.save(base.UI/(filename+'.png'),optimize=True)
 
 
 def write_patch(filename, doc):
@@ -94,6 +139,38 @@ def patch_files():
         'namespace':'enchanting_pocket',
         'background_image':{'texture':'textures/ui/photo_enchanting_panel'},
     })
+    write_patch('brewing_stand_screen.json', {
+        'namespace':'brewing_stand',
+        'photo_brewing_bg':background('photo_brewing_panel'),
+        'brewing_stand_panel/root_panel/common_panel':{'$dialog_background':'brewing_stand.photo_brewing_bg'},
+    })
+    write_patch('brewing_stand_screen_pocket.json', {
+        'namespace':'brewing_stand_pocket',
+        'background_image':{'texture':'textures/ui/photo_brewing_panel'},
+    })
+    write_patch('cartography_screen.json', {
+        'namespace':'cartography',
+        'photo_cartography_bg':background('photo_cartography_panel'),
+        'cartography_panel/root_panel/common_panel':{'$dialog_background':'cartography.photo_cartography_bg'},
+    })
+    write_patch('cartography_screen_pocket.json', {
+        'namespace':'cartography_pocket',
+        'photo_cartography_bg':background('photo_cartography_panel'),
+        'left_panel/content/bg':{'$dialog_background':'cartography_pocket.photo_cartography_bg'},
+        'right_panel/content/bg':{'$dialog_background':'cartography_pocket.photo_cartography_bg'},
+    })
+    write_patch('loom_screen.json', {
+        'namespace':'loom',
+        'photo_loom_bg':background('photo_loom_panel'),
+        'right_panel/common_panel':{'$dialog_background':'loom.photo_loom_bg'},
+        'pattern_book_panel/bg':{'$dialog_background':'loom.photo_loom_bg'},
+    })
+    write_patch('loom_screen_pocket.json', {
+        'namespace':'loom_pocket',
+        'photo_loom_bg':background('photo_loom_panel'),
+        'left_panel/content/bg':{'$dialog_background':'loom_pocket.photo_loom_bg'},
+        'right_panel/content/bg':{'$dialog_background':'loom_pocket.photo_loom_bg'},
+    })
 
 
 def main():
@@ -113,13 +190,35 @@ def main():
     make_panel('photo_furnace_panel',stone,((165,163,158),(229,224,215)),stone_border)
     make_panel('photo_chest_panel',wood,((165,126,92),(243,219,186)),wood_border)
     make_panel('photo_enchanting_panel',stone,((177,170,178),(229,225,226)),purple_border)
-    # Palette encoding of these low-colour HUD sprites reduces 9 duplicate
-    # hotbar files and the effect panel without removing any runtime paths.
+    make_panel('photo_brewing_panel',stone,((180,175,168),(235,229,218)),stone_border,moss=True)
+    make_panel('photo_cartography_panel',wood,((171,129,94),(242,218,184)),wood_border)
+    make_panel('photo_loom_panel',wood,((163,123,91),(239,216,187)),wood_border)
+    equipment_icons()
+    # Preserve all runtime filenames while using a 256-colour palette for
+    # low-colour UI sprites: this keeps both large packs under GitHub's limit.
     for name in [*(f'hotbar_{i}' for i in range(9)), 'effect_background']:
         path = base.UI/(name+'.png')
         with Image.open(path) as im:
             im.convert('RGBA').quantize(colors=256, method=Image.Quantize.FASTOCTREE,
                                         dither=Image.Dither.NONE).save(path, optimize=True)
+    # The panels have binary alpha. Reserving palette index 255 for their
+    # transparent corners leaves up to 255 carefully chosen RGB colours.
+    # MEDIANCUT preserves their fine monochromatic grain far better than the
+    # alpha-aware fast octree while keeping the archive below the size limit.
+    for name in ('crafting','chest','furnace','enchanting','brewing','cartography','loom'):
+        path = base.UI/f'photo_{name}_panel.png'
+        with Image.open(path) as image:
+            rgba=image.convert('RGBA')
+        alpha=rgba.getchannel('A')
+        if any(alpha.histogram()[1:255]):
+            raise ValueError(f'{name}: expected binary alpha for palette encoding')
+        indexed=rgba.convert('RGB').quantize(colors=255,method=Image.Quantize.MEDIANCUT,dither=Image.Dither.NONE)
+        indexed.paste(255,mask=alpha.point(lambda a:255 if a==0 else 0))
+        palette=indexed.getpalette()
+        # Quantize may return fewer than 256 palette entries. Allocate the
+        # reserved transparent index explicitly or it can load as opaque.
+        indexed.putpalette(palette+[0]*(768-len(palette)))
+        indexed.save(path,optimize=True,transparency=255)
     patch_files()
     # Both separate and combined distribution use exactly the same UI files.
     for folder in ('textures/ui','ui'):
