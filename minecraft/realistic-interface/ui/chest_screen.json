@@ -1,0 +1,13 @@
+{
+  "namespace": "chest",
+  "photo_chest_bg": {
+    "type": "image",
+    "texture": "textures/ui/photo_chest_panel"
+  },
+  "small_chest_panel/root_panel/common_panel": {
+    "$dialog_background": "chest.photo_chest_bg"
+  },
+  "large_chest_panel/root_panel/common_panel": {
+    "$dialog_background": "chest.photo_chest_bg"
+  }
+}

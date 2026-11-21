@@ -1,0 +1,6 @@
+{
+  "namespace": "pocket_containers",
+  "background_panel": {
+    "texture": "textures/ui/photo_chest_panel"
+  }
+}

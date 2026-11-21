@@ -1,0 +1,13 @@
+{
+  "namespace": "crafting_pocket",
+  "photo_crafting_bg": {
+    "type": "image",
+    "texture": "textures/ui/photo_crafting_panel"
+  },
+  "left_panel/left_background": {
+    "$dialog_background": "crafting_pocket.photo_crafting_bg"
+  },
+  "right_panel/right_background": {
+    "$dialog_background": "crafting_pocket.photo_crafting_bg"
+  }
+}

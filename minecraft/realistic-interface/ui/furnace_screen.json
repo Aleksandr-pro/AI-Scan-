@@ -1,0 +1,10 @@
+{
+  "namespace": "furnace",
+  "photo_furnace_bg": {
+    "type": "image",
+    "texture": "textures/ui/photo_furnace_panel"
+  },
+  "right_panel/common_panel": {
+    "$dialog_background": "furnace.photo_furnace_bg"
+  }
+}

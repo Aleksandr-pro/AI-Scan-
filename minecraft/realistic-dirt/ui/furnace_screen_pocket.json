@@ -1,0 +1,6 @@
+{
+  "namespace": "furnace_pocket",
+  "background_image": {
+    "texture": "textures/ui/photo_furnace_panel"
+  }
+}
