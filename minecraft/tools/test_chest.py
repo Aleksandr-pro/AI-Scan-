@@ -59,7 +59,7 @@ class ChestTests(unittest.TestCase):
             with zipfile.ZipFile(Path('minecraft') / pack) as z:
                 self.assertIsNone(z.testzip())
                 manifest = json.loads(z.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'], [1, 88, 0])
+                self.assertEqual(manifest['header']['version'], [1, 89, 0])
                 for name in names + ['blocks.json', 'textures/terrain_texture.json']:
                     self.assertEqual(z.read(name), (ROOT / name).read_bytes())
                 for other in ('trapped', 'double_trapped', 'ender', 'copper'):
