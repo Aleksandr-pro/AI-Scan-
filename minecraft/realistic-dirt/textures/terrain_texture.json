@@ -1275,6 +1275,24 @@
     "photo_crafting_table_top": {
       "textures": "textures/blocks/photo_crafting_table_top"
     },
+    "glow_lichen": {
+      "textures": {
+        "variations": [
+          {
+            "path": "textures/blocks/glow_lichen",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/glow_lichen_variant_1",
+            "weight": 1
+          },
+          {
+            "path": "textures/blocks/glow_lichen_variant_2",
+            "weight": 1
+          }
+        ]
+      }
+    },
     "big_dripleaf_top": {
       "textures": {
         "variations": [
