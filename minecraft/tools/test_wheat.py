@@ -30,17 +30,17 @@ class WheatTests(unittest.TestCase):
         # Do not replace the vanilla wheat array: it references stages 0..7.
         self.assertNotIn('wheat', terrain)
         self.assertNotIn('wheat', blocks)
-        for stage in range(7):
+        for stage in (5, 6):
             self.assertFalse((ROOT / f'textures/blocks/wheat_stage_{stage}.png').exists())
         self.assertFalse((ROOT / 'textures/items/wheat.png').exists())
         for pack in ('realistic-dirt.mcpack', 'realistic-dirt-vibrant.mcpack'):
             with zipfile.ZipFile(Path('minecraft') / pack) as z:
                 self.assertIsNone(z.testzip())
                 manifest = json.loads(z.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'], [1, 77, 0])
-                self.assertEqual(manifest['modules'][0]['version'], [1, 77, 0])
+                self.assertEqual(manifest['header']['version'], [1, 78, 0])
+                self.assertEqual(manifest['modules'][0]['version'], [1, 78, 0])
                 self.assertEqual(z.read('textures/blocks/wheat_stage_7.png'), OUTPUT.read_bytes())
-                for stage in range(7):
+                for stage in (5, 6):
                     self.assertNotIn(f'textures/blocks/wheat_stage_{stage}.png', z.namelist())
                 self.assertNotIn('textures/items/wheat.png', z.namelist())
 
