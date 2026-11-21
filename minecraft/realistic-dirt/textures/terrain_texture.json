@@ -1315,6 +1315,18 @@
     "crimson_planks": {
       "textures": "textures/blocks/photo_crimson_planks"
     },
+    "crimson_log_top": {
+      "textures": "textures/blocks/photo_crimson_stem_top"
+    },
+    "crimson_log_side": {
+      "textures": "textures/blocks/photo_crimson_stem_side"
+    },
+    "warped_stem_top": {
+      "textures": "textures/blocks/photo_warped_stem_top"
+    },
+    "warped_stem_side": {
+      "textures": "textures/blocks/photo_warped_stem_side"
+    },
     "smooth_stone": {
       "textures": "textures/blocks/photo_smooth_stone"
     },

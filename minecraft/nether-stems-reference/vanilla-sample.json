@@ -1,0 +1,75 @@
+{
+  "source": "Mojang bedrock-samples resource_pack v1.26.30.5; selected entries only",
+  "terrain": {
+    "crimson_log_side": {
+      "textures": "textures/blocks/huge_fungus/crimson_log_side"
+    },
+    "crimson_log_top": {
+      "textures": "textures/blocks/huge_fungus/crimson_log_top"
+    },
+    "warped_stem_side": {
+      "textures": "textures/blocks/huge_fungus/warped_stem_side"
+    },
+    "warped_stem_top": {
+      "textures": "textures/blocks/huge_fungus/warped_stem_top"
+    },
+    "stripped_crimson_stem_side": {
+      "textures": "textures/blocks/huge_fungus/stripped_crimson_stem_side"
+    },
+    "stripped_crimson_stem_top": {
+      "textures": "textures/blocks/huge_fungus/stripped_crimson_stem_top"
+    },
+    "stripped_warped_stem_side": {
+      "textures": "textures/blocks/huge_fungus/stripped_warped_stem_side"
+    },
+    "stripped_warped_stem_top": {
+      "textures": "textures/blocks/huge_fungus/stripped_warped_stem_top"
+    }
+  },
+  "blocks": {
+    "crimson_stem": {
+      "sound": "stem",
+      "textures": {
+        "down": "crimson_log_top",
+        "east": "crimson_log_side",
+        "north": "crimson_log_side",
+        "south": "crimson_log_side",
+        "up": "crimson_log_top",
+        "west": "crimson_log_side"
+      }
+    },
+    "crimson_hyphae": {
+      "sound": "stem",
+      "textures": {
+        "down": "crimson_log_side",
+        "east": "crimson_log_side",
+        "north": "crimson_log_side",
+        "south": "crimson_log_side",
+        "up": "crimson_log_side",
+        "west": "crimson_log_side"
+      }
+    },
+    "warped_stem": {
+      "sound": "stem",
+      "textures": {
+        "down": "warped_stem_top",
+        "east": "warped_stem_side",
+        "north": "warped_stem_side",
+        "south": "warped_stem_side",
+        "up": "warped_stem_top",
+        "west": "warped_stem_side"
+      }
+    },
+    "warped_hyphae": {
+      "sound": "stem",
+      "textures": {
+        "down": "warped_stem_side",
+        "east": "warped_stem_side",
+        "north": "warped_stem_side",
+        "south": "warped_stem_side",
+        "up": "warped_stem_side",
+        "west": "warped_stem_side"
+      }
+    }
+  }
+}

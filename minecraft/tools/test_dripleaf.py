@@ -51,8 +51,8 @@ class DripleafTests(unittest.TestCase):
             with zipfile.ZipFile(path) as pack:
                 self.assertIsNone(pack.testzip())
                 manifest = json.loads(pack.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'], [2, 4, 0])
-                self.assertEqual(manifest['modules'][0]['version'], [2, 4, 0])
+                self.assertEqual(manifest['header']['version'], [2, 5, 0])
+                self.assertEqual(manifest['modules'][0]['version'], [2, 5, 0])
                 self.assertEqual(json.loads(pack.read('textures/terrain_texture.json')), json.loads((ROOT/'textures/terrain_texture.json').read_text()))
                 for name in names:
                     self.assertEqual(pack.read(name), (ROOT / name).read_bytes())
