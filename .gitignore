@@ -21,3 +21,6 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+
+# Combined distribution is larger than GitHub's single-file limit; reproducible locally.
+minecraft/realistic-complete-grassflow.mcaddon
