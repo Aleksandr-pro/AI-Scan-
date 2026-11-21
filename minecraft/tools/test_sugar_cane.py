@@ -35,8 +35,8 @@ class SugarCaneTests(unittest.TestCase):
             with zipfile.ZipFile(Path('minecraft') / name) as pack:
                 self.assertIsNone(pack.testzip())
                 manifest = json.loads(pack.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'], [1, 92, 0])
-                self.assertEqual(manifest['modules'][0]['version'], [1, 92, 0])
+                self.assertEqual(manifest['header']['version'], [1, 93, 0])
+                self.assertEqual(manifest['modules'][0]['version'], [1, 93, 0])
                 self.assertEqual(pack.read('textures/blocks/reeds.tga'), OUTPUT.read_bytes())
                 self.assertNotIn('textures/blocks/reeds.png', pack.namelist())
                 self.assertNotIn('textures/items/reeds.png', pack.namelist())
