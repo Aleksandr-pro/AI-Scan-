@@ -1,0 +1,29 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Живая почва — ресурсы (эксперимент)",
+    "description": "Карта плотности травы: отдельная площадка",
+    "uuid": "07e733e9-d5e9-4133-b826-29571da21290",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      26,
+      30
+    ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "28e84c39-ae80-4b74-bd48-582c5229a66d",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}
