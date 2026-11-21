@@ -107,5 +107,17 @@
       "up": "photo_furnace_body",
       "west": "photo_furnace_body"
     }
+  },
+  "black_stained_glass": {
+    "sound": "glass",
+    "textures": "photo_stained_glass_black"
+  },
+  "white_stained_glass": {
+    "sound": "glass",
+    "textures": "photo_stained_glass_white"
+  },
+  "pink_stained_glass": {
+    "sound": "glass",
+    "textures": "photo_stained_glass_pink"
   }
 }

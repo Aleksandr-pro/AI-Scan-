@@ -415,6 +415,12 @@ for part in ('body', 'front_on', 'front_off'):
     key = 'photo_furnace_' + part
     terrain['texture_data'][key] = {'textures': 'textures/blocks/' + key}
 
+# Replace only three full stained-glass blocks via private texture keys; the
+# vanilla colour paths remain available to corresponding stained-glass panes.
+for color in ('black', 'white', 'pink'):
+    key = 'photo_stained_glass_' + color
+    terrain['texture_data'][key] = {'textures': 'textures/blocks/' + key}
+
 # Four prepared end-stone photos with a common, periodic tile boundary.
 terrain['texture_data']['end_stone'] = {'textures': {'variations': [
     {'path': 'textures/blocks/end_stone' + (f'_variant_{i}' if i else ''), 'weight': 1}
