@@ -40,13 +40,14 @@ class YoungWheatTests(unittest.TestCase):
             with zipfile.ZipFile(Path('minecraft') / name) as z:
                 self.assertIsNone(z.testzip())
                 manifest = json.loads(z.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'], [1, 78, 0])
-                self.assertEqual(manifest['modules'][0]['version'], [1, 78, 0])
+                self.assertEqual(manifest['header']['version'], [1, 79, 0])
+                self.assertEqual(manifest['modules'][0]['version'], [1, 79, 0])
                 for i in (*range(5), 7):
                     path = f'textures/blocks/wheat_stage_{i}.png'
                     self.assertEqual(z.read(path), (ROOT / path).read_bytes())
                 for i in (5, 6):
-                    self.assertNotIn(f'textures/blocks/wheat_stage_{i}.png', z.namelist())
+                    path = f'textures/blocks/wheat_stage_{i}.png'
+                    self.assertEqual(z.read(path), (ROOT / path).read_bytes())
                 self.assertNotIn('textures/items/wheat.png', z.namelist())
 
 
