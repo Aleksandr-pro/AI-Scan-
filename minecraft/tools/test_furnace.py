@@ -50,8 +50,8 @@ class FurnaceTests(unittest.TestCase):
             with zipfile.ZipFile(path) as archive:
                 self.assertIsNone(archive.testzip())
                 manifest=json.loads(archive.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'],[1,95,0])
-                self.assertEqual(manifest['modules'][0]['version'],[1,95,0])
+                self.assertEqual(manifest['header']['version'],[1,96,0])
+                self.assertEqual(manifest['modules'][0]['version'],[1,96,0])
                 for item in files:
                     self.assertEqual(archive.read(item),(ROOT/item).read_bytes())
                 for item in ('furnace_top','furnace_side','furnace_front_off','furnace_front_on'):

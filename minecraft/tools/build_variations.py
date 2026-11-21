@@ -317,9 +317,9 @@ terrain = {'resource_pack_name': 'vanilla', 'texture_name': 'atlas.terrain', 'pa
                'flattened_quartz_block_side': {'textures': 'textures/blocks/quartz_block_side'},
                'smooth_quartz': {'textures': 'textures/blocks/quartz_block_bottom'},
                'quartz_bricks': {'textures': 'textures/blocks/quartz_bricks'},
-               'chiseled_quartz_block_top': {'textures': 'textures/blocks/quartz_block_chiseled_top'},
+               'chiseled_quartz_block_top': {'textures': 'textures/blocks/quartz_block_chiseled'},
                'chiseled_quartz_block_side': {'textures': 'textures/blocks/quartz_block_chiseled'},
-               'quartz_pillar_top': {'textures': 'textures/blocks/quartz_block_lines_top'},
+               'quartz_pillar_top': {'textures': 'textures/blocks/quartz_block_top'},
                'quartz_pillar_side': {'textures': 'textures/blocks/quartz_block_lines'},
                # Four two-block plants. Bedrock may choose the upper and lower
                # variants independently; prepared assets share a narrow join.
@@ -398,6 +398,17 @@ for face in ('north', 'east', 'south', 'west', 'top'):
         'textures': 'textures/blocks/photo_crafting_table_' + face
     }
 
+# Preserve all vanilla legacy quartz indices while aliasing the two caps
+# that are byte-identical to their corresponding existing photographs.
+for alias, canonical in (('quartz_block_chiseled_top','quartz_block_chiseled'),
+                         ('quartz_block_lines_top','quartz_block_top')):
+    if (blocks / (alias+'.png')).read_bytes() != (blocks / (canonical+'.png')).read_bytes():
+        raise ValueError(f'Quartz alias is no longer identical: {alias}')
+quartz_caps = ['textures/blocks/'+n for n in
+               ('quartz_block_top','quartz_block_chiseled','quartz_block_top','quartz_block_bottom')]
+for key in ('quartz_block_top','quartz_block_bottom'):
+    terrain['texture_data'][key] = {'textures': quartz_caps}
+
 # Furnace-only names avoid changing vanilla textures shared with dispensers
 # and droppers. blocks.json keeps vanilla's respective lit/unlit face mapping.
 for part in ('body', 'front_on', 'front_off'):
@@ -467,6 +478,8 @@ for key, names in flower_variants.items():
 extra_omissions = {
     Path('textures/blocks/short_grass_variant_0.png'),
     Path('textures/blocks/grass_path_side_source.png'),
+    Path('textures/blocks/quartz_block_chiseled_top.png'),
+    Path('textures/blocks/quartz_block_lines_top.png'),
 }
 omitted = set()
 def reuse_identical_variants(value):
