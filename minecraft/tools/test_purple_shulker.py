@@ -41,8 +41,8 @@ class PurpleShulkerTests(unittest.TestCase):
             self.assertLess(file.stat().st_size,100*1024*1024)
             with zipfile.ZipFile(file) as z:
                 self.assertIsNone(z.testzip());manifest=json.loads(z.read('manifest.json'))
-                self.assertEqual(manifest['header']['version'],[1,96,0])
-                self.assertEqual(manifest['modules'][0]['version'],[1,96,0])
+                self.assertEqual(manifest['header']['version'],[1,97,0])
+                self.assertEqual(manifest['modules'][0]['version'],[1,97,0])
                 for path in (ENTITY,ICON):
                     self.assertEqual(z.read(path.relative_to(ROOT).as_posix()),path.read_bytes())
                 self.assertNotIn('textures/entity/shulker/shulker_undyed.png',z.namelist())
