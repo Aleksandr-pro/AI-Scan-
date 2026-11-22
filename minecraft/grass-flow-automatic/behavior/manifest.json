@@ -1,0 +1,54 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Живая почва — автоматически",
+    "description": "Осторожно: временно меняет до 256 открытых блоков дёрна. Только копия мира.",
+    "uuid": "f2f70361-baa6-4464-80ad-6229b6f7b47b",
+    "version": [
+      1,
+      0,
+      2
+    ],
+    "min_engine_version": [
+      1,
+      26,
+      30
+    ]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "a64a669a-4598-4335-8e89-d27be894ebc9",
+      "version": [
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "entry": "scripts/main.js",
+      "uuid": "cda7b8e7-41f4-4c16-b251-2d76686b3a18",
+      "version": [
+        1,
+        0,
+        2
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "61b4cb0f-a39f-4c77-8510-aec0df8745b7",
+      "version": [
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "module_name": "@minecraft/server",
+      "version": "2.8.0"
+    }
+  ]
+}
