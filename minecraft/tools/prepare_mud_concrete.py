@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prepare the two user-provided Bedrock block photos (requires Pillow).
+"""Prepare the user-provided mud and concrete photos (requires Pillow).
 
 Run from the repository root. Keep the staggered brick pattern intact; only a
 narrow edge strip is blended. The concrete gets a wider, organic photo wrap.
@@ -41,7 +41,8 @@ def brick_tile(path):
 def main():
     BLOCKS.mkdir(parents=True,exist_ok=True)
     for name,image in [('packed_mud',brick_tile(REF/'packed-mud.jpg')),
-                       ('concrete_white',match_edges(prepare(REF/'white-concrete.jpg'), 4))]:
+                       ('concrete_white',match_edges(prepare(REF/'white-concrete.jpg'), 4)),
+                       ('concrete_red',match_edges(prepare(REF/'red-concrete.jpg'), 4))]:
         image.save(BLOCKS/f'{name}.png',optimize=True)
         print(f'{name}: {image.size}, RGB')
 

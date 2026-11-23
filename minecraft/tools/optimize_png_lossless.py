@@ -28,7 +28,11 @@ FILES=('textures/blocks/sea_lantern.png', 'textures/entity/chest/double_normal.p
        'textures/blocks/dirt.png', 'textures/blocks/dirt_variant_0.png',
        'textures/blocks/diamond_ore.png', 'textures/blocks/diamond_ore_variant_0.png',
        'textures/blocks/diamond_ore_variant_1.png', 'textures/blocks/diamond_ore_variant_2.png',
-       'textures/blocks/diamond_ore_variant_3.png')
+       'textures/blocks/diamond_ore_variant_3.png',
+       # More lossless recompression makes room for red concrete.
+       'textures/blocks/grass_top.png', 'textures/blocks/grass_top_variant_3.png',
+       'textures/blocks/gravel.png', 'textures/blocks/gravel_variant_0.png',
+       'textures/blocks/gravel_variant_1.png', 'textures/blocks/log_acacia.png')
 
 
 def chunk(kind,data):

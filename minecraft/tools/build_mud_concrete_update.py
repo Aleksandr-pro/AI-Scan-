@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Add packed mud and white concrete to the existing full Bedrock pack.
+"""Add packed mud, white concrete and red concrete to the full Bedrock pack.
 
 Run after prepare_mud_concrete.py and optimize_png_lossless.py. Preserves all
 other archive paths and replaces existing entries from the source tree. The
@@ -14,8 +14,9 @@ import zipfile
 ROOT=Path('minecraft')
 SOURCE=ROOT/'realistic-dirt'
 PACK=ROOT/'realistic-dirt.mcpack'
-VERSION=[2,7,0]
-NEW=('textures/blocks/packed_mud.png','textures/blocks/concrete_white.png')
+VERSION=[2,7,1]
+NEW=('textures/blocks/packed_mud.png','textures/blocks/concrete_white.png',
+     'textures/blocks/concrete_red.png')
 
 
 def main():
@@ -28,6 +29,7 @@ def main():
     terrain=json.loads(terrain_path.read_text(encoding='utf-8'))
     terrain['texture_data']['packed_mud']={'textures':'textures/blocks/packed_mud'}
     terrain['texture_data']['white_concrete']={'textures':'textures/blocks/concrete_white'}
+    terrain['texture_data']['red_concrete']={'textures':'textures/blocks/concrete_red'}
     terrain_path.write_text(json.dumps(terrain,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     with zipfile.ZipFile(PACK) as original:
         existing=set(original.namelist())

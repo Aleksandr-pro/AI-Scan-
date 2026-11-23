@@ -15,17 +15,15 @@ ROOT=Path('minecraft')
 PACK=ROOT/'realistic-dirt.mcpack'
 BASELINE=None
 OPTIMIZED={f'textures/blocks/{name}.png' for name in (
-    'grass_top_variant_1','grass_top_variant_2','log_jungle','log_oak',
-    'dirt','dirt_variant_0','diamond_ore','diamond_ore_variant_1',
-    'diamond_ore_variant_2','diamond_ore_variant_3')}
-NEW={'textures/blocks/packed_mud.png','textures/blocks/concrete_white.png'}
+    'grass_top','grass_top_variant_3','gravel','gravel_variant_1','log_acacia')}
+NEW={'textures/blocks/concrete_red.png'}
 
 class TestMudConcrete(unittest.TestCase):
     def test_images_and_atlas(self):
         with zipfile.ZipFile(PACK) as z:
             self.assertIsNone(z.testzip())
             terrain=json.loads(z.read('textures/terrain_texture.json'))['texture_data']
-            for key,name in [('packed_mud','packed_mud'),('white_concrete','concrete_white')]:
+            for key,name in [('packed_mud','packed_mud'),('white_concrete','concrete_white'),('red_concrete','concrete_red')]:
                 self.assertEqual(terrain[key]['textures'],f'textures/blocks/{name}')
                 data=z.read(f'textures/blocks/{name}.png')
                 self.assertEqual(data,(ROOT/f'realistic-dirt/textures/blocks/{name}.png').read_bytes())
@@ -35,7 +33,7 @@ class TestMudConcrete(unittest.TestCase):
                     # is made for game filtering/mipmapping or corner UVs.
                     self.assertIsNone(ImageChops.difference(im.crop((0,0,1,512)),im.crop((511,0,512,512))).getbbox())
                     self.assertIsNone(ImageChops.difference(im.crop((0,0,512,1)),im.crop((0,511,512,512))).getbbox())
-            self.assertEqual(json.loads(z.read('manifest.json'))['header']['version'],[2,7,0])
+            self.assertEqual(json.loads(z.read('manifest.json'))['header']['version'],[2,7,1])
             self.assertLess(PACK.stat().st_size,100*1024*1024)
 
     def test_existing_pack(self):
@@ -51,7 +49,7 @@ class TestMudConcrete(unittest.TestCase):
                 else:self.assertEqual(a,b,name)
             before=json.loads(old.read('textures/terrain_texture.json'))
             after=json.loads(new.read('textures/terrain_texture.json'))
-            for k in ('packed_mud','white_concrete'):after['texture_data'].pop(k)
+            after['texture_data'].pop('red_concrete')
             self.assertEqual(before,after)
 
 if __name__=='__main__':

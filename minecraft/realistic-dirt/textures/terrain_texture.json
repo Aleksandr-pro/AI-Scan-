@@ -1558,6 +1558,9 @@
     },
     "white_concrete": {
       "textures": "textures/blocks/concrete_white"
+    },
+    "red_concrete": {
+      "textures": "textures/blocks/concrete_red"
     }
   }
 }
