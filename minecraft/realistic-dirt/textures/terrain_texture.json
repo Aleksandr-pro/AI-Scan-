@@ -1552,6 +1552,12 @@
           }
         ]
       }
+    },
+    "packed_mud": {
+      "textures": "textures/blocks/packed_mud"
+    },
+    "white_concrete": {
+      "textures": "textures/blocks/concrete_white"
     }
   }
 }

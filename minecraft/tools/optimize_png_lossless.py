@@ -20,7 +20,15 @@ FILES=('textures/blocks/sea_lantern.png', 'textures/entity/chest/double_normal.p
        'textures/blocks/farmland_moist.png', 'textures/blocks/farmland_side.png',
        'textures/blocks/cherry_log_side.png', 'textures/blocks/cherry_log_top.png',
        'textures/blocks/mangrove_log_side.png', 'textures/blocks/bamboo_block_top.png',
-       'textures/blocks/hay_block_side.png', 'textures/blocks/log_birch.png')
+       'textures/blocks/hay_block_side.png', 'textures/blocks/log_birch.png',
+       # Additional lossless compression keeps the two new 512px surfaces and
+       # the full distribution under GitHub's single-file limit.
+       'textures/blocks/grass_top_variant_1.png', 'textures/blocks/grass_top_variant_2.png',
+       'textures/blocks/log_jungle.png', 'textures/blocks/log_oak.png',
+       'textures/blocks/dirt.png', 'textures/blocks/dirt_variant_0.png',
+       'textures/blocks/diamond_ore.png', 'textures/blocks/diamond_ore_variant_0.png',
+       'textures/blocks/diamond_ore_variant_1.png', 'textures/blocks/diamond_ore_variant_2.png',
+       'textures/blocks/diamond_ore_variant_3.png')
 
 
 def chunk(kind,data):
