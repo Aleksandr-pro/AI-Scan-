@@ -1561,6 +1561,9 @@
     },
     "red_concrete": {
       "textures": "textures/blocks/concrete_red"
+    },
+    "stripped_oak_log_side": {
+      "textures": "textures/blocks/stripped_oak_log"
     }
   }
 }

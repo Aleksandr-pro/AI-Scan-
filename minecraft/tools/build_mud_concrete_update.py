@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Add packed mud, white concrete and red concrete to the full Bedrock pack.
+"""Build the full Bedrock pack with mud, concrete and stripped-oak updates.
 
-Run after prepare_mud_concrete.py and optimize_png_lossless.py. Preserves all
+Run after prepare_mud_concrete.py, prepare_stripped_oak.py and optimize_png_lossless.py. Preserves all
 other archive paths and replaces existing entries from the source tree. The
 old full mcpack must exist; it remains the source of the omission list.
 """
@@ -14,9 +14,9 @@ import zipfile
 ROOT=Path('minecraft')
 SOURCE=ROOT/'realistic-dirt'
 PACK=ROOT/'realistic-dirt.mcpack'
-VERSION=[2,7,1]
+VERSION=[2,7,2]
 NEW=('textures/blocks/packed_mud.png','textures/blocks/concrete_white.png',
-     'textures/blocks/concrete_red.png')
+     'textures/blocks/concrete_red.png','textures/blocks/stripped_oak_log.png')
 
 
 def main():
@@ -30,6 +30,7 @@ def main():
     terrain['texture_data']['packed_mud']={'textures':'textures/blocks/packed_mud'}
     terrain['texture_data']['white_concrete']={'textures':'textures/blocks/concrete_white'}
     terrain['texture_data']['red_concrete']={'textures':'textures/blocks/concrete_red'}
+    terrain['texture_data']['stripped_oak_log_side']={'textures':'textures/blocks/stripped_oak_log'}
     terrain_path.write_text(json.dumps(terrain,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     with zipfile.ZipFile(PACK) as original:
         existing=set(original.namelist())

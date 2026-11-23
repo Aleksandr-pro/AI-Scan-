@@ -32,7 +32,11 @@ FILES=('textures/blocks/sea_lantern.png', 'textures/entity/chest/double_normal.p
        # More lossless recompression makes room for red concrete.
        'textures/blocks/grass_top.png', 'textures/blocks/grass_top_variant_3.png',
        'textures/blocks/gravel.png', 'textures/blocks/gravel_variant_0.png',
-       'textures/blocks/gravel_variant_1.png', 'textures/blocks/log_acacia.png')
+       'textures/blocks/gravel_variant_1.png', 'textures/blocks/log_acacia.png',
+       # Space for the stripped-oak side, with no visual loss.
+       'textures/blocks/gravel_variant_2.png', 'textures/blocks/gravel_variant_3.png',
+       'textures/blocks/log_spruce.png', 'textures/blocks/planks_oak_variant_1.png',
+       'textures/blocks/planks_oak_variant_2.png', 'textures/blocks/planks_oak_variant_3.png')
 
 
 def chunk(kind,data):
