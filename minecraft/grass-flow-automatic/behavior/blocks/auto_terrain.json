@@ -1,0 +1,4924 @@
+{
+  "format_version": "1.26.30",
+  "minecraft:block": {
+    "description": {
+      "identifier": "grassflow:auto_terrain",
+      "states": {
+        "grassflow:nw": [
+          0,
+          1,
+          2
+        ],
+        "grassflow:ne": [
+          0,
+          1,
+          2
+        ],
+        "grassflow:sw": [
+          0,
+          1,
+          2
+        ],
+        "grassflow:se": [
+          0,
+          1,
+          2
+        ],
+        "grassflow:detail": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    "components": {
+      "minecraft:display_name": "Живая почва (авто)",
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "grassflow_dirt",
+          "render_method": "opaque"
+        },
+        "up": {
+          "texture": "grassflow_11110",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:collision_box": true,
+      "minecraft:selection_box": true,
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.6
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 0.6
+      },
+      "minecraft:movable": {
+        "movement_type": "immovable"
+      },
+      "minecraft:loot": "loot_tables/blocks/auto_terrain.json"
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00000",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00001",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00002",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00003",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00010",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00011",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00012",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00013",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00020",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00021",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00022",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00023",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00100",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00101",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00102",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00103",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00110",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00111",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00112",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00113",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00120",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00121",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00122",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00123",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00200",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00201",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00202",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00203",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00210",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00211",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00212",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00213",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00220",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00221",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00222",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_00223",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01000",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01001",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01002",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01003",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01010",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01011",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01012",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01013",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01020",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01021",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01022",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01023",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01100",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01101",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01102",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01103",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01110",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01111",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01112",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01113",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01120",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01121",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01122",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01123",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01200",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01201",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01202",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01203",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01210",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01211",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01212",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01213",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01220",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01221",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01222",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_01223",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02000",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02001",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02002",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02003",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02010",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02011",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02012",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02013",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02020",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02021",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02022",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02023",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02100",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02101",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02102",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02103",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02110",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02111",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02112",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02113",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02120",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02121",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02122",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02123",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02200",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02201",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02202",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02203",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02210",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02211",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02212",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02213",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02220",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02221",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02222",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 0 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_02223",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10000",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10001",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10002",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10003",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10010",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10011",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10012",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10013",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10020",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10021",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10022",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10023",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10100",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10101",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10102",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10103",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10110",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10111",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10112",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10113",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10120",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10121",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10122",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10123",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10200",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10201",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10202",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10203",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10210",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10211",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10212",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10213",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10220",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10221",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10222",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_10223",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11000",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11001",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11002",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11003",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11010",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11011",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11012",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11013",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11020",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11021",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11022",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11023",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11100",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11101",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11102",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11103",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11110",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11111",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11112",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11113",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11120",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11121",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11122",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11123",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11200",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11201",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11202",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11203",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11210",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11211",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11212",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11213",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11220",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11221",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11222",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_11223",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12000",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12001",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12002",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12003",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12010",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12011",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12012",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12013",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12020",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12021",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12022",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12023",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12100",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12101",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12102",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12103",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12110",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12111",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12112",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12113",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12120",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12121",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12122",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12123",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12200",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12201",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12202",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12203",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12210",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12211",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12212",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12213",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12220",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12221",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12222",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 1 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_12223",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20000",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20001",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20002",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20003",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20010",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20011",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20012",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20013",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20020",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20021",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20022",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20023",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20100",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20101",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20102",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20103",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20110",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20111",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20112",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20113",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20120",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20121",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20122",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20123",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20200",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20201",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20202",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20203",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20210",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20211",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20212",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20213",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20220",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20221",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20222",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 0 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_20223",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21000",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21001",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21002",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21003",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21010",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21011",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21012",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21013",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21020",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21021",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21022",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21023",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21100",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21101",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21102",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21103",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21110",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21111",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21112",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21113",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21120",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21121",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21122",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21123",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21200",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21201",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21202",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21203",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21210",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21211",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21212",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21213",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21220",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21221",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21222",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 1 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_21223",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22000",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22001",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22002",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22003",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22010",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22011",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22012",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22013",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22020",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22021",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22022",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 0 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22023",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22100",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22101",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22102",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22103",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22110",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22111",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22112",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22113",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22120",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22121",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22122",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 1 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22123",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22200",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22201",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22202",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 0 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22203",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22210",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22211",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22212",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 1 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22213",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22220",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22221",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22222",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('grassflow:nw') == 2 && q.block_state('grassflow:ne') == 2 && q.block_state('grassflow:sw') == 2 && q.block_state('grassflow:se') == 2 && q.block_state('grassflow:detail') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "grassflow_dirt",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "grassflow_22223",
+              "render_method": "opaque"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
