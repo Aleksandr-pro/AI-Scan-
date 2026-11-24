@@ -2,8 +2,8 @@
 """Build the full Bedrock pack with the prepared photographic block textures.
 
 Run after prepare_mud_concrete.py, prepare_stripped_oak.py,
-prepare_stained_glass_panes.py, prepare_andesite.py, prepare_pot_shelf.py and
-optimize_png_lossless.py. Preserves all
+prepare_stained_glass_panes.py, prepare_andesite.py, prepare_pot_shelf.py,
+prepare_snow_normal.py and optimize_png_lossless.py as needed. Preserves all
 other archive paths and replaces existing entries from the source tree. The
 old full mcpack must exist; it remains the source of the omission list.
 """
@@ -16,7 +16,7 @@ import zipfile
 ROOT=Path('minecraft')
 SOURCE=ROOT/'realistic-dirt'
 PACK=ROOT/'realistic-dirt.mcpack'
-VERSION=[2,7,5]
+VERSION=[2,7,6]
 COLORS=('black','white','pink')
 NEW=('textures/blocks/packed_mud.png','textures/blocks/concrete_white.png',
      'textures/blocks/concrete_red.png','textures/blocks/stripped_oak_log.png',
