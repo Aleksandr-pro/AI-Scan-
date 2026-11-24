@@ -38,8 +38,8 @@ class AddonTest(unittest.TestCase):
     def test_manifests_particle_and_png(self):
         r=json.loads(self.r['manifest.json']);b=json.loads(self.b['manifest.json'])
         for manifest in (r,b):
-            self.assertEqual(manifest['header']['version'],[1,2,0])
-            self.assertTrue(all(m['version']==[1,2,0] for m in manifest['modules']))
+            self.assertEqual(manifest['header']['version'],[1,3,0])
+            self.assertTrue(all(m['version']==[1,3,0] for m in manifest['modules']))
         self.assertIn({'uuid':r['header']['uuid'],'version':r['header']['version']},b['dependencies'])
         self.assertIn({'module_name':'@minecraft/server','version':'2.8.0'},b['dependencies'])
         self.assertIn('scripts/main.js',self.b)
@@ -51,6 +51,7 @@ class AddonTest(unittest.TestCase):
         self.assertEqual(comp['minecraft:emitter_lifetime_expression']['expiration_expression'],'variable.emitter_age >= 61')
         self.assertEqual(comp['minecraft:particle_appearance_tinting']['color'][3],'math.clamp((60 - variable.particle_age) / 4, 0, 1)')
         self.assertEqual(comp['minecraft:particle_lifetime_expression']['max_lifetime'],60)
+        self.assertEqual(comp['minecraft:particle_appearance_billboard']['size'],[0.34,0.52])
         self.assertEqual(comp['minecraft:particle_appearance_billboard']['facing_camera_mode'],'emitter_transform_xz')
         self.assertEqual(comp['minecraft:particle_initial_spin']['rotation'],'variable.aegis_angle')
         png=self.r['textures/particle/aegis_snow_footprint.png']
@@ -69,11 +70,11 @@ class AddonTest(unittest.TestCase):
                     for path in old.namelist():
                         if path == 'manifest.json':
                             previous=json.loads(old.read(path)); current=json.loads(new[path])
-                            previous['header']['version']=[1,2,0]
-                            for module in previous['modules']:module['version']=[1,2,0]
+                            previous['header']['version']=[1,3,0]
+                            for module in previous['modules']:module['version']=[1,3,0]
                             for dependency in previous.get('dependencies',[]):
                                 if dependency.get('uuid')=='62554f75-26af-4261-9f58-fa2cb185cf97':
-                                    dependency['version']=[1,2,0]
+                                    dependency['version']=[1,3,0]
                             self.assertEqual(previous,current)
                         elif path == 'textures/particle/aegis_snow_footprint.png':
                             self.assertEqual(old.read(path),new[path])

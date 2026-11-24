@@ -1590,6 +1590,9 @@
       "textures": [
         "textures/blocks/oak_shelf"
       ]
+    },
+    "copper_block": {
+      "textures": "textures/blocks/copper_block"
     }
   }
 }

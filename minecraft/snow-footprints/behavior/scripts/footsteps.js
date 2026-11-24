@@ -1,5 +1,8 @@
 // Visual-only snow footprints. No blocks, player inventory or world properties are modified.
-export const STEP_DISTANCE = 0.75;
+export const STEP_DISTANCE = 0.82;
+// The rendered plane is 0.34 × 0.52: 0.64 exceeds its diagonal, so
+// equal-height footprints cannot geometrically intersect at any angle.
+export const MIN_PRINT_DISTANCE = 0.64;
 export const LIFE_TICKS = 1200;
 export const MAX_TOTAL = 720;
 export const MAX_PER_PLAYER = 360;
@@ -32,12 +35,12 @@ export function snowSurface(dimension, x, footY, z) {
 // This is less aggressive on natural, uneven snow; borders can still overhang.
 export function printPosition(dimension, center, dx, dz, side) {
   const rightX = dz, rightZ = -dx;
-  const x = center.x + rightX * side * 0.15;
-  const z = center.z + rightZ * side * 0.15;
+  const x = center.x + rightX * side * 0.17;
+  const z = center.z + rightZ * side * 0.17;
   const y = snowSurface(dimension, x, center.y, z);
   if (y === undefined) return undefined;
   let matching = 0;
-  for (const [along, across] of [[0.25,0.13],[0.25,-0.13],[-0.25,0.13],[-0.25,-0.13]]) {
+  for (const [along, across] of [[0.25,0.16],[0.25,-0.16],[-0.25,0.16],[-0.25,-0.16]]) {
     const sx = x + dx * along + rightX * across;
     const sz = z + dz * along + rightZ * across;
     const other = snowSurface(dimension, sx, center.y, sz);
@@ -94,11 +97,15 @@ export function createFootprints(spawn, report = () => {}) {
           const center = {x: previous.pos.x + vx * ratio, y: previous.pos.y + (p.y - previous.pos.y) * ratio,
             z: previous.pos.z + vz * ratio};
           const at = printPosition(dim, center, dx, dz, previous.side);
-          if (at && active.length < MAX_TOTAL && active.filter(e => e.player === player.id).length < MAX_PER_PLAYER) {
+          const overlaps = at && active.some(entry => entry.dimension === dim.id &&
+            Math.abs(entry.y - at.y) < 0.12 &&
+            Math.hypot(entry.x - at.x, entry.z - at.z) < MIN_PRINT_DISTANCE);
+          if (at && !overlaps && active.length < MAX_TOTAL && active.filter(e => e.player === player.id).length < MAX_PER_PLAYER) {
             const angle = Math.atan2(dx, dz) * 180 / Math.PI;
             spawn(dim, at, angle);
             signal(player, 'emitted'); // API accepted request; rendering is client-side.
-            active.push({player: player.id, expires: now + LIFE_TICKS});
+            active.push({player: player.id, expires: now + LIFE_TICKS,
+              dimension: dim.id, x: at.x, y: at.y, z: at.z});
             previous.side *= -1;
           }
           distance += STEP_DISTANCE;

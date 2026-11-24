@@ -26,9 +26,9 @@ await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64
 assert.equal(interval,2);
 function tick(x,t) {p.location.x=x;system.currentTick=t;callback();}
 tick(.5,0);assert.equal(messages.length,1);assert.match(messages[0],/Скрипт запущен/);
-tick(1.3,2);assert.equal(spawned.length,1);assert.equal(spawned[0].id,'aegis:snow_footprint');assert.equal(spawned[0].angle,90);
+tick(1.4,2);assert.equal(spawned.length,1);assert.equal(spawned[0].id,'aegis:snow_footprint');assert.equal(spawned[0].angle,90);
 assert.match(messages[1],/след запрошен/);
-tick(2.1,4);assert.equal(spawned.length,2);assert.equal(messages.length,2,'status is once per session');
-shouldThrow=true;tick(2.9,6);assert.equal(messages.length,3);assert.match(messages[2],/Ошибка скрипта/);
-tick(3.7,8);tick(4.5,10);assert.equal(messages.length,3,'error is rate limited');
+tick(2.3,4);assert.equal(spawned.length,2);assert.equal(messages.length,2,'status is once per session');
+shouldThrow=true;tick(3.2,6);assert.equal(messages.length,3);assert.match(messages[2],/Ошибка скрипта/);
+tick(4.1,8);tick(5.0,10);assert.equal(messages.length,3,'error is rate limited');
 console.log('Snow footprint entrypoint smoke test passed');
