@@ -1,0 +1,31 @@
+name: Minecraft texture catalog
+
+on:
+  push:
+    paths:
+      - 'КАТАЛОГ-МАЙНКРАФТ.md'
+      - 'minecraft/realistic-dirt.mcpack'
+      - 'minecraft/catalog-source/**'
+      - 'minecraft/tools/build_texture_catalog.py'
+      - 'minecraft/tools/test_texture_catalog.py'
+      - '.github/workflows/texture-catalog.yml'
+  pull_request:
+    paths:
+      - 'КАТАЛОГ-МАЙНКРАФТ.md'
+      - 'minecraft/realistic-dirt.mcpack'
+      - 'minecraft/catalog-source/**'
+      - 'minecraft/tools/build_texture_catalog.py'
+      - 'minecraft/tools/test_texture_catalog.py'
+      - '.github/workflows/texture-catalog.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check catalog completeness and freshness
+        run: python3 minecraft/tools/test_texture_catalog.py -v

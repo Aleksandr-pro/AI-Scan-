@@ -1,0 +1,6 @@
+{
+  "_instructions": "Ручные решения не стираются при пересборке. Формат: \"blocks\"/\"items\"/\"entities\" -> ID без minecraft: -> {\"status\": \"done\"|\"partial\"|\"missing\"|\"review\", \"note\": \"основание\"}. Перед изменением проверяйте исходники и игру.",
+  "blocks": {},
+  "items": {},
+  "entities": {}
+}
