@@ -1,0 +1,28 @@
+name: Ordinary snow texture
+on:
+  push:
+    paths:
+      - 'minecraft/realistic-dirt.mcpack'
+      - 'minecraft/realistic-dirt/textures/blocks/*snow*.png'
+      - 'minecraft/tools/*snow_normal.py'
+      - '.github/workflows/snow-normal.yml'
+  pull_request:
+    paths:
+      - 'minecraft/realistic-dirt.mcpack'
+      - 'minecraft/realistic-dirt/textures/blocks/*snow*.png'
+      - 'minecraft/tools/*snow_normal.py'
+      - '.github/workflows/snow-normal.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  snow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install Pillow==12.1.1
+      - run: python minecraft/tools/test_snow_normal.py -v
+      - run: python minecraft/tools/verify_pack.py
