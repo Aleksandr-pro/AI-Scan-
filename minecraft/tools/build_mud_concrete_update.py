@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Build the full Bedrock pack with mud, concrete, oak and glass pane updates.
+"""Build the full Bedrock pack with mud, concrete, oak, glass and andesite.
 
 Run after prepare_mud_concrete.py, prepare_stripped_oak.py,
-prepare_stained_glass_panes.py and optimize_png_lossless.py. Preserves all
+prepare_stained_glass_panes.py, prepare_andesite.py and
+optimize_png_lossless.py. Preserves all
 other archive paths and replaces existing entries from the source tree. The
 old full mcpack must exist; it remains the source of the omission list.
 """
@@ -15,10 +16,11 @@ import zipfile
 ROOT=Path('minecraft')
 SOURCE=ROOT/'realistic-dirt'
 PACK=ROOT/'realistic-dirt.mcpack'
-VERSION=[2,7,3]
+VERSION=[2,7,4]
 COLORS=('black','white','pink')
 NEW=('textures/blocks/packed_mud.png','textures/blocks/concrete_white.png',
      'textures/blocks/concrete_red.png','textures/blocks/stripped_oak_log.png',
+     'textures/blocks/stone_andesite.png',
      *(f'textures/blocks/photo_stained_glass_{c}_pane_edge.png' for c in COLORS))
 
 
@@ -34,6 +36,10 @@ def main():
     terrain['texture_data']['white_concrete']={'textures':'textures/blocks/concrete_white'}
     terrain['texture_data']['red_concrete']={'textures':'textures/blocks/concrete_red'}
     terrain['texture_data']['stripped_oak_log_side']={'textures':'textures/blocks/stripped_oak_log'}
+    # Vanilla uses the same texture for natural andesite, its slabs, stairs
+    # and wall. The polished-andesite texture remains untouched.
+    for key in ('andesite','andesite_slab','andesite_wall'):
+        terrain['texture_data'][key]={'textures':'textures/blocks/stone_andesite'}
     for color in COLORS:
         key=f'photo_stained_glass_{color}_pane_edge'
         terrain['texture_data'][key]={'textures':f'textures/blocks/{key}'}
