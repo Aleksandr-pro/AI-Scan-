@@ -38,7 +38,14 @@ FILES=('textures/blocks/sea_lantern.png', 'textures/entity/chest/double_normal.p
        'textures/blocks/log_spruce.png', 'textures/blocks/planks_oak_variant_1.png',
        'textures/blocks/planks_oak_variant_2.png', 'textures/blocks/planks_oak_variant_3.png',
        # Room for coloured pane borders; no change to image pixels.
-       'textures/blocks/log_big_oak.png')
+       'textures/blocks/log_big_oak.png',
+       # Space for the 512px andesite texture while preserving every pixel.
+       'textures/blocks/dirt_variant_1.png', 'textures/blocks/dirt_variant_2.png',
+       'textures/blocks/dirt_variant_3.png', 'textures/blocks/dirt_variant_4.png',
+       'textures/blocks/mangrove_log_top.png', 'textures/blocks/log_big_oak_top.png',
+       'textures/blocks/photo_crafting_table_east.png', 'textures/blocks/photo_crafting_table_south.png',
+       'textures/blocks/photo_crafting_table_north.png', 'textures/blocks/photo_crafting_table_west.png',
+       'textures/blocks/stone_diorite.png')
 
 
 def chunk(kind,data):

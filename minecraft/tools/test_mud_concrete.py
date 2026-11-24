@@ -14,16 +14,20 @@ from PIL import Image, ImageChops
 ROOT=Path('minecraft')
 PACK=ROOT/'realistic-dirt.mcpack'
 BASELINE=None
-OPTIMIZED={'textures/blocks/log_big_oak.png'}
+OPTIMIZED={f'textures/blocks/{name}.png' for name in (
+    'dirt_variant_1','dirt_variant_2','dirt_variant_3','dirt_variant_4',
+    'mangrove_log_top','log_big_oak_top','photo_crafting_table_east',
+    'photo_crafting_table_south','photo_crafting_table_north',
+    'photo_crafting_table_west','stone_diorite')}
 COLORS=('black','white','pink')
-NEW={f'textures/blocks/photo_stained_glass_{c}_pane_edge.png' for c in COLORS}
+NEW={'textures/blocks/stone_andesite.png'}
 
 class TestMudConcrete(unittest.TestCase):
     def test_images_and_atlas(self):
         with zipfile.ZipFile(PACK) as z:
             self.assertIsNone(z.testzip())
             terrain=json.loads(z.read('textures/terrain_texture.json'))['texture_data']
-            for key,name in [('packed_mud','packed_mud'),('white_concrete','concrete_white'),('red_concrete','concrete_red'),('stripped_oak_log_side','stripped_oak_log')]:
+            for key,name in [('packed_mud','packed_mud'),('white_concrete','concrete_white'),('red_concrete','concrete_red'),('stripped_oak_log_side','stripped_oak_log'),('andesite','stone_andesite'),('andesite_slab','stone_andesite'),('andesite_wall','stone_andesite')]:
                 self.assertEqual(terrain[key]['textures'],f'textures/blocks/{name}')
                 data=z.read(f'textures/blocks/{name}.png')
                 self.assertEqual(data,(ROOT/f'realistic-dirt/textures/blocks/{name}.png').read_bytes())
@@ -47,7 +51,7 @@ class TestMudConcrete(unittest.TestCase):
                     self.assertGreater(image.getpixel((128,0))[3],200)
                 with Image.open(io.BytesIO(z.read(f'textures/blocks/{edge}.png'))) as image:
                     self.assertEqual((image.size,image.mode),((256,256),'RGBA'))
-            self.assertEqual(json.loads(z.read('manifest.json'))['header']['version'],[2,7,3])
+            self.assertEqual(json.loads(z.read('manifest.json'))['header']['version'],[2,7,4])
             self.assertLess(PACK.stat().st_size,100*1024*1024)
 
     def test_existing_pack(self):
@@ -63,12 +67,9 @@ class TestMudConcrete(unittest.TestCase):
                 else:self.assertEqual(a,b,name)
             before=json.loads(old.read('textures/terrain_texture.json'))
             after=json.loads(new.read('textures/terrain_texture.json'))
-            for color in COLORS: after['texture_data'].pop(f'photo_stained_glass_{color}_pane_edge')
+            for key in ('andesite','andesite_slab','andesite_wall'): after['texture_data'].pop(key)
             self.assertEqual(before,after)
-            before=json.loads(old.read('blocks.json'))
-            after=json.loads(new.read('blocks.json'))
-            for color in COLORS:after.pop(f'{color}_stained_glass_pane')
-            self.assertEqual(before,after)
+            self.assertEqual(json.loads(old.read('blocks.json')),json.loads(new.read('blocks.json')))
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--baseline',type=Path);args,unittest_args=parser.parse_known_args()

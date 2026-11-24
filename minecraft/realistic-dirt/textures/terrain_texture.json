@@ -1573,6 +1573,15 @@
     },
     "photo_stained_glass_pink_pane_edge": {
       "textures": "textures/blocks/photo_stained_glass_pink_pane_edge"
+    },
+    "andesite": {
+      "textures": "textures/blocks/stone_andesite"
+    },
+    "andesite_slab": {
+      "textures": "textures/blocks/stone_andesite"
+    },
+    "andesite_wall": {
+      "textures": "textures/blocks/stone_andesite"
     }
   }
 }
