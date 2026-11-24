@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build the full Bedrock pack with mud, concrete, oak, glass and andesite.
+"""Build the full Bedrock pack with the prepared photographic block textures.
 
 Run after prepare_mud_concrete.py, prepare_stripped_oak.py,
-prepare_stained_glass_panes.py, prepare_andesite.py and
+prepare_stained_glass_panes.py, prepare_andesite.py, prepare_pot_shelf.py and
 optimize_png_lossless.py. Preserves all
 other archive paths and replaces existing entries from the source tree. The
 old full mcpack must exist; it remains the source of the omission list.
@@ -16,11 +16,12 @@ import zipfile
 ROOT=Path('minecraft')
 SOURCE=ROOT/'realistic-dirt'
 PACK=ROOT/'realistic-dirt.mcpack'
-VERSION=[2,7,4]
+VERSION=[2,7,5]
 COLORS=('black','white','pink')
 NEW=('textures/blocks/packed_mud.png','textures/blocks/concrete_white.png',
      'textures/blocks/concrete_red.png','textures/blocks/stripped_oak_log.png',
-     'textures/blocks/stone_andesite.png',
+     'textures/blocks/stone_andesite.png','textures/blocks/flower_pot.png',
+     'textures/blocks/oak_shelf.png',
      *(f'textures/blocks/photo_stained_glass_{c}_pane_edge.png' for c in COLORS))
 
 
@@ -40,6 +41,8 @@ def main():
     # and wall. The polished-andesite texture remains untouched.
     for key in ('andesite','andesite_slab','andesite_wall'):
         terrain['texture_data'][key]={'textures':'textures/blocks/stone_andesite'}
+    terrain['texture_data']['flower_pot']={'textures':'textures/blocks/flower_pot'}
+    terrain['texture_data']['oak_shelf']={'textures':['textures/blocks/oak_shelf']}
     for color in COLORS:
         key=f'photo_stained_glass_{color}_pane_edge'
         terrain['texture_data'][key]={'textures':f'textures/blocks/{key}'}

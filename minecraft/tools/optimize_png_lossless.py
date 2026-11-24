@@ -45,7 +45,13 @@ FILES=('textures/blocks/sea_lantern.png', 'textures/entity/chest/double_normal.p
        'textures/blocks/mangrove_log_top.png', 'textures/blocks/log_big_oak_top.png',
        'textures/blocks/photo_crafting_table_east.png', 'textures/blocks/photo_crafting_table_south.png',
        'textures/blocks/photo_crafting_table_north.png', 'textures/blocks/photo_crafting_table_west.png',
-       'textures/blocks/stone_diorite.png')
+       'textures/blocks/stone_diorite.png',
+       # Space for the flower-pot and shelf UV atlases, without pixel changes.
+       'textures/blocks/amethyst_block_variant_1.png', 'textures/blocks/amethyst_block_variant_2.png',
+       'textures/blocks/amethyst_block_variant_3.png', 'textures/blocks/copper_ore_variant_1.png',
+       'textures/blocks/copper_ore_variant_2.png', 'textures/blocks/copper_ore_variant_3.png',
+       'textures/blocks/iron_ore_variant_1.png', 'textures/blocks/iron_ore_variant_2.png',
+       'textures/blocks/iron_ore_variant_3.png', 'textures/blocks/stone_andesite.png')
 
 
 def chunk(kind,data):
