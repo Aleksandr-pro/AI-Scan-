@@ -1,0 +1,27 @@
+name: Combined texture pack and snow footprints
+on:
+  push:
+    paths:
+      - 'minecraft/realistic-dirt.mcpack'
+      - 'minecraft/snow-footprints.mcaddon'
+      - 'minecraft/realistic-snow-complete.mcaddon'
+      - 'minecraft/tools/build_complete_snow_bundle.py'
+      - 'minecraft/tools/test_complete_snow_bundle.py'
+      - '.github/workflows/complete-snow-bundle.yml'
+  pull_request:
+    paths:
+      - 'minecraft/realistic-dirt.mcpack'
+      - 'minecraft/snow-footprints.mcaddon'
+      - 'minecraft/realistic-snow-complete.mcaddon'
+      - 'minecraft/tools/build_complete_snow_bundle.py'
+      - 'minecraft/tools/test_complete_snow_bundle.py'
+      - '.github/workflows/complete-snow-bundle.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 minecraft/tools/test_complete_snow_bundle.py -v
