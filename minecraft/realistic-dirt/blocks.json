@@ -119,5 +119,38 @@
   "pink_stained_glass": {
     "sound": "glass",
     "textures": "photo_stained_glass_pink"
+  },
+  "black_stained_glass_pane": {
+    "sound": "glass",
+    "textures": {
+      "down": "photo_stained_glass_black",
+      "east": "photo_stained_glass_black_pane_edge",
+      "north": "photo_stained_glass_black",
+      "south": "photo_stained_glass_black",
+      "up": "photo_stained_glass_black",
+      "west": "photo_stained_glass_black"
+    }
+  },
+  "white_stained_glass_pane": {
+    "sound": "glass",
+    "textures": {
+      "down": "photo_stained_glass_white",
+      "east": "photo_stained_glass_white_pane_edge",
+      "north": "photo_stained_glass_white",
+      "south": "photo_stained_glass_white",
+      "up": "photo_stained_glass_white",
+      "west": "photo_stained_glass_white"
+    }
+  },
+  "pink_stained_glass_pane": {
+    "sound": "glass",
+    "textures": {
+      "down": "photo_stained_glass_pink",
+      "east": "photo_stained_glass_pink_pane_edge",
+      "north": "photo_stained_glass_pink",
+      "south": "photo_stained_glass_pink",
+      "up": "photo_stained_glass_pink",
+      "west": "photo_stained_glass_pink"
+    }
   }
 }

@@ -36,7 +36,9 @@ FILES=('textures/blocks/sea_lantern.png', 'textures/entity/chest/double_normal.p
        # Space for the stripped-oak side, with no visual loss.
        'textures/blocks/gravel_variant_2.png', 'textures/blocks/gravel_variant_3.png',
        'textures/blocks/log_spruce.png', 'textures/blocks/planks_oak_variant_1.png',
-       'textures/blocks/planks_oak_variant_2.png', 'textures/blocks/planks_oak_variant_3.png')
+       'textures/blocks/planks_oak_variant_2.png', 'textures/blocks/planks_oak_variant_3.png',
+       # Room for coloured pane borders; no change to image pixels.
+       'textures/blocks/log_big_oak.png')
 
 
 def chunk(kind,data):
