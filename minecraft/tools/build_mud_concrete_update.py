@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Build the full Bedrock pack with mud, concrete and stripped-oak updates.
+"""Build the full Bedrock pack with mud, concrete, oak and glass pane updates.
 
-Run after prepare_mud_concrete.py, prepare_stripped_oak.py and optimize_png_lossless.py. Preserves all
+Run after prepare_mud_concrete.py, prepare_stripped_oak.py,
+prepare_stained_glass_panes.py and optimize_png_lossless.py. Preserves all
 other archive paths and replaces existing entries from the source tree. The
 old full mcpack must exist; it remains the source of the omission list.
 """
@@ -14,9 +15,11 @@ import zipfile
 ROOT=Path('minecraft')
 SOURCE=ROOT/'realistic-dirt'
 PACK=ROOT/'realistic-dirt.mcpack'
-VERSION=[2,7,2]
+VERSION=[2,7,3]
+COLORS=('black','white','pink')
 NEW=('textures/blocks/packed_mud.png','textures/blocks/concrete_white.png',
-     'textures/blocks/concrete_red.png','textures/blocks/stripped_oak_log.png')
+     'textures/blocks/concrete_red.png','textures/blocks/stripped_oak_log.png',
+     *(f'textures/blocks/photo_stained_glass_{c}_pane_edge.png' for c in COLORS))
 
 
 def main():
@@ -31,7 +34,22 @@ def main():
     terrain['texture_data']['white_concrete']={'textures':'textures/blocks/concrete_white'}
     terrain['texture_data']['red_concrete']={'textures':'textures/blocks/concrete_red'}
     terrain['texture_data']['stripped_oak_log_side']={'textures':'textures/blocks/stripped_oak_log'}
+    for color in COLORS:
+        key=f'photo_stained_glass_{color}_pane_edge'
+        terrain['texture_data'][key]={'textures':f'textures/blocks/{key}'}
     terrain_path.write_text(json.dumps(terrain,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    blocks_path=SOURCE/'blocks.json'
+    blocks=json.loads(blocks_path.read_text(encoding='utf-8'))
+    for color in COLORS:
+        face=f'photo_stained_glass_{color}'
+        edge=f'{face}_pane_edge'
+        # Preserve Bedrock samples' pane face assignment, including the
+        # special east slot. Change only the three modern coloured panes.
+        blocks[f'{color}_stained_glass_pane']={
+            'sound':'glass', 'textures':{
+                'down':face, 'east':edge, 'north':face, 'south':face,
+                'up':face, 'west':face}}
+    blocks_path.write_text(json.dumps(blocks,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     with zipfile.ZipFile(PACK) as original:
         existing=set(original.namelist())
         expected=existing|set(NEW)

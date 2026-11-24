@@ -1564,6 +1564,15 @@
     },
     "stripped_oak_log_side": {
       "textures": "textures/blocks/stripped_oak_log"
+    },
+    "photo_stained_glass_black_pane_edge": {
+      "textures": "textures/blocks/photo_stained_glass_black_pane_edge"
+    },
+    "photo_stained_glass_white_pane_edge": {
+      "textures": "textures/blocks/photo_stained_glass_white_pane_edge"
+    },
+    "photo_stained_glass_pink_pane_edge": {
+      "textures": "textures/blocks/photo_stained_glass_pink_pane_edge"
     }
   }
 }

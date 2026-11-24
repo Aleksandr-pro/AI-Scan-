@@ -14,10 +14,9 @@ from PIL import Image, ImageChops
 ROOT=Path('minecraft')
 PACK=ROOT/'realistic-dirt.mcpack'
 BASELINE=None
-OPTIMIZED={f'textures/blocks/{name}.png' for name in (
-    'gravel_variant_2','gravel_variant_3','log_spruce',
-    'planks_oak_variant_1','planks_oak_variant_2','planks_oak_variant_3')}
-NEW={'textures/blocks/stripped_oak_log.png'}
+OPTIMIZED={'textures/blocks/log_big_oak.png'}
+COLORS=('black','white','pink')
+NEW={f'textures/blocks/photo_stained_glass_{c}_pane_edge.png' for c in COLORS}
 
 class TestMudConcrete(unittest.TestCase):
     def test_images_and_atlas(self):
@@ -34,7 +33,21 @@ class TestMudConcrete(unittest.TestCase):
                     # is made for game filtering/mipmapping or corner UVs.
                     self.assertIsNone(ImageChops.difference(im.crop((0,0,1,512)),im.crop((511,0,512,512))).getbbox())
                     self.assertIsNone(ImageChops.difference(im.crop((0,0,512,1)),im.crop((0,511,512,512))).getbbox())
-            self.assertEqual(json.loads(z.read('manifest.json'))['header']['version'],[2,7,2])
+            blocks=json.loads(z.read('blocks.json'))
+            for color in COLORS:
+                face=f'photo_stained_glass_{color}'
+                edge=f'{face}_pane_edge'
+                self.assertEqual(blocks[f'{color}_stained_glass_pane'],{
+                    'sound':'glass','textures':{'down':face,'east':edge,'north':face,
+                                                'south':face,'up':face,'west':face}})
+                self.assertEqual(terrain[edge]['textures'],f'textures/blocks/{edge}')
+                with Image.open(io.BytesIO(z.read(f'textures/blocks/{face}.png'))) as image:
+                    self.assertEqual(image.mode,'RGBA')
+                    self.assertLess(image.getpixel((128,128))[3],255)
+                    self.assertGreater(image.getpixel((128,0))[3],200)
+                with Image.open(io.BytesIO(z.read(f'textures/blocks/{edge}.png'))) as image:
+                    self.assertEqual((image.size,image.mode),((256,256),'RGBA'))
+            self.assertEqual(json.loads(z.read('manifest.json'))['header']['version'],[2,7,3])
             self.assertLess(PACK.stat().st_size,100*1024*1024)
 
     def test_existing_pack(self):
@@ -43,14 +56,18 @@ class TestMudConcrete(unittest.TestCase):
             self.assertEqual(set(new.namelist()),set(old.namelist())|NEW)
             for name in old.namelist():
                 a,b=old.read(name),new.read(name)
-                if name in ('manifest.json','textures/terrain_texture.json'):continue
+                if name in ('manifest.json','textures/terrain_texture.json','blocks.json'):continue
                 if name in OPTIMIZED:
                     with Image.open(io.BytesIO(a)) as im_a, Image.open(io.BytesIO(b)) as im_b:
                         self.assertEqual((im_a.size,im_a.mode,im_a.tobytes()),(im_b.size,im_b.mode,im_b.tobytes()),name)
                 else:self.assertEqual(a,b,name)
             before=json.loads(old.read('textures/terrain_texture.json'))
             after=json.loads(new.read('textures/terrain_texture.json'))
-            after['texture_data'].pop('stripped_oak_log_side')
+            for color in COLORS: after['texture_data'].pop(f'photo_stained_glass_{color}_pane_edge')
+            self.assertEqual(before,after)
+            before=json.loads(old.read('blocks.json'))
+            after=json.loads(new.read('blocks.json'))
+            for color in COLORS:after.pop(f'{color}_stained_glass_pane')
             self.assertEqual(before,after)
 
 if __name__=='__main__':
