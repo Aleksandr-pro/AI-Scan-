@@ -4,12 +4,14 @@ on:
     paths:
       - 'minecraft/snow-footprints/**'
       - 'minecraft/snow-footprints.mcaddon'
+      - 'minecraft/realistic-dirt/textures/blocks/realistic_snow_top.png'
       - 'minecraft/tools/*snow_footprint*'
       - '.github/workflows/snow-footprints.yml'
   pull_request:
     paths:
       - 'minecraft/snow-footprints/**'
       - 'minecraft/snow-footprints.mcaddon'
+      - 'minecraft/realistic-dirt/textures/blocks/realistic_snow_top.png'
       - 'minecraft/tools/*snow_footprint*'
       - '.github/workflows/snow-footprints.yml'
   workflow_dispatch:
@@ -23,4 +25,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: python3 minecraft/tools/test_snow_footprints.py -v
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install Pillow==13.0.0
+      - run: python minecraft/tools/test_snow_footprints.py -v
+      - run: python minecraft/tools/test_snow_footprint_art.py -v

@@ -4,8 +4,26 @@
     "name": "Реалистичные следы на снегу — ресурсы",
     "description": "Визуальные отпечатки для отдельного аддона; требуется набор поведения.",
     "uuid": "62554f75-26af-4261-9f58-fa2cb185cf97",
-    "version": [1, 0, 0],
-    "min_engine_version": [1, 26, 30]
+    "version": [
+      1,
+      1,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      26,
+      30
+    ]
   },
-  "modules": [{"type": "resources", "uuid": "aaabb6ed-aab6-4ab3-a273-ec21a2d342b0", "version": [1, 0, 0]}]
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "aaabb6ed-aab6-4ab3-a273-ec21a2d342b0",
+      "version": [
+        1,
+        1,
+        0
+      ]
+    }
+  ]
 }
