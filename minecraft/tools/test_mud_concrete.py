@@ -15,12 +15,11 @@ ROOT=Path('minecraft')
 PACK=ROOT/'realistic-dirt.mcpack'
 BASELINE=None
 OPTIMIZED={f'textures/blocks/{name}.png' for name in (
-    'dirt_variant_1','dirt_variant_2','dirt_variant_3','dirt_variant_4',
-    'mangrove_log_top','log_big_oak_top','photo_crafting_table_east',
-    'photo_crafting_table_south','photo_crafting_table_north',
-    'photo_crafting_table_west','stone_diorite')}
+    'amethyst_block_variant_1','amethyst_block_variant_2','amethyst_block_variant_3',
+    'copper_ore_variant_1','copper_ore_variant_2','copper_ore_variant_3',
+    'iron_ore_variant_1','iron_ore_variant_2','iron_ore_variant_3','stone_andesite')}
 COLORS=('black','white','pink')
-NEW={'textures/blocks/stone_andesite.png'}
+NEW={'textures/blocks/flower_pot.png','textures/blocks/oak_shelf.png'}
 
 class TestMudConcrete(unittest.TestCase):
     def test_images_and_atlas(self):
@@ -51,7 +50,17 @@ class TestMudConcrete(unittest.TestCase):
                     self.assertGreater(image.getpixel((128,0))[3],200)
                 with Image.open(io.BytesIO(z.read(f'textures/blocks/{edge}.png'))) as image:
                     self.assertEqual((image.size,image.mode),((256,256),'RGBA'))
-            self.assertEqual(json.loads(z.read('manifest.json'))['header']['version'],[2,7,4])
+            self.assertEqual(terrain['flower_pot']['textures'],'textures/blocks/flower_pot')
+            self.assertEqual(terrain['oak_shelf']['textures'],['textures/blocks/oak_shelf'])
+            with Image.open(io.BytesIO(z.read('textures/blocks/flower_pot.png'))) as pot:
+                self.assertEqual((pot.size,pot.mode),((512,512),'RGBA'))
+                with Image.open(ROOT/'pot-shelf-reference/vanilla-flower-pot.png') as vanilla:
+                    self.assertIsNone(ImageChops.difference(pot.getchannel('A'),vanilla.convert('RGBA').getchannel('A').resize((512,512),Image.Resampling.NEAREST)).getbbox())
+            with Image.open(io.BytesIO(z.read('textures/blocks/oak_shelf.png'))) as shelf:
+                self.assertEqual((shelf.size,shelf.mode),((512,512),'RGB'))
+                # Powered variants must remain different where supports join.
+                self.assertIsNotNone(ImageChops.difference(shelf.crop((0,256,256,384)),shelf.crop((0,384,256,512))).getbbox())
+            self.assertEqual(json.loads(z.read('manifest.json'))['header']['version'],[2,7,5])
             self.assertLess(PACK.stat().st_size,100*1024*1024)
 
     def test_existing_pack(self):
@@ -67,7 +76,7 @@ class TestMudConcrete(unittest.TestCase):
                 else:self.assertEqual(a,b,name)
             before=json.loads(old.read('textures/terrain_texture.json'))
             after=json.loads(new.read('textures/terrain_texture.json'))
-            for key in ('andesite','andesite_slab','andesite_wall'): after['texture_data'].pop(key)
+            for key in ('flower_pot','oak_shelf'): after['texture_data'].pop(key)
             self.assertEqual(before,after)
             self.assertEqual(json.loads(old.read('blocks.json')),json.loads(new.read('blocks.json')))
 

@@ -1582,6 +1582,14 @@
     },
     "andesite_wall": {
       "textures": "textures/blocks/stone_andesite"
+    },
+    "flower_pot": {
+      "textures": "textures/blocks/flower_pot"
+    },
+    "oak_shelf": {
+      "textures": [
+        "textures/blocks/oak_shelf"
+      ]
     }
   }
 }
