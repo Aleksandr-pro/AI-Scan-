@@ -11,13 +11,13 @@ function notify(player, kind, detail) {
     if (seen.has(kind)) return;
     seen.add(kind);
     if (kind === 'loaded')
-      player.sendMessage('§7[Следы 1.2] Скрипт запущен. Пройдитесь по снегу.');
+      player.sendMessage('§7[Следы 1.3] Скрипт запущен. Пройдитесь по снегу.');
     else if (kind === 'emitted')
-      player.sendMessage('§7[Следы 1.2] Снег найден, след запрошен. Если его не видно, проверьте ресурсы и настройки частиц.');
+      player.sendMessage('§7[Следы 1.3] Снег найден, след запрошен. Если его не видно, проверьте ресурсы и настройки частиц.');
     else if (kind === 'error') {
       const safe = String(detail).replace(/[\r\n]/g, ' ').slice(0, 160);
       console.warn('[Snow footprints] ' + safe);
-      player.sendMessage('§c[Следы 1.2] Ошибка скрипта: ' + safe);
+      player.sendMessage('§c[Следы 1.3] Ошибка скрипта: ' + safe);
     }
   } catch (error) {
     console.warn('[Snow footprints] Diagnostic message failed: ' + String(error));

@@ -26,8 +26,8 @@ class TestSnow(unittest.TestCase):
             self.assertIsNone(archive.testzip())
             self.assertLess(PACK.stat().st_size,100*1024*1024)
             manifest=json.loads(archive.read('manifest.json'))
-            self.assertEqual(manifest['header']['version'],[2,7,6])
-            self.assertTrue(all(m['version']==[2,7,6] for m in manifest['modules']))
+            self.assertEqual(manifest['header']['version'],[2,7,7])
+            self.assertTrue(all(m['version']==[2,7,7] for m in manifest['modules']))
             atlas=json.loads(archive.read('textures/terrain_texture.json'))['texture_data']
             blocks=json.loads(archive.read('blocks.json'))
             for key in ('snow','snow_layer'):
@@ -54,14 +54,18 @@ class TestSnow(unittest.TestCase):
     def test_every_other_entry_unchanged(self):
         if BASELINE is None:self.skipTest('provide --baseline to compare every archive entry')
         with zipfile.ZipFile(BASELINE) as old, zipfile.ZipFile(PACK) as new:
-            self.assertEqual(set(old.namelist()),set(new.namelist()))
+            self.assertEqual(set(old.namelist())|{'textures/blocks/copper_block.png'},set(new.namelist()))
             for name in old.namelist():
-                if name not in NAMES and name != 'manifest.json':
+                if name not in NAMES and name not in ('manifest.json','textures/terrain_texture.json'):
                     self.assertEqual(old.read(name),new.read(name),name)
+            before=json.loads(old.read('textures/terrain_texture.json'))
+            after=json.loads(new.read('textures/terrain_texture.json'))
+            self.assertEqual(after['texture_data'].pop('copper_block'),{'textures':'textures/blocks/copper_block'})
+            self.assertEqual(before,after)
             old_manifest=json.loads(old.read('manifest.json'))
             new_manifest=json.loads(new.read('manifest.json'))
-            old_manifest['header']['version']=[2,7,6]
-            for module in old_manifest['modules']:module['version']=[2,7,6]
+            old_manifest['header']['version']=[2,7,7]
+            for module in old_manifest['modules']:module['version']=[2,7,7]
             self.assertEqual(old_manifest,new_manifest)
 
 if __name__=='__main__':
