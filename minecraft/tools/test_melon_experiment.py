@@ -23,8 +23,11 @@ class MelonExperimentTests(unittest.TestCase):
                     self.assertEqual(set(z.namelist()),set(expected))
                     for path, content in expected.items(): self.assertEqual(z.read(path),content)
         rp=json.loads((BASE/'resources/manifest.json').read_text())
+        self.assertEqual(rp['header']['version'], [1,0,1])
         for d in ('behavior','recovery'):
             bp=json.loads((BASE/d/'manifest.json').read_text())
+            self.assertEqual(bp['header']['version'], [1,0,1])
+            self.assertTrue(all(m['version'] == [1,0,1] for m in bp['modules']))
             self.assertIn({'uuid':rp['header']['uuid'],'version':rp['header']['version']},bp['dependencies'])
             self.assertIn({'module_name':'@minecraft/server','version':'2.8.0'},bp['dependencies'])
         self.assertEqual((BASE/'behavior/blocks/melon.json').read_bytes(),(BASE/'recovery/blocks/melon.json').read_bytes())
