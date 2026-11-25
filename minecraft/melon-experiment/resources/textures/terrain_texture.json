@@ -1,0 +1,9 @@
+{
+  "resource_pack_name": "aimelon",
+  "texture_name": "atlas.terrain",
+  "texture_data": {
+    "aimelon_fruit": {
+      "textures": "textures/blocks/aimelon_fruit"
+    }
+  }
+}
