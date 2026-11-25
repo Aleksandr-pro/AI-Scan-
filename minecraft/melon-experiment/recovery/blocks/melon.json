@@ -1,0 +1,49 @@
+{
+  "format_version": "1.26.30",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aimelon:fruit"
+    },
+    "components": {
+      "minecraft:display_name": "3D арбуз (эксперимент)",
+      "minecraft:geometry": "geometry.aimelon.fruit",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "aimelon_fruit",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:collision_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          16,
+          16
+        ]
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          16,
+          16
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 1
+      },
+      "minecraft:loot": "loot_tables/blocks/melon.json"
+    }
+  }
+}

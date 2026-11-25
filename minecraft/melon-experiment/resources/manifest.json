@@ -1,0 +1,29 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "3D арбуз — ресурсы (эксперимент)",
+    "description": "Ресурсы экспериментального арбуза",
+    "uuid": "7e5e5c87-9fa0-4f7a-bea4-38c67b37019b",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      26,
+      30
+    ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "89fcb742-b5e1-48db-8822-7c76ec6a409d",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

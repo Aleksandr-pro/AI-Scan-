@@ -1,0 +1,54 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "3D арбуз — восстановление (эксперимент)",
+    "description": "Возвращает экспериментальные арбузы в обычные рядом с игроком.",
+    "uuid": "3a6fff4a-de80-48d3-ad33-4b3970eda6cd",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      26,
+      30
+    ]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "a12cb28a-6c84-409d-bcfa-f18290069522",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "type": "script",
+      "uuid": "50fe2df2-8216-4087-8522-acb6118e4e4a",
+      "version": [
+        1,
+        0,
+        0
+      ],
+      "language": "javascript",
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "7e5e5c87-9fa0-4f7a-bea4-38c67b37019b",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "module_name": "@minecraft/server",
+      "version": "2.8.0"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+name: Experimental melon addon
+on:
+  push:
+    paths:
+      - 'minecraft/melon-experiment/**'
+      - 'minecraft/melon-reference/**'
+      - 'minecraft/realistic-melon-experiment.mcaddon'
+      - 'minecraft/tools/*melon*'
+      - '.github/workflows/melon-experiment.yml'
+  pull_request:
+    paths:
+      - 'minecraft/melon-experiment/**'
+      - 'minecraft/melon-reference/**'
+      - 'minecraft/realistic-melon-experiment.mcaddon'
+      - 'minecraft/tools/*melon*'
+      - '.github/workflows/melon-experiment.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: python -m pip install 'Pillow>=10,<13'
+      - run: python minecraft/tools/test_melon_experiment.py -v
