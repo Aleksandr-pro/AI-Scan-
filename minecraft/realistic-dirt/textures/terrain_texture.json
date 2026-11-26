@@ -1593,6 +1593,9 @@
     },
     "copper_block": {
       "textures": "textures/blocks/copper_block"
+    },
+    "ice": {
+      "textures": "textures/blocks/ice"
     }
   }
 }

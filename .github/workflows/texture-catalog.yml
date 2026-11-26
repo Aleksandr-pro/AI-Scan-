@@ -27,5 +27,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check catalog completeness and freshness
+      - name: Check historical snapshot and generator determinism
         run: python3 minecraft/tools/test_texture_catalog.py -v

@@ -3,7 +3,8 @@
 
 Run after prepare_mud_concrete.py, prepare_stripped_oak.py,
 prepare_stained_glass_panes.py, prepare_andesite.py, prepare_pot_shelf.py,
-prepare_snow_normal.py, prepare_copper_block.py and optimize_png_lossless.py as needed. Preserves all
+prepare_snow_normal.py, prepare_copper_block.py, prepare_ordinary_ice.py and
+optimize_png_lossless.py as needed. Preserves all
 other archive paths and replaces existing entries from the source tree. The
 old full mcpack must exist; it remains the source of the omission list.
 """
@@ -16,12 +17,13 @@ import zipfile
 ROOT=Path('minecraft')
 SOURCE=ROOT/'realistic-dirt'
 PACK=ROOT/'realistic-dirt.mcpack'
-VERSION=[2,7,7]
+VERSION=[2,7,8]
 COLORS=('black','white','pink')
 NEW=('textures/blocks/packed_mud.png','textures/blocks/concrete_white.png',
      'textures/blocks/concrete_red.png','textures/blocks/stripped_oak_log.png',
      'textures/blocks/stone_andesite.png','textures/blocks/flower_pot.png',
      'textures/blocks/oak_shelf.png','textures/blocks/copper_block.png',
+     'textures/blocks/ice.png',
      *(f'textures/blocks/photo_stained_glass_{c}_pane_edge.png' for c in COLORS))
 
 
@@ -39,6 +41,8 @@ def main():
     terrain['texture_data']['stripped_oak_log_side']={'textures':'textures/blocks/stripped_oak_log'}
     # Vanilla assigns this path to ordinary and waxed, unoxidized copper.
     terrain['texture_data']['copper_block']={'textures':'textures/blocks/copper_block'}
+    # Ordinary ice only; packed, blue and frosted ice use different paths.
+    terrain['texture_data']['ice']={'textures':'textures/blocks/ice'}
     # Vanilla uses the same texture for natural andesite, its slabs, stairs
     # and wall. The polished-andesite texture remains untouched.
     for key in ('andesite','andesite_slab','andesite_wall'):
@@ -74,6 +78,7 @@ def main():
                 for name in sorted(expected):out.write(SOURCE/name,name)
             with zipfile.ZipFile(tmp_name) as check:
                 if check.testzip() is not None or set(check.namelist())!=expected:raise ValueError('archive validation failed')
+            if os.path.getsize(tmp_name)>=100*1024*1024:raise ValueError('archive exceeds GitHub single-file limit')
             os.replace(tmp_name,PACK)
         finally:
             if os.path.exists(tmp_name):os.unlink(tmp_name)

@@ -12,6 +12,7 @@ import unittest
 import zipfile
 from PIL import Image
 import prepare_copper_block
+from build_complete_snow_bundle import png_semantic_content
 
 ROOT=Path('minecraft')
 PACK=ROOT/'realistic-dirt.mcpack'
@@ -36,8 +37,8 @@ class CopperBlockTests(unittest.TestCase):
             self.assertIsNone(pack.testzip())
             self.assertLess(PACK.stat().st_size,100*1024*1024)
             m=json.loads(pack.read('manifest.json'))
-            self.assertEqual(m['header']['version'],[2,7,7])
-            self.assertTrue(all(x['version']==[2,7,7] for x in m['modules']))
+            self.assertEqual(m['header']['version'],[2,7,8])
+            self.assertTrue(all(x['version']==[2,7,8] for x in m['modules']))
             terrain=json.loads(pack.read('textures/terrain_texture.json'))['texture_data']
             self.assertEqual(terrain['copper_block'],{'textures':'textures/blocks/copper_block'})
             data=pack.read(FILE)
@@ -49,18 +50,21 @@ class CopperBlockTests(unittest.TestCase):
     def test_other_files_preserved(self):
         if BASELINE is None:self.skipTest('pass --baseline to compare the previous archive')
         with zipfile.ZipFile(BASELINE) as old, zipfile.ZipFile(PACK) as new:
-            self.assertEqual(set(new.namelist()),set(old.namelist())|{FILE})
+            self.assertEqual(set(new.namelist()),set(old.namelist())|{FILE,'textures/blocks/ice.png'})
             for name in old.namelist():
-                if name not in ('manifest.json','textures/terrain_texture.json'):
+                if name=='textures/blocks/clay.png':
+                    self.assertEqual(png_semantic_content(new.read(name)),png_semantic_content(old.read(name)),name)
+                elif name not in ('manifest.json','textures/terrain_texture.json'):
                     self.assertEqual(new.read(name),old.read(name),name)
             before=json.loads(old.read('textures/terrain_texture.json'))
             after=json.loads(new.read('textures/terrain_texture.json'))
             self.assertEqual(after['texture_data'].pop('copper_block'),{'textures':'textures/blocks/copper_block'})
+            self.assertEqual(after['texture_data'].pop('ice'),{'textures':'textures/blocks/ice'})
             self.assertEqual(after,before)
             before=json.loads(old.read('manifest.json'))
             after=json.loads(new.read('manifest.json'))
-            before['header']['version']=[2,7,7]
-            for item in before['modules']:item['version']=[2,7,7]
+            before['header']['version']=[2,7,8]
+            for item in before['modules']:item['version']=[2,7,8]
             self.assertEqual(before,after)
 
 if __name__=='__main__':

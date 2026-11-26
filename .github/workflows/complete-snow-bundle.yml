@@ -3,6 +3,11 @@ on:
   push:
     paths:
       - 'minecraft/realistic-dirt.mcpack'
+      - 'minecraft/realistic-dirt/manifest.json'
+      - 'minecraft/realistic-dirt/textures/terrain_texture.json'
+      - 'minecraft/realistic-dirt/textures/blocks/ice.png'
+      - 'minecraft/realistic-dirt/textures/blocks/clay.png'
+      - 'minecraft/tools/build_mud_concrete_update.py'
       - 'minecraft/snow-footprints.mcaddon'
       - 'minecraft/realistic-snow-complete.mcaddon'
       - 'minecraft/tools/build_complete_snow_bundle.py'
@@ -16,6 +21,11 @@ on:
   pull_request:
     paths:
       - 'minecraft/realistic-dirt.mcpack'
+      - 'minecraft/realistic-dirt/manifest.json'
+      - 'minecraft/realistic-dirt/textures/terrain_texture.json'
+      - 'minecraft/realistic-dirt/textures/blocks/ice.png'
+      - 'minecraft/realistic-dirt/textures/blocks/clay.png'
+      - 'minecraft/tools/build_mud_concrete_update.py'
       - 'minecraft/snow-footprints.mcaddon'
       - 'minecraft/realistic-snow-complete.mcaddon'
       - 'minecraft/tools/build_complete_snow_bundle.py'
