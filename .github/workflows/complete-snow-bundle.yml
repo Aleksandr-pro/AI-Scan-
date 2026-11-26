@@ -7,6 +7,11 @@ on:
       - 'minecraft/realistic-snow-complete.mcaddon'
       - 'minecraft/tools/build_complete_snow_bundle.py'
       - 'minecraft/tools/test_complete_snow_bundle.py'
+      - 'minecraft/tools/prepare_ice_bundle_optimizations.py'
+      - 'minecraft/tools/prepare_ordinary_ice.py'
+      - 'minecraft/tools/test_ordinary_ice.py'
+      - 'minecraft/ice-reference/**'
+      - 'minecraft/ice-bundle-optimized/**'
       - '.github/workflows/complete-snow-bundle.yml'
   pull_request:
     paths:
@@ -15,6 +20,11 @@ on:
       - 'minecraft/realistic-snow-complete.mcaddon'
       - 'minecraft/tools/build_complete_snow_bundle.py'
       - 'minecraft/tools/test_complete_snow_bundle.py'
+      - 'minecraft/tools/prepare_ice_bundle_optimizations.py'
+      - 'minecraft/tools/prepare_ordinary_ice.py'
+      - 'minecraft/tools/test_ordinary_ice.py'
+      - 'minecraft/ice-reference/**'
+      - 'minecraft/ice-bundle-optimized/**'
       - '.github/workflows/complete-snow-bundle.yml'
   workflow_dispatch:
 permissions:
@@ -24,4 +34,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: python3 minecraft/tools/test_complete_snow_bundle.py -v
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install Pillow==13.0.0
+      - run: python minecraft/tools/test_complete_snow_bundle.py -v
+      - run: python minecraft/tools/test_ordinary_ice.py -v

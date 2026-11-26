@@ -17,7 +17,8 @@ import zipfile
 
 from build_complete_snow_bundle import (BASE, FOOTPRINTS, OUTPUT, LIMIT, RP_UUID,
     BP_UUID, BUNDLE_VERSION, RESOURCE_FILES, BEHAVIOR_FILES, bundle_manifest,
-    behavior_manifest)
+    behavior_manifest, bundle_terrain, png_semantic_content, LOSSLESS_FILES,
+    ICE_FILE, ICE_TEXTURE, OPTIMIZED)
 
 
 def sha256(path):
@@ -48,13 +49,19 @@ class CompleteBundleTest(unittest.TestCase):
         with zipfile.ZipFile(BASE) as base, zipfile.ZipFile(self.rp) as combined, zipfile.ZipFile(FOOTPRINTS) as addon:
             self.assertIsNone(combined.testzip())
             self.assertEqual(len(combined.namelist()),len(set(combined.namelist())))
-            self.assertEqual(set(combined.namelist()),set(base.namelist())|RESOURCE_FILES)
+            self.assertEqual(set(combined.namelist()),set(base.namelist())|RESOURCE_FILES|{ICE_FILE})
+            self.assertEqual(combined.read(ICE_FILE),ICE_TEXTURE.read_bytes())
             for name in base.namelist():
                 if name=='manifest.json':
                     original=json.loads(base.read(name));actual=json.loads(combined.read(name))
                     self.assertEqual(actual,bundle_manifest(original))
                     self.assertNotEqual(actual['header']['uuid'],original['header']['uuid'])
                     self.assertEqual(actual['header']['min_engine_version'],[1,26,30])
+                elif name=='textures/terrain_texture.json':
+                    self.assertEqual(json.loads(combined.read(name)),bundle_terrain(json.loads(base.read(name))))
+                elif name in LOSSLESS_FILES:
+                    self.assertEqual(combined.read(name),(OPTIMIZED/name).read_bytes())
+                    self.assertEqual(png_semantic_content(combined.read(name)),png_semantic_content(base.read(name)),name)
                 else:self.assertEqual(combined.read(name),base.read(name),name)
             with zipfile.ZipFile(io.BytesIO(addon.read('snow-footprints-resources.mcpack'))) as foot:
                 for name in RESOURCE_FILES:self.assertEqual(combined.read(name),foot.read(name),name)
@@ -74,6 +81,14 @@ class CompleteBundleTest(unittest.TestCase):
                 self.assertIn({'module_name':'@minecraft/server','version':'2.8.0'},manifest['dependencies'])
                 for filename in ('scripts/main.js','scripts/footsteps.js'):
                     self.assertEqual(combined.read(filename),old.read(filename),filename)
+
+    def test_lossless_png_guard_detects_corruption_and_differences(self):
+        first=sorted(LOSSLESS_FILES)[0]
+        data=(OPTIMIZED/first).read_bytes()
+        corrupted=bytearray(data)
+        corrupted[len(corrupted)//2] ^= 1
+        with self.assertRaises(ValueError):png_semantic_content(bytes(corrupted))
+        self.assertNotEqual(png_semantic_content(data),png_semantic_content(ICE_TEXTURE.read_bytes()))
 
     def test_rebuild_is_reproducible_and_fresh(self):
         previous=sha256(OUTPUT)

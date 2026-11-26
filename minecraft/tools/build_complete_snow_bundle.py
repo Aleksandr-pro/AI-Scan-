@@ -2,8 +2,9 @@
 """Combine the published main resource pack and snow-footprint addon.
 
 The output contains one combined resource pack and one behavior pack. It
-preserves all main-pack assets and copies the exact footprint particle,
-texture and scripts from the existing addon. Distinct bundle UUIDs prevent
+preserves the main-pack assets, adds the ordinary-ice texture, and copies the
+exact footprint particle, texture and scripts from the existing addon. Selected
+PNGs are losslessly recompressed to stay under GitHub's per-file limit. Distinct bundle UUIDs prevent
 silently replacing the user's existing standalone packs. They must not be
 activated together: two behavior packs would generate duplicate footprints.
 Run from any directory; only Python's standard library is required.
@@ -15,6 +16,7 @@ from pathlib import Path
 import shutil
 import tempfile
 import zipfile
+import zlib
 
 ROOT=Path(__file__).resolve().parents[1]
 BASE=ROOT/'realistic-dirt.mcpack'
@@ -26,13 +28,51 @@ RP_MODULE_UUID='f6d52832-f7ec-47e4-bdc3-0af1e104af02'
 BP_UUID='794f903e-2d1b-48fe-a080-ce4f08b428fd'
 BP_DATA_UUID='7d7ec5ba-5557-4136-8168-8ec16920449a'
 BP_SCRIPT_UUID='e7d7008f-1b2e-4bd7-a795-fc70f239738c'
-BUNDLE_VERSION=[1,0,0]
+BUNDLE_VERSION=[1,0,1]
+ICE_FILE='textures/blocks/ice.png'
+ICE_TEXTURE=ROOT/'ice-reference/ice.png'
+OPTIMIZED=ROOT/'ice-bundle-optimized'
+LOSSLESS_FILES={f'textures/blocks/{name}.png' for name in (
+    'amethyst_block','clay','copper_ore','iron_ore','packed_mud','planks_oak','sandstone_normal')}
 RESOURCE_FILES={'particles/footprint.json','textures/particle/aegis_snow_footprint.png'}
 BEHAVIOR_FILES={'manifest.json','scripts/main.js','scripts/footsteps.js'}
 
 
 def json_bytes(value):
     return (json.dumps(value,ensure_ascii=False,indent=2)+'\n').encode('utf-8')
+
+
+def png_semantic_content(data):
+    """Return metadata/chunks and raw filtered pixels for a validated PNG.
+
+    Comparing the decompressed IDAT data proves identical scanlines and all
+    non-IDAT chunks (including palette, transparency, color info) are kept.
+    """
+    if not data.startswith(b'\x89PNG\r\n\x1a\n'):raise ValueError('Invalid PNG signature')
+    pos=8; metadata=[]; ids=[]; ended=False
+    while pos<len(data):
+        if pos+12>len(data):raise ValueError('Truncated PNG chunk')
+        n=int.from_bytes(data[pos:pos+4],'big');kind=data[pos+4:pos+8]
+        if pos+n+12>len(data):raise ValueError('Truncated PNG data')
+        content=data[pos+8:pos+8+n];crc=int.from_bytes(data[pos+8+n:pos+12+n],'big')
+        if zlib.crc32(kind+content)&0xffffffff != crc:raise ValueError('Bad PNG CRC')
+        if kind==b'IDAT':
+            if not ids:metadata.append((b'IDAT',b''))
+            ids.append(content)
+        else:metadata.append((kind,content))
+        pos+=n+12
+        if kind==b'IEND':ended=True;break
+    if not ended or pos!=len(data) or not ids:raise ValueError('Incomplete PNG')
+    return metadata,zlib.decompress(b''.join(ids))
+
+
+def bundle_terrain(original):
+    result=copy.deepcopy(original)
+    value={'textures':'textures/blocks/ice'}
+    existing=result['texture_data'].get('ice')
+    if existing is not None and existing!=value:raise ValueError('Unexpected ice atlas collision')
+    result['texture_data']['ice']=value
+    return result
 
 
 def bundle_manifest(original):
@@ -96,14 +136,23 @@ def main():
         with zipfile.ZipFile(BASE) as base, zipfile.ZipFile(rp_file,'w') as rp:
             if base.testzip() is not None or len(set(base.namelist()))!=len(base.namelist()):
                 raise ValueError('Invalid or duplicate entries in main pack')
-            if set(base.namelist()) & RESOURCE_FILES:
-                raise ValueError('Footprint assets already present in main pack; review collision')
+            if set(base.namelist()) & (RESOURCE_FILES | {ICE_FILE}):
+                raise ValueError('Footprint or ice assets already present in main pack; review collision')
+            if not LOSSLESS_FILES <= set(base.namelist()):
+                raise ValueError('Missing original files for lossless recompression')
             for info in base.infolist():
                 payload=base.read(info.filename)
                 if info.filename=='manifest.json':payload=json_bytes(bundle_manifest(json.loads(payload)))
+                elif info.filename=='textures/terrain_texture.json':payload=json_bytes(bundle_terrain(json.loads(payload)))
+                elif info.filename in LOSSLESS_FILES:
+                    optimized=(OPTIMIZED/info.filename).read_bytes()
+                    if png_semantic_content(payload)!=png_semantic_content(optimized):
+                        raise ValueError(f'Lossless PNG mismatch: {info.filename}')
+                    payload=optimized
                 # Preserve compression choice and file metadata of main pack.
                 rp.writestr(info,payload,compress_type=info.compress_type,compresslevel=9)
             for name in sorted(RESOURCE_FILES):entry(name,additions[name],rp)
+            entry(ICE_FILE,ICE_TEXTURE.read_bytes(),rp)
         with zipfile.ZipFile(io.BytesIO(bp_data)) as old, zipfile.ZipFile(bp_file,'w') as bp:
             if set(old.namelist())!=BEHAVIOR_FILES:
                 raise ValueError('Unexpected footprint behavior files')
