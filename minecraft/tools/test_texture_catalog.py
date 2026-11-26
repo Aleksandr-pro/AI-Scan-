@@ -5,8 +5,6 @@ import importlib.util
 import json
 from pathlib import Path
 import re
-import subprocess
-import sys
 import tempfile
 import unittest
 
@@ -29,11 +27,22 @@ class CatalogTests(unittest.TestCase):
     def setUpClass(cls):
         cls.text=DOC.read_text(encoding='utf-8')
 
-    def test_generated_file_is_current_and_deterministic(self):
+    def test_snapshot_and_generator_are_deterministic(self):
+        # The user chose not to maintain the saved catalog. It is a historical
+        # snapshot, not a live claim about the current resource pack. Exercise
+        # the generator twice in a temporary directory without rewriting it.
         before=DOC.read_bytes()
-        subprocess.run([sys.executable,str(ROOT/'minecraft/tools/build_texture_catalog.py')],cwd=ROOT,check=True,capture_output=True)
-        self.assertEqual(before,DOC.read_bytes(),'The catalog was stale before regeneration')
-        self.assertIn(hashlib.sha256(PACK.read_bytes()).hexdigest(),self.text)
+        spec=importlib.util.spec_from_file_location('catalog_determinism',ROOT/'minecraft/tools/build_texture_catalog.py')
+        module=importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        with tempfile.TemporaryDirectory() as tmp:
+            module.OUTPUT=Path(tmp)/'catalog.md'
+            module.main()
+            first=module.OUTPUT.read_bytes()
+            module.main()
+            self.assertEqual(first,module.OUTPUT.read_bytes())
+            self.assertIn(hashlib.sha256(PACK.read_bytes()).hexdigest(),first.decode('utf-8'))
+        self.assertEqual(before,DOC.read_bytes(),'Generator test changed the saved snapshot')
         self.assertIn('1.26.32.2',self.text)
         self.assertIn('v1.26.30.5',self.text)
 
