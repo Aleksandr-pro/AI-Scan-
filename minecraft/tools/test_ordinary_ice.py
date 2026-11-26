@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Check ordinary ice photo, transparency and bundle mapping (not game rendering)."""
+import argparse
 import io
 import json
 from pathlib import Path
@@ -9,9 +10,11 @@ import unittest
 import zipfile
 from PIL import Image, ImageOps
 import prepare_ordinary_ice
-from build_complete_snow_bundle import OUTPUT, ICE_FILE, BUNDLE_VERSION
+from build_complete_snow_bundle import OUTPUT, BASE, ICE_FILE, BUNDLE_VERSION, png_semantic_content
 
 ROOT=Path('minecraft')
+BASELINE=None
+VERSION=[2,7,8]
 
 
 def vanilla(name):
@@ -42,6 +45,15 @@ class OrdinaryIceTests(unittest.TestCase):
         self.assertNotEqual(blocks['packed_ice']['textures'],'ice')
         self.assertNotEqual(blocks['frosted_ice']['textures'],'ice')
         self.assertNotEqual(atlas['blue_ice']['textures'],'textures/blocks/ice')
+        self.assertEqual(prepare_ordinary_ice.MAIN_OUTPUT.read_bytes(),prepare_ordinary_ice.OUTPUT.read_bytes())
+        with zipfile.ZipFile(BASE) as main:
+            self.assertIsNone(main.testzip())
+            self.assertLess(BASE.stat().st_size,100*1024*1024)
+            self.assertEqual(main.read(ICE_FILE),prepare_ordinary_ice.OUTPUT.read_bytes())
+            self.assertEqual(json.loads(main.read('textures/terrain_texture.json'))['texture_data']['ice'],{'textures':'textures/blocks/ice'})
+            manifest=json.loads(main.read('manifest.json'))
+            self.assertEqual(manifest['header']['version'],VERSION)
+            self.assertTrue(all(m['version']==VERSION for m in manifest['modules']))
         with tempfile.TemporaryDirectory() as d, zipfile.ZipFile(OUTPUT) as outer:
             path=Path(d)/'resources.mcpack'
             with outer.open('realistic-snow-resources.mcpack') as src, path.open('wb') as dst:shutil.copyfileobj(src,dst)
@@ -50,4 +62,24 @@ class OrdinaryIceTests(unittest.TestCase):
                 self.assertEqual(json.loads(rp.read('textures/terrain_texture.json'))['texture_data']['ice'],{'textures':'textures/blocks/ice'})
                 self.assertEqual(json.loads(rp.read('manifest.json'))['header']['version'],BUNDLE_VERSION)
 
-if __name__=='__main__':unittest.main()
+    def test_main_pack_preserves_v277(self):
+        if BASELINE is None:self.skipTest('pass --baseline /path/to/v2.7.7.mcpack')
+        with zipfile.ZipFile(BASELINE) as old, zipfile.ZipFile(BASE) as new:
+            self.assertEqual(set(new.namelist()),set(old.namelist())|{ICE_FILE})
+            for name in old.namelist():
+                if name in ('manifest.json','textures/terrain_texture.json'):continue
+                if name=='textures/blocks/clay.png':
+                    self.assertEqual(png_semantic_content(old.read(name)),png_semantic_content(new.read(name)),name)
+                else:self.assertEqual(old.read(name),new.read(name),name)
+            expected=json.loads(old.read('textures/terrain_texture.json'))
+            expected['texture_data']['ice']={'textures':'textures/blocks/ice'}
+            self.assertEqual(json.loads(new.read('textures/terrain_texture.json')),expected)
+            expected=json.loads(old.read('manifest.json'))
+            expected['header']['version']=VERSION
+            for m in expected['modules']:m['version']=VERSION
+            self.assertEqual(json.loads(new.read('manifest.json')),expected)
+
+if __name__=='__main__':
+    parser=argparse.ArgumentParser();parser.add_argument('--baseline',type=Path)
+    args,rest=parser.parse_known_args();BASELINE=args.baseline
+    unittest.main(argv=[__file__,*rest])

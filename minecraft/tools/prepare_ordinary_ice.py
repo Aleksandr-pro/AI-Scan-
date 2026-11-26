@@ -10,6 +10,7 @@ from PIL import Image, ImageFilter, ImageOps
 
 SOURCE=Path('minecraft/ice-reference/ice.jpg')
 OUTPUT=Path('minecraft/ice-reference/ice.png')
+MAIN_OUTPUT=Path('minecraft/realistic-dirt/textures/blocks/ice.png')
 SIZE=512
 
 
@@ -34,6 +35,8 @@ def prepare():
 def main():
     OUTPUT.parent.mkdir(parents=True,exist_ok=True)
     prepare().save(OUTPUT,optimize=True)
-    print(f'Prepared {OUTPUT} ({OUTPUT.stat().st_size} bytes)')
+    MAIN_OUTPUT.parent.mkdir(parents=True,exist_ok=True)
+    MAIN_OUTPUT.write_bytes(OUTPUT.read_bytes())
+    print(f'Prepared {OUTPUT} and {MAIN_OUTPUT} ({OUTPUT.stat().st_size} bytes)')
 
 if __name__=='__main__':main()

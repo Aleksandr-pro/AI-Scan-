@@ -2,9 +2,9 @@
 """Combine the published main resource pack and snow-footprint addon.
 
 The output contains one combined resource pack and one behavior pack. It
-preserves the main-pack assets, adds the ordinary-ice texture, and copies the
-exact footprint particle, texture and scripts from the existing addon. Selected
-PNGs are losslessly recompressed to stay under GitHub's per-file limit. Distinct bundle UUIDs prevent
+preserves the main-pack assets, including ordinary ice, and copies the exact
+footprint particle, texture and scripts from the existing addon. Selected PNGs
+are losslessly recompressed to stay under GitHub's per-file limit. Distinct bundle UUIDs prevent
 silently replacing the user's existing standalone packs. They must not be
 activated together: two behavior packs would generate duplicate footprints.
 Run from any directory; only Python's standard library is required.
@@ -136,8 +136,13 @@ def main():
         with zipfile.ZipFile(BASE) as base, zipfile.ZipFile(rp_file,'w') as rp:
             if base.testzip() is not None or len(set(base.namelist()))!=len(base.namelist()):
                 raise ValueError('Invalid or duplicate entries in main pack')
-            if set(base.namelist()) & (RESOURCE_FILES | {ICE_FILE}):
-                raise ValueError('Footprint or ice assets already present in main pack; review collision')
+            if set(base.namelist()) & RESOURCE_FILES:
+                raise ValueError('Footprint assets already present in main pack; review collision')
+            # Older inputs may lack ice; newer main packs contain it. Reject a
+            # mismatch rather than silently overwrite a future main-pack tile.
+            has_ice=ICE_FILE in base.namelist()
+            if has_ice and base.read(ICE_FILE)!=ICE_TEXTURE.read_bytes():
+                raise ValueError('Main pack ice differs from the supplied reference; review collision')
             if not LOSSLESS_FILES <= set(base.namelist()):
                 raise ValueError('Missing original files for lossless recompression')
             for info in base.infolist():
@@ -152,7 +157,7 @@ def main():
                 # Preserve compression choice and file metadata of main pack.
                 rp.writestr(info,payload,compress_type=info.compress_type,compresslevel=9)
             for name in sorted(RESOURCE_FILES):entry(name,additions[name],rp)
-            entry(ICE_FILE,ICE_TEXTURE.read_bytes(),rp)
+            if not has_ice:entry(ICE_FILE,ICE_TEXTURE.read_bytes(),rp)
         with zipfile.ZipFile(io.BytesIO(bp_data)) as old, zipfile.ZipFile(bp_file,'w') as bp:
             if set(old.namelist())!=BEHAVIOR_FILES:
                 raise ValueError('Unexpected footprint behavior files')
