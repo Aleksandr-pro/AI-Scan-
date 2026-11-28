@@ -1,0 +1,52 @@
+name: Complete pack with water
+on:
+  pull_request:
+    paths:
+      - 'minecraft/realistic-snow-complete.mcaddon'
+      - 'minecraft/realistic-water-three-photos.mcpack'
+      - 'minecraft/grass-water-compat.mcpack'
+      - 'minecraft/tools/build_complete_water_bundle.py'
+      - 'minecraft/tools/test_complete_water_bundle.py'
+      - 'minecraft/vanilla-client-biomes-1.26.30.5/**'
+      - 'minecraft/ice-reference/**'
+      - '.github/workflows/complete-water-bundle.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'minecraft/realistic-snow-complete.mcaddon'
+      - 'minecraft/realistic-water-three-photos.mcpack'
+      - 'minecraft/grass-water-compat.mcpack'
+      - 'minecraft/tools/build_complete_water_bundle.py'
+      - 'minecraft/tools/test_complete_water_bundle.py'
+      - 'minecraft/vanilla-client-biomes-1.26.30.5/**'
+      - 'minecraft/ice-reference/**'
+      - '.github/workflows/complete-water-bundle.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install Pillow==13.0.0
+      - run: python minecraft/tools/test_complete_snow_bundle.py -v
+      - run: python minecraft/tools/test_complete_water_bundle.py -v
+      - name: Publish immutable release asset
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          tag=realistic-complete-water-v1.0.5
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "Release already exists; refusing to replace it. Bump the version and tag for future releases."
+            exit 0
+          fi
+          gh release create "$tag" minecraft/realistic-complete-water.mcaddon \
+            --target "$GITHUB_SHA" \
+            --title 'Текстурпак, вода и следы — v1.0.5' \
+            --notes 'Единый комплект с водой из трёх фотографий и совместимостью травы. Результат в игре не проверен.'

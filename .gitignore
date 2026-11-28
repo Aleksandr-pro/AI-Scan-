@@ -25,3 +25,6 @@ Thumbs.db
 # Combined distribution is larger than GitHub's single-file limit; reproducible locally.
 minecraft/realistic-complete-grassflow.mcaddon
 minecraft/realistic-complete-automatic.mcaddon
+
+# Full-resolution water bundle is published as a release asset, not a Git blob.
+minecraft/realistic-complete-water.mcaddon
