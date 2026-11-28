@@ -37,8 +37,8 @@ class CopperBlockTests(unittest.TestCase):
             self.assertIsNone(pack.testzip())
             self.assertLess(PACK.stat().st_size,100*1024*1024)
             m=json.loads(pack.read('manifest.json'))
-            self.assertEqual(m['header']['version'],[2,7,8])
-            self.assertTrue(all(x['version']==[2,7,8] for x in m['modules']))
+            self.assertEqual(m['header']['version'],[2,7,9])
+            self.assertTrue(all(x['version']==[2,7,9] for x in m['modules']))
             terrain=json.loads(pack.read('textures/terrain_texture.json'))['texture_data']
             self.assertEqual(terrain['copper_block'],{'textures':'textures/blocks/copper_block'})
             data=pack.read(FILE)
@@ -63,8 +63,8 @@ class CopperBlockTests(unittest.TestCase):
             self.assertEqual(after,before)
             before=json.loads(old.read('manifest.json'))
             after=json.loads(new.read('manifest.json'))
-            before['header']['version']=[2,7,8]
-            for item in before['modules']:item['version']=[2,7,8]
+            before['header']['version']=[2,7,9]
+            for item in before['modules']:item['version']=[2,7,9]
             self.assertEqual(before,after)
 
 if __name__=='__main__':

@@ -27,8 +27,8 @@ class TestSnow(unittest.TestCase):
             self.assertIsNone(archive.testzip())
             self.assertLess(PACK.stat().st_size,100*1024*1024)
             manifest=json.loads(archive.read('manifest.json'))
-            self.assertEqual(manifest['header']['version'],[2,7,8])
-            self.assertTrue(all(m['version']==[2,7,8] for m in manifest['modules']))
+            self.assertEqual(manifest['header']['version'],[2,7,9])
+            self.assertTrue(all(m['version']==[2,7,9] for m in manifest['modules']))
             atlas=json.loads(archive.read('textures/terrain_texture.json'))['texture_data']
             blocks=json.loads(archive.read('blocks.json'))
             for key in ('snow','snow_layer'):
@@ -68,8 +68,8 @@ class TestSnow(unittest.TestCase):
             self.assertEqual(before,after)
             old_manifest=json.loads(old.read('manifest.json'))
             new_manifest=json.loads(new.read('manifest.json'))
-            old_manifest['header']['version']=[2,7,8]
-            for module in old_manifest['modules']:module['version']=[2,7,8]
+            old_manifest['header']['version']=[2,7,9]
+            for module in old_manifest['modules']:module['version']=[2,7,9]
             self.assertEqual(old_manifest,new_manifest)
 
 if __name__=='__main__':

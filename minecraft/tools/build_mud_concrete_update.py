@@ -17,13 +17,15 @@ import zipfile
 ROOT=Path('minecraft')
 SOURCE=ROOT/'realistic-dirt'
 PACK=ROOT/'realistic-dirt.mcpack'
-VERSION=[2,7,8]
+VERSION=[2,7,9]
 COLORS=('black','white','pink')
 NEW=('textures/blocks/packed_mud.png','textures/blocks/concrete_white.png',
      'textures/blocks/concrete_red.png','textures/blocks/stripped_oak_log.png',
      'textures/blocks/stone_andesite.png','textures/blocks/flower_pot.png',
      'textures/blocks/oak_shelf.png','textures/blocks/copper_block.png',
      'textures/blocks/ice.png',
+     'textures/models/armor/elytra.png', 'textures/items/elytra.png',
+     'textures/items/broken_elytra.png',
      *(f'textures/blocks/photo_stained_glass_{c}_pane_edge.png' for c in COLORS))
 
 
