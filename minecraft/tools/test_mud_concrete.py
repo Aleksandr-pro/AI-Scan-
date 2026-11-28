@@ -60,7 +60,7 @@ class TestMudConcrete(unittest.TestCase):
                 self.assertEqual((shelf.size,shelf.mode),((512,512),'RGB'))
                 # Powered variants must remain different where supports join.
                 self.assertIsNotNone(ImageChops.difference(shelf.crop((0,256,256,384)),shelf.crop((0,384,256,512))).getbbox())
-            self.assertEqual(json.loads(z.read('manifest.json'))['header']['version'],[2,7,9])
+            self.assertEqual(json.loads(z.read('manifest.json'))['header']['version'],[2,7,10])
             self.assertLess(PACK.stat().st_size,100*1024*1024)
 
     def test_existing_pack(self):
