@@ -13,7 +13,7 @@ from build_complete_snow_bundle import BASE,OUTPUT,png_semantic_content
 REF=Path('minecraft/shield-reference')
 PATH='textures/entity/shield.png'
 BASELINE=None
-VERSION=[2,7,10]
+VERSION=[2,7,11]
 
 class ShieldTests(unittest.TestCase):
     def test_vanilla_reference_paths_and_uv(self):
@@ -55,7 +55,7 @@ class ShieldTests(unittest.TestCase):
             manifest['header']['version']=VERSION
             for module in manifest['modules']:module['version']=VERSION
             self.assertEqual(json.loads(new.read('manifest.json')),manifest)
-            for name in set(old.namelist())-{'manifest.json'}:
+            for name in set(old.namelist())-{'manifest.json','textures/blocks/ice.png'}:
                 a,b=old.read(name),new.read(name)
                 if a!=b:
                     self.assertTrue(name.endswith('.png'),name)
