@@ -34,7 +34,7 @@ class ElytraTests(unittest.TestCase):
         with zipfile.ZipFile(BASE) as main, zipfile.ZipFile(OUTPUT) as outer:
             self.assertIsNone(main.testzip());self.assertLess(BASE.stat().st_size,100*1024*1024)
             manifest=json.loads(main.read('manifest.json'))
-            self.assertEqual(manifest['header']['version'],[2,7,9])
+            self.assertEqual(manifest['header']['version'],[2,7,10])
             self.assertEqual(manifest['header']['uuid'],'c82fb06e-bbe1-4f64-b6aa-c3136b61a026')
             with zipfile.ZipFile(io.BytesIO(outer.read('realistic-snow-resources.mcpack'))) as bundle:
                 for name in PATHS:
@@ -55,10 +55,10 @@ class ElytraTests(unittest.TestCase):
     def test_previous_pack_preserved(self):
         if BASELINE is None:self.skipTest('pass --baseline /path/to/v2.7.8.mcpack')
         with zipfile.ZipFile(BASELINE) as old, zipfile.ZipFile(BASE) as new:
-            self.assertEqual(set(new.namelist()),set(old.namelist())|PATHS)
+            self.assertEqual(set(new.namelist()),set(old.namelist())|PATHS|{'textures/entity/shield.png'})
             previous=json.loads(old.read('manifest.json'))
-            previous['header']['version']=[2,7,9]
-            for m in previous['modules']:m['version']=[2,7,9]
+            previous['header']['version']=[2,7,10]
+            for m in previous['modules']:m['version']=[2,7,10]
             self.assertEqual(json.loads(new.read('manifest.json')),previous)
             for name in set(old.namelist())-{'manifest.json'}:
                 a,b=old.read(name),new.read(name)

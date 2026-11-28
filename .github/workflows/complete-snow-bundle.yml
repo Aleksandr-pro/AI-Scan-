@@ -15,6 +15,10 @@ on:
       - 'minecraft/tools/prepare_ice_bundle_optimizations.py'
       - 'minecraft/tools/prepare_ordinary_ice.py'
       - 'minecraft/tools/test_ordinary_ice.py'
+      - 'minecraft/shield-reference/**'
+      - 'minecraft/realistic-dirt/textures/entity/shield.png'
+      - 'minecraft/tools/prepare_shield.py'
+      - 'minecraft/tools/test_shield.py'
       - 'minecraft/elytra-reference/**'
       - 'minecraft/realistic-dirt/textures/items/**'
       - 'minecraft/realistic-dirt/textures/models/armor/elytra.png'
@@ -37,6 +41,10 @@ on:
       - 'minecraft/tools/prepare_ice_bundle_optimizations.py'
       - 'minecraft/tools/prepare_ordinary_ice.py'
       - 'minecraft/tools/test_ordinary_ice.py'
+      - 'minecraft/shield-reference/**'
+      - 'minecraft/realistic-dirt/textures/entity/shield.png'
+      - 'minecraft/tools/prepare_shield.py'
+      - 'minecraft/tools/test_shield.py'
       - 'minecraft/elytra-reference/**'
       - 'minecraft/realistic-dirt/textures/items/**'
       - 'minecraft/realistic-dirt/textures/models/armor/elytra.png'
@@ -59,3 +67,4 @@ jobs:
       - run: python minecraft/tools/test_complete_snow_bundle.py -v
       - run: python minecraft/tools/test_ordinary_ice.py -v
       - run: python minecraft/tools/test_elytra_wings.py -v
+      - run: python minecraft/tools/test_shield.py -v
