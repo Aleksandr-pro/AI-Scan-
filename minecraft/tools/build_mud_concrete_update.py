@@ -17,7 +17,7 @@ import zipfile
 ROOT=Path('minecraft')
 SOURCE=ROOT/'realistic-dirt'
 PACK=ROOT/'realistic-dirt.mcpack'
-VERSION=[2,7,10]
+VERSION=[2,7,11]
 COLORS=('black','white','pink')
 NEW=('textures/blocks/packed_mud.png','textures/blocks/concrete_white.png',
      'textures/blocks/concrete_red.png','textures/blocks/stripped_oak_log.png',

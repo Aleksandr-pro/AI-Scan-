@@ -14,7 +14,7 @@ from build_complete_snow_bundle import OUTPUT, BASE, ICE_FILE, BUNDLE_VERSION, p
 
 ROOT=Path('minecraft')
 BASELINE=None
-VERSION=[2,7,10]
+VERSION=[2,7,11]
 
 
 def vanilla(name):
@@ -25,17 +25,17 @@ def vanilla(name):
 class OrdinaryIceTests(unittest.TestCase):
     def test_photo_and_alpha(self):
         with Image.open(prepare_ordinary_ice.OUTPUT) as image:
-            self.assertEqual((image.mode,image.size),('RGBA',(512,512)))
+            self.assertEqual((image.mode,image.size),('RGBA',(1024,1024)))
             actual=image.copy()
         prepared=prepare_ordinary_ice.prepare()
         self.assertEqual(actual.tobytes(),prepared.tobytes())
         with Image.open(prepare_ordinary_ice.SOURCE) as source:
-            expected=ImageOps.fit(ImageOps.exif_transpose(source).convert('RGB'),(512,512),Image.Resampling.LANCZOS)
+            expected=ImageOps.fit(ImageOps.exif_transpose(source).convert('RGB'),(1024,1024),Image.Resampling.LANCZOS)
             self.assertEqual(actual.convert('RGB').tobytes(),expected.tobytes(),'photographic RGB must not be quantized or altered')
         alpha=actual.getchannel('A'); low,high=alpha.getextrema()
         self.assertGreater(low,0);self.assertLess(high,255);self.assertGreater(high-low,20)
-        center=alpha.crop((128,128,384,384))
-        self.assertLess(sum(center.histogram()[128:]),512*512//4)  # many centre pixels transmit the view
+        center=alpha.crop((256,256,768,768))
+        self.assertLess(sum(center.histogram()[128:]),1024*1024//4)  # many centre pixels transmit the view
 
     def test_original_vanilla_scope_and_installed_asset(self):
         atlas=vanilla('vanilla-terrain.json')['texture_data']
@@ -62,18 +62,16 @@ class OrdinaryIceTests(unittest.TestCase):
                 self.assertEqual(json.loads(rp.read('textures/terrain_texture.json'))['texture_data']['ice'],{'textures':'textures/blocks/ice'})
                 self.assertEqual(json.loads(rp.read('manifest.json'))['header']['version'],BUNDLE_VERSION)
 
-    def test_main_pack_preserves_v277(self):
-        if BASELINE is None:self.skipTest('pass --baseline /path/to/v2.7.7.mcpack')
+    def test_main_pack_preserves_v2710(self):
+        if BASELINE is None:self.skipTest('pass --baseline /path/to/v2.7.10.mcpack')
         with zipfile.ZipFile(BASELINE) as old, zipfile.ZipFile(BASE) as new:
-            self.assertEqual(set(new.namelist()),set(old.namelist())|{ICE_FILE})
-            for name in old.namelist():
-                if name in ('manifest.json','textures/terrain_texture.json'):continue
-                if name=='textures/blocks/clay.png':
-                    self.assertEqual(png_semantic_content(old.read(name)),png_semantic_content(new.read(name)),name)
-                else:self.assertEqual(old.read(name),new.read(name),name)
-            expected=json.loads(old.read('textures/terrain_texture.json'))
-            expected['texture_data']['ice']={'textures':'textures/blocks/ice'}
-            self.assertEqual(json.loads(new.read('textures/terrain_texture.json')),expected)
+            self.assertEqual(set(new.namelist()),set(old.namelist()))
+            self.assertNotEqual(old.read(ICE_FILE),new.read(ICE_FILE))
+            for name in set(old.namelist())-{'manifest.json',ICE_FILE}:
+                before,after=old.read(name),new.read(name)
+                if before!=after:
+                    self.assertTrue(name.endswith('.png'),name)
+                    self.assertEqual(png_semantic_content(before),png_semantic_content(after),name)
             expected=json.loads(old.read('manifest.json'))
             expected['header']['version']=VERSION
             for m in expected['modules']:m['version']=VERSION
