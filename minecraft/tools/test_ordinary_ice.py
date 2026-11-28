@@ -14,7 +14,7 @@ from build_complete_snow_bundle import OUTPUT, BASE, ICE_FILE, BUNDLE_VERSION, p
 
 ROOT=Path('minecraft')
 BASELINE=None
-VERSION=[2,7,8]
+VERSION=[2,7,9]
 
 
 def vanilla(name):

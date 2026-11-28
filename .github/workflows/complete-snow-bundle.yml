@@ -15,6 +15,10 @@ on:
       - 'minecraft/tools/prepare_ice_bundle_optimizations.py'
       - 'minecraft/tools/prepare_ordinary_ice.py'
       - 'minecraft/tools/test_ordinary_ice.py'
+      - 'minecraft/elytra-reference/**'
+      - 'minecraft/realistic-dirt/textures/items/**'
+      - 'minecraft/realistic-dirt/textures/models/armor/elytra.png'
+      - 'minecraft/tools/test_elytra_wings.py'
       - 'minecraft/ice-reference/**'
       - 'minecraft/ice-bundle-optimized/**'
       - '.github/workflows/complete-snow-bundle.yml'
@@ -33,6 +37,10 @@ on:
       - 'minecraft/tools/prepare_ice_bundle_optimizations.py'
       - 'minecraft/tools/prepare_ordinary_ice.py'
       - 'minecraft/tools/test_ordinary_ice.py'
+      - 'minecraft/elytra-reference/**'
+      - 'minecraft/realistic-dirt/textures/items/**'
+      - 'minecraft/realistic-dirt/textures/models/armor/elytra.png'
+      - 'minecraft/tools/test_elytra_wings.py'
       - 'minecraft/ice-reference/**'
       - 'minecraft/ice-bundle-optimized/**'
       - '.github/workflows/complete-snow-bundle.yml'
@@ -50,3 +58,4 @@ jobs:
       - run: python -m pip install Pillow==13.0.0
       - run: python minecraft/tools/test_complete_snow_bundle.py -v
       - run: python minecraft/tools/test_ordinary_ice.py -v
+      - run: python minecraft/tools/test_elytra_wings.py -v
